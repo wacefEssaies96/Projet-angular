@@ -1,0 +1,29 @@
+<h1>Login Form</h1>
+<form [formGroup]="form" (ngSubmit)="login()">
+  <div class="form-group col-md-3">
+    <label>email:*</label>
+    <input type="email" formControlName="email" name="email" class="form-control">
+    <div class="alert alert-danger"
+        *ngIf="form.controls['email'].invalid">
+        <p *ngIf="form.controls['email'].hasError('required')">
+          email is required
+        </p>
+        <p *ngIf="form.controls['email'].hasError('email')">
+          email invalid
+        </p>
+    </div>
+  </div>
+  <div class="form-group col-md-3" >
+    <label>password:*</label>
+    <input type="password" formControlName="psw" name="password" class="form-control">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-sm btn-success"
+  [disabled]="form.invalid">
+    login
+  </button>
+  &nbsp;
+  <button type="reset"  class="btn btn-sm btn-warning">
+    reset
+  </button>
+</form>
