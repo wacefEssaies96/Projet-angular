@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Nom</label>
+    <input [(ngModel)]="etudiant.nomE" type="text" formControlName="nomE">
+    <div class="alert alert-danger" *ngIf="form.controls['nomE'].invalid">
+        <p *ngIf="form.controls['nomE'].hasError('required')">
+            nom is required
+        </p>
+    </div>
+    <label>Prenom</label>
+    <input [(ngModel)]="etudiant.prenomE" type="text" formControlName="prenomE">
+    <div class="alert alert-danger" *ngIf="form.controls['nomE'].invalid">
+        <p *ngIf="form.controls['prenomE'].hasError('required')">
+            prenom is required
+        </p>
+    </div>
+    <label>Date naissance</label>
+    <input [(ngModel)]="etudiant.dateDebut" type="date" formControlName="dateDebut">
+    <div class="alert alert-danger" *ngIf="form.controls['dateDebut'].invalid">
+        <p *ngIf="form.controls['dateDebut'].hasError('required')">
+            date de naissance is required
+        </p>
+    </div>
+    <label>Option</label>
+    <select [(ngModel)]="etudiant.op" formControlName="op">
+        <option value="TWIN" selected>TWIN</option>
+        <option value="BI">BI</option>
+        <option value="SLEAM">SLEAM</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="form.controls['op'].invalid">
+        <p *ngIf="form.controls['op'].hasError('required')">
+            option is required
+        </p>
+    </div>
+    <button type="submit" class="btn btn-sm btn-success" [disabled]="form.invalid">
+        login
+    </button>
+</form>
