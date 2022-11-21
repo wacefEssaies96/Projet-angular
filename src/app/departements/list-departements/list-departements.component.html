@@ -1,0 +1,13 @@
+<p>list-departements works!</p>
+<table>
+<tr><th>id</th><th>nom departement</th><th>edit</th><th>delete</th></tr>
+<tr *ngFor="let d of list">
+  <td>{{d.idDepartement}}</td>
+  <td>{{d.nomDepart}}</td>
+  <td><button [routerLink]="['departements/edit',d.idDepartement]">edit</button></td>
+<td><button [routerLink]="['departements/remove']" (click)="delete(d)">remove</button></td>
+</tr>
+
+
+</table>
+

@@ -2,9 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { SecurityContext } from "@angular/compiler/src/core";
+
 export const environment = {
   production: false,
-  url:'http://localhost:3000/'
+  url:'http://localhost:8082/SpringMVC',
+  "secure":"false"
+
 };
 
 /*
