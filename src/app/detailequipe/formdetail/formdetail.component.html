@@ -1,0 +1,15 @@
+<h1>{{action}} detail equipe</h1>
+<form #f="ngForm">
+    <div class="form-group col-md-6">
+        <label>Thema</label>
+        <input type="text" name="name" [(ngModel)]="detailequipe.thematique" class="form-control" required  #n="ngModel">
+
+        <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+            <div *ngIf="n.hasError('required')">
+                This field is required
+            </div>
+            
+        </div>
+    </div>
+    <button class="btn btn-sm btn-success" (click)="saveDetailEquipe()" [disabled]="f.invalid">{{action}}</button>
+</form>
