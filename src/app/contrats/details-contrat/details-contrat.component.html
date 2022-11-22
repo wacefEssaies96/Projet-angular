@@ -1,11 +1,7 @@
 <h1>{{title}}</h1>
 
-        
-<button   [routerLink]="['/contrats/addContrat']"  class="btn btn-sm btn-primary">
-  Add Contrat
-</button>
 <div class="row">
-  <div class="col-md-8 col-xl-4" *ngFor="let contrat of listContrat">
+  <div class="col-md-8 col-xl-4" >
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{contrat.idContrat}}</h5>
@@ -21,8 +17,12 @@
           {{contrat.montantContrat}}
         </p>
         
-        <button   [routerLink]="['/contrats/details',contrat.idContrat]"  class="btn btn-sm btn-primary">
-          Details
+        <button   [routerLink]="['/contrats/updateContrat',contrat.idContrat]"  class="btn btn-sm btn-warning">
+          Modifier
+        </button>
+        &nbsp;
+        <button  (click)="deleteContrat(contrat)" class="btn btn-sm btn-danger">
+          Supprimer
         </button>
       </div>
     </div>

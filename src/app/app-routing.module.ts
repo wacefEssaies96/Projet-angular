@@ -5,7 +5,7 @@ import { Routes,RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 const ROUTES: Routes = [
-  {path:'',component:AppComponent},
+  {path:'',component:NotFoundComponent},
   { path: 'contrats', loadChildren: () => import('./contrats/contrats.module').then(m => m.ContratsModule) },
   {path:'**',component:NotFoundComponent}
 ]

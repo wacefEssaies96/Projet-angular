@@ -10,7 +10,7 @@ import { ContratService } from 'src/app/core/services/contrat.service';
 export class ListContratComponent implements OnInit {
 
   public title: String;
-  public list: Contrat[];
+  public listContrat: Contrat[];
 
   constructor(
   private contratService : ContratService
@@ -19,10 +19,11 @@ export class ListContratComponent implements OnInit {
   ngOnInit(): void {
     this.title=" Liste Contrats"
     this.contratService.getAllContrats().subscribe(
-      (data:Contrat[]) => { this.list = data},
+      (data:Contrat[]) => { this.listContrat = data},
       () => { console.log('error') },
       () => { console.log('complete') }
     )
+    
   }
 
 }

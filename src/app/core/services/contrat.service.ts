@@ -18,5 +18,17 @@ export class ContratService {
   getAllContrats(){
     return this.http.get<Contrat[]>(this.url+'Tous')
   }
+  addContrat(c:Contrat){
+    return this.http.post(this.url+"ajouter/",c)
+  }
+  deleteContrat(id:number){
+    return this.http.delete(this.url+"supprimer/"+id)
+  }
+  updateContrat(c:Contrat){
+    return this.http.put(this.url+"modifier/",c)
+  }
+  getContratByID(id:number){
+    return this.http.get<Contrat>(this.url+id)
+  }
 
 }
