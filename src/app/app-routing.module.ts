@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes,RouterModule } from '@angular/router';
 const ROUTES: Routes = [
+  { path: 'universite', loadChildren: () => import('./universite/universite.module').then(m => m.UniversiteModule) },
   {path:'**',component:NotFoundComponent}
 ]
 @NgModule({

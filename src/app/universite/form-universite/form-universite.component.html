@@ -1,0 +1,16 @@
+<h1>{{action}} an University</h1>
+<form #f="ngForm">
+    <div class="form-group col-md-6">
+        <label>Name</label>
+        <input type="text" name="name" [(ngModel)]="universite.nomUniv" class="form-control" required pattern="[A-Za-z]{3,12}$" #n="ngModel">
+        <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+            <div *ngIf="n.hasError('required')">
+                This field is required
+            </div>
+            <div *ngIf="n.hasError('pattern')">
+                error pattern
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-sm btn-success btn-rounded" (click)="saveUniversite()" [disabled]="f.invalid">{{action}}</button>
+</form>

@@ -1,0 +1,23 @@
+<h1>{{title}}</h1>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let universite of listUniver">
+            <td>{{universite.idUniv}}</td>
+            <td>{{universite.nomUniv}}</td>
+            <td>
+                <button class="btn btn-sm btn-danger btn-rounded" (click)="deleteUniversite(universite)">
+                    Delete
+                </button>
+                &nbsp;
+                <a [routerLink]="['/universite/update',universite.idUniv]" class="btn btn-sm btn-warning btn-rounded">Update</a>
+            </td>
+        </tr>
+    </tbody>
+</table> 
