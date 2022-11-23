@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import {HttpClientModule} from '@angular/common/http'
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import {HttpClientModule} from '@angular/common/http';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import { SideBarComponent } from './shared/side-bar/side-bar.component'
 /*.In our AppModule, we then need to specify the component that will serve as the entry point component for our application.
 In our app.module.ts file where we import the entry component (conventionally AppComponent) and supply it as the only item
 in our bootstrap array inside the NgModule configuration object. eg. bootstrap[AppComponent]*/
@@ -14,8 +14,8 @@ in our bootstrap array inside the NgModule configuration object. eg. bootstrap[A
   declarations: [
     AppComponent,
     NotFoundComponent,
-    HeaderComponent,
-    FooterComponent
+    NavBarComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
