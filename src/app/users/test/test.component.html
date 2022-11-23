@@ -1,8 +1,0 @@
-<form [formGroup]="form" (ngSubmit)="save()">
-  <input type="text" name="login" placeholder="login" formControlName="login">
-  <div *ngIf="form.controls['login'].invalid">
-   <p *ngIf="form.controls['login'].hasError('required')">champ obligatoire!</p>
-  </div>
-  <input type="password" name="password" placeholder="password" formControlName="psw">
-  <button type="submit" [disabled]="form.invalid">login</button>
-</form>

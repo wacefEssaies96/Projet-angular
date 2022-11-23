@@ -27,9 +27,36 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/vendors/feather/feather.css",
+              "src/assets/vendors/mdi/css/materialdesignicons.min.css",
+              "src/assets/vendors/ti-icons/css/themify-icons.css",
+              "src/assets/vendors/typicons/typicons.css",
+              "src/assets/vendors/simple-line-icons/css/simple-line-icons.css",
+              "src/assets/vendors/css/vendor.bundle.base.css",
+              "src/assets/css/vertical-layout-light/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/vendors/js/vendor.bundle.base.js",
+              "src/assets/vendors/chart.js/Chart.min.js",
+              "src/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js",
+              "src/assets/vendors/progressbar.js/progressbar.min.js",
+              "src/assets/js/off-canvas.js",
+              "src/assets/js/hoverable-collapse.js",
+              "src/assets/js/template.js",
+              "src/assets/js/settings.js",
+              "src/assets/js/todolist.js",
+              "src/assets/js/dashboard.js",
+              "src/assets/js/Chart.roundedBarCharts.js",
+              "src/assets/vendors/typeahead.js/typeahead.bundle.min.js",
+              "src/assets/vendors/select2/select2.min.js",
+              "src/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js",
+              "src/assets/js/file-upload.js",
+              "src/assets/js/typeahead.js",
+              "src/assets/js/select2.js",
+              "src/assets/vendors/select2/select2.min.css",
+              "src/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css"
+            ]
           },
           "configurations": {
             "production": {
