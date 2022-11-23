@@ -1,12 +1,27 @@
 <h1>{{action}} detail equipe</h1>
 <form #f="ngForm">
     <div class="form-group col-md-6">
-        <label>Thema</label>
-        <input type="text" name="name" [(ngModel)]="detailequipe.thematique" class="form-control" required  #n="ngModel">
+        <label>salle</label>
+        
+        <input type="text" name="salle" [(ngModel)]="detailequipe.salle" class="form-control" required  #s="ngModel">
 
-        <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
-            <div *ngIf="n.hasError('required')">
-                This field is required
+        <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
+            <div *ngIf="s.hasError('required')">
+                salle is required
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class="form-group col-md-6">
+        <label>thematique</label>
+        
+        <input type="text" name="thematique" [(ngModel)]="detailequipe.thematique" class="form-control" required  #t="ngModel">
+
+        <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+            <div *ngIf="t.hasError('required')">
+                thematique is required
             </div>
             
         </div>

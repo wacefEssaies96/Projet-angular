@@ -1,18 +1,20 @@
-<p>list-ea works!</p>
+<h1>List-detail Equipe</h1>
 <table>
   <tr>
     <th>id</th>
     <th>salle</th>
-    <th>thematique</th>
-    <th>edit</th>
+    <th>thematique</th>&nbsp;
+    <th>add</th>
+    <th>edit</th>&nbsp; 
     <th>delete</th>
   </tr>
    <tr *ngFor="let d of listt">
      <td>{{d.idDetailEquipe}}</td>
     <td>{{d.salle}}</td>
     <td>{{d.thematique}}</td>
+    <td><button [routerLink]="['/detailequipe/add']">add</button></td>
   <td><button [routerLink]="['/detailequipe/edit',d.idDetailEquipe]">edit</button></td>
-<td><button routerLink="/remove" (click)="delete(d)">remove</button></td>
+<td><button (click)="delete(d)">remove</button></td>
  </tr> 
 
 
