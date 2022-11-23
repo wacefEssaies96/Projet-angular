@@ -5,13 +5,14 @@ import { DepartementsRoutingModule } from './departements-routing.module';
 import { DepartementsComponent } from './departements.component';
 import { ListDepartementsComponent } from './list-departements/list-departements.component';
 import { FormdepartementsComponent } from './formdepartements/formdepartements.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [DepartementsComponent, ListDepartementsComponent, FormdepartementsComponent],
   imports: [
     CommonModule,
-    DepartementsRoutingModule
+    DepartementsRoutingModule,FormsModule
   ]
 })
 export class DepartementsModule { }

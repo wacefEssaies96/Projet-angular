@@ -1,5 +1,22 @@
-<form>
-  <label for="emailInput">changer le nom de departement</label><br>
-  <input type="text" />
-  <button type="submit">edit</button>
+<form #f="ngForm">
+  <label for="emailInput" >{{action}} departement</label><br>
+  <input type="text" name="name" [(ngModel)]="departement.nomDepart"  #n="ngModel" pattern="[A-Za-z]*$"
+required minlength="5">
+
+<div>
+<div *ngIf="n.hasError('required')">
+  this field is required
+ </div>
+<div *ngIf="n.hasError('minlength')">
+  minlength = 3 !
+</div>
+<div *ngIf="n.hasError('pattern')">
+  error pattern
+</div>
+</div>
+  <button type="submit"  [disabled]="f.invalid"(click)="saveDepartement()" [routerLink]="['departements']">{{action}}</button>
+  <div *ngIf="msg">{{msg}}</div>
 </form>
+<div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+
+

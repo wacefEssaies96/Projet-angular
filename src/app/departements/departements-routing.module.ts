@@ -13,6 +13,7 @@ const routes: Routes = [
 
   {path:'edit/:id', component: FormdepartementsComponent},
   {path:'remove', component: ListDepartementsComponent},
+  {path:'new', component: FormdepartementsComponent},
 ]}]
 
 @NgModule({
