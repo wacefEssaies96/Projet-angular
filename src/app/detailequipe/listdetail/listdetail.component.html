@@ -1,18 +1,24 @@
+<form class="col-md-6">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search by name">
+</form>
+<br>
 <h1>List-detail Equipe</h1>
+<button class="btn btn-primary" [routerLink]="['/detailequipe/add']">add detail product</button>
 <table>
   <tr>
     <th>id</th>
     <th>salle</th>
-    <th>thematique</th>&nbsp;
-    <th>add</th>
-    <th>edit</th>&nbsp; 
+    <th>thematique</th>
+    <th>optioneDetailEquipe</th>
+    <th>edit</th>
     <th>delete</th>
   </tr>
-   <tr *ngFor="let d of listt">
+   <tr *ngFor="let d of listt | filter:searchText">
      <td>{{d.idDetailEquipe}}</td>
     <td>{{d.salle}}</td>
     <td>{{d.thematique}}</td>
-    <td><button [routerLink]="['/detailequipe/add']">add</button></td>
+    <td>{{d.opd}}</td>
+   <!--<td><button [routerLink]="['/detailequipe/add']">add</button></td>-->
   <td><button [routerLink]="['/detailequipe/edit',d.idDetailEquipe]">edit</button></td>
 <td><button (click)="delete(d)">remove</button></td>
  </tr> 

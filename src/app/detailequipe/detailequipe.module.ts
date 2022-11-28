@@ -5,6 +5,7 @@ import { DetailequipeRoutingModule } from './detailequipe-routing.module';
 import { DetailequipeComponent } from './detailequipe.component';
 import { ListdetailComponent } from './listdetail/listdetail.component';
 import { FormdetailComponent } from './formdetail/formdetail.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -17,7 +18,8 @@ import { FormdetailComponent } from './formdetail/formdetail.component';
   imports: [
     FormsModule,
     CommonModule,
-    DetailequipeRoutingModule
+    DetailequipeRoutingModule,
+    Ng2SearchPipeModule
   ]
 })
 export class DetailequipeModule { }

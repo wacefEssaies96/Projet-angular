@@ -10,6 +10,7 @@ import { DetailequipeService } from 'src/app/core/services/detailequipe.service'
 })
 export class ListdetailComponent implements OnInit {
   public listt: DetailEquipe[];
+  searchText: any;
   constructor(private ds:DetailequipeService , private router:Router) { }
 
   ngOnInit(): void {

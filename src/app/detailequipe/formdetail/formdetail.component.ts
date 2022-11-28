@@ -34,6 +34,9 @@ export class FormdetailComponent implements OnInit {
 
   saveDetailEquipe(){
     if(this.action=='add'){
+         //this.detailequipe.opd="sport";
+         console.log(this.detailequipe)
+
       this.detailService.addDetailEquipe(this.detailequipe).subscribe(
         ()=>{this.router.navigate(['/detailequipe'])}
       )
