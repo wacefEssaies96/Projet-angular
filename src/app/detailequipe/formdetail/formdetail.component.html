@@ -8,7 +8,7 @@
   <form #f="ngForm">
       <div class="form-group">
         <label>salle</label>
-        <input type="text" name="salle" class="form-control" [(ngModel)]="detailequipe.salle"  required  #s="ngModel" placeholder="salle">
+        <input type="number" name="salle" class="form-control" [(ngModel)]="detailequipe.salle"  required  #s="ngModel" placeholder="salle">
           <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
             <div *ngIf="s.hasError('required')">
                 salle is required

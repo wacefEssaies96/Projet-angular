@@ -4,24 +4,25 @@
 <br>
 <h1>List-detail Equipe</h1>
 <button class="btn btn-primary" [routerLink]="['/detailequipe/add']">add detail product</button>
-<table>
+<table class="table">
+  <thead>
   <tr>
-    <th>id</th>
-    <th>salle</th>
-    <th>thematique</th>
-    <th>optioneDetailEquipe</th>
-    <th>edit</th>
-    <th>delete</th>
+    <th scope="col">salle</th>
+    <th scope="col">thematique</th>
+    <th scope="col" >option</th>
+    <th scope="col">edit</th>
+    <th scope="col">delete</th>
   </tr>
+</thead>
+<tbody>
    <tr *ngFor="let d of listt | filter:searchText">
-     <td>{{d.idDetailEquipe}}</td>
     <td>{{d.salle}}</td>
-    <td>{{d.thematique}}</td>
-    <td>{{d.opd}}</td>
+    <td [ngClass]="{'text-success':true}" >{{d.thematique}}</td>
+    <td [ngStyle]="{'color':d.opd === 'sport' ? 'green' : 'red' }">{{d.opd}}</td>
    <!--<td><button [routerLink]="['/detailequipe/add']">add</button></td>-->
-  <td><button [routerLink]="['/detailequipe/edit',d.idDetailEquipe]">edit</button></td>
-<td><button (click)="delete(d)">remove</button></td>
+  <td><button class="btn btn-warning" [routerLink]="['/detailequipe/edit',d.idDetailEquipe]">edit</button></td>
+<td><button class="btn btn-danger" (click)="delete(d)">remove</button></td>
  </tr> 
 
-
+</tbody>
 </table>

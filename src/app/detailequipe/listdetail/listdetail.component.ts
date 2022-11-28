@@ -20,9 +20,8 @@ export class ListdetailComponent implements OnInit {
      )
   }
   delete(d:DetailEquipe){
-    let i = this.listt.indexOf(d);
-    this.ds.delete(d.idDetailEquipe).subscribe(
-      ()=>{this.listt.splice(i,1);this.router.navigate(['/detailequipe/list'])}
-    )
+    
+    this.ds.delete(d.idDetailEquipe).subscribe();
+    location.reload();
   }
 }
