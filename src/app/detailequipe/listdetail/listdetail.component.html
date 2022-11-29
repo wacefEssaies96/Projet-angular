@@ -15,14 +15,12 @@
   </tr>
 </thead>
 <tbody>
-   <tr *ngFor="let d of listt | filter:searchText">
-    <td>{{d.salle}}</td>
-    <td [ngClass]="{'text-success':true}" >{{d.thematique}}</td>
-    <td [ngStyle]="{'color':d.opd === 'sport' ? 'green' : 'red' }">{{d.opd}}</td>
-   <!--<td><button [routerLink]="['/detailequipe/add']">add</button></td>-->
-  <td><button class="btn btn-warning" [routerLink]="['/detailequipe/edit',d.idDetailEquipe]">edit</button></td>
-<td><button class="btn btn-danger" (click)="delete(d)">remove</button></td>
- </tr> 
-
+<tr *ngFor="let d of listt | filter:searchText">
+<app-detail
+[detail]="d"
+(notification)="delete($event)"
+>
+</app-detail>
+</tr>
 </tbody>
 </table>

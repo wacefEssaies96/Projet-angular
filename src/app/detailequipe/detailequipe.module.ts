@@ -6,6 +6,7 @@ import { DetailequipeComponent } from './detailequipe.component';
 import { ListdetailComponent } from './listdetail/listdetail.component';
 import { FormdetailComponent } from './formdetail/formdetail.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DetailComponent } from './detail/detail.component';
 
 
 
@@ -13,7 +14,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   declarations: [
     FormdetailComponent,
     ListdetailComponent,
-    DetailequipeComponent
+    DetailequipeComponent,
+    DetailComponent
   ],
   imports: [
     FormsModule,
