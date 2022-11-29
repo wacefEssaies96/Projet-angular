@@ -1,50 +1,76 @@
-<h1>{{action}} Contrat</h1>
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+        <h4 class="card-title">
+            {{action}} Contrat
+        </h4>
+        
+        <form [formGroup]="form" (ngSubmit)="SaveContrat()" class="forms-sample">
+
+            <div class="form-group">
+                <label>Date Debut Contrat</label>
+                <input [(ngModel)]="contrat.dateDebutContrat" type="date" formControlName="dateDebutContrat" class="form-control">
+                <div class="alert alert-danger" *ngIf="form.controls['dateDebutContrat'].touched && form.controls['dateDebutContrat'].invalid">
+                    <p *ngIf="form.controls['dateDebutContrat'].hasError('required')">
+                        dateDebutContrat is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Date Fin Contrat</label>
+                <input [(ngModel)]="contrat.dateFinContrat" type="date" formControlName="dateFinContrat" class="form-control">
+                <div class="alert alert-danger" *ngIf="form.controls['dateFinContrat'].touched && form.controls['dateFinContrat'].invalid">
+                    <p *ngIf="form.controls['dateFinContrat'].hasError('required')">
+                        dateFinContrat is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Archive</label>
+                <select [(ngModel)]="contrat.archive" formControlName="archive" class="form-control">
+                    <option value="false" selected>Non</option>
+                    <option value="true">oui</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="form.controls['archive'].touched && form.controls['archive'].invalid">
+                    <p *ngIf="form.controls['archive'].hasError('required')">
+                        specialite is required
+                    </p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Specialite </label>
+                <select [(ngModel)]="contrat.specialite" formControlName="specialite" class="form-control">
+                    <option value="IA" selected>IA</option>
+                    <option value="RESEAUX">RESEAUX</option>
+                    <option value="CLOUD">CLOUD</option>
+                    <option value="SECURITE">SECURITE</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="form.controls['specialite'].touched && form.controls['specialite'].invalid">
+                    <p *ngIf="form.controls['specialite'].hasError('required')">
+                        option is required
+                    </p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Montant</label>
+                <input [(ngModel)]="contrat.montantContrat" type="number" formControlName="montantContrat" class="form-control">
+                <div class="alert alert-danger" *ngIf="form.controls['montantContrat'].touched && form.controls['montantContrat'].invalid">
+                    <p *ngIf="form.controls['montantContrat'].hasError('required')">
+                        Montant is required
+                    </p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-sm btn-success  me-2" [disabled]="form.invalid">
+                {{action}}
+            </button>
+            <button *ngIf="action == 'Add'" type="reset" class="btn btn-sm btn-success  me-2" >
+                Cancel
+            </button>
+        </form>
+    </div>
 <br>
-<form [formGroup]="form" (ngSubmit)="SaveContrat()">
-    <label>Date Debut Contrat</label>
-    <input [(ngModel)]="contrat.dateDebutContrat" type="date" formControlName="dateDebutContrat">
-    <div class="alert alert-danger" *ngIf="form.controls['dateDebutContrat'].touched && form.controls['dateDebutContrat'].invalid">
-        <p *ngIf="form.controls['dateDebutContrat'].hasError('required')">
-            dateDebutContrat is required
-        </p>
-    </div>
-    <label>Date Fin Contrat</label>
-    <input [(ngModel)]="contrat.dateFinContrat" type="date" formControlName="dateFinContrat">
-    <div class="alert alert-danger" *ngIf="form.controls['dateFinContrat'].touched && form.controls['dateFinContrat'].invalid">
-        <p *ngIf="form.controls['dateFinContrat'].hasError('required')">
-            dateFinContrat is required
-        </p>
-    </div>
-    <label>Archive</label>
-    <select [(ngModel)]="contrat.archive" formControlName="archive">
-        <option value="false" selected>Non</option>
-        <option value="true">oui</option>
-    </select>
-    <div class="alert alert-danger" *ngIf="form.controls['archive'].touched && form.controls['archive'].invalid">
-        <p *ngIf="form.controls['archive'].hasError('required')">
-            specialite is required
-        </p>
-    </div>
-    <label>Specialite </label>
-    <select [(ngModel)]="contrat.specialite" formControlName="specialite">
-        <option value="IA" selected>IA</option>
-        <option value="RESEAUX">RESEAUX</option>
-        <option value="CLOUD">CLOUD</option>
-        <option value="SECURITE">SECURITE</option>
-    </select>
-    <div class="alert alert-danger" *ngIf="form.controls['specialite'].touched && form.controls['specialite'].invalid">
-        <p *ngIf="form.controls['specialite'].hasError('required')">
-            option is required
-        </p>
-    </div>
-    <label>Montant</label>
-    <input [(ngModel)]="contrat.montantContrat" type="number" formControlName="montantContrat">
-    <div class="alert alert-danger" *ngIf="form.controls['montantContrat'].touched && form.controls['montantContrat'].invalid">
-        <p *ngIf="form.controls['montantContrat'].hasError('required')">
-            Montant is required
-        </p>
-    </div>
-    <button type="submit" class="btn btn-sm btn-success" [disabled]="form.invalid">
-        {{action}}
-    </button>
-</form>

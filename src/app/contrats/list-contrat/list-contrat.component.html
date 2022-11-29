@@ -4,29 +4,33 @@
 <button   [routerLink]="['/contrats/addContrat']"  class="btn btn-sm btn-primary">
   Add Contrat
 </button>
-<div class="row">
-  <div class="col-md-8 col-xl-4" *ngFor="let contrat of listContrat">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{contrat.idContrat}}</h5>
-        <p class="card-text">
-          {{contrat.dateDebutContrat}}
-          <br>
-          {{contrat.dateFinContrat}}
-          <br>
-          {{contrat.specialite}}
-          <br>
-          {{contrat.archive}}
-          <br>
-          {{contrat.montantContrat}}
-        </p>
-        
-        <button   [routerLink]="['/contrats/details',contrat.idContrat]"  class="btn btn-sm btn-primary">
-          Details
-        </button>
-      </div>
-    </div>
-    <br><br>
-  </div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Date Debut</th>
+        <th>Date Fin</th>
+        <th>Specialite</th>
+        <th>Archive</th>
+        <th>Montant</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let contrat of listContrat">
+        <td>{{contrat.dateDebutContrat}}</td>
+        <td>{{contrat.dateFinContrat}}</td>
+        <td>{{contrat.specialite}}</td>
+        <td>{{contrat.archive}}</td>
+        <td>{{contrat.montantContrat}}</td>
+        <td>
+          <button   [routerLink]="['/contrats/details',contrat.idContrat]"  class="btn btn-sm btn-primary">
+            Details
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <br>
