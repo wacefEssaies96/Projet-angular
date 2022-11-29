@@ -9,6 +9,7 @@ import { DepartementService } from 'src/app/core/services/departement.service';
 })
 export class ListDepartementsComponent implements OnInit {
   list: any;
+  search:any;
   constructor(private ds:DepartementService) { }
 
   ngOnInit(): void {
