@@ -6,7 +6,7 @@
   <td>{{d.idDepartement}}</td>
   <td>{{d.nomDepart}}</td>
   <td><button [routerLink]="['departements/edit',d.idDepartement]">edit</button></td>
-<td><button [routerLink]="['departements/remove']" (click)="delete(d)">remove</button></td>
+<td><button  (click)="delete(d)">remove</button></td>
 </tr>
 
 
