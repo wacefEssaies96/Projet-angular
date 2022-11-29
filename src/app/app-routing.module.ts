@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes,RouterModule } from '@angular/router';
 const ROUTES: Routes = [
+  { path: 'equipes', loadChildren: () => import('./equipes/equipes.module').then(m => m.EquipesModule) },
   {path:'**',component:NotFoundComponent}
 ]
 @NgModule({
