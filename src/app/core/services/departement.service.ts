@@ -8,16 +8,15 @@ import { Departement } from '../model/departement';
 })
 export class DepartementService {
 
-  public url = environment.url + '/departement/';
-  public url1 = environment.url + '/departement/delete/';
-  public url2 = environment.url + '/departement/add/';
-  public url3 = environment.url + "/departement/display/";
-  public url4 = environment.url + "/departement/update/";
+  public url = environment.url + '/departement/display';
+  public url1 = environment.url + '/departement/supprimer/';
+  public url2 = environment.url + '/departement/ajouter';
+  public url3 = environment.url + "/departement/display/departement/";
+  public url4 = environment.url + "/departement/modifier";
 
   constructor(private http: HttpClient) { }
   getAllDepartements() {
-    return this.http.get<Departement>(this.url);
-
+    return this.http.get<Departement[]>(this.url);
   }
   delete(id: number) {
     return this.http.delete(this.url1 + id)
@@ -29,6 +28,7 @@ export class DepartementService {
     return this.http.get<Departement>(this.url3 + id)
   }
   update(d: Departement, id: any) {
-    return this.http.put<Departement>(this.url4 + id, d);
+    return this.http.put<Departement>(this.url4, d);
   }
+  
 }

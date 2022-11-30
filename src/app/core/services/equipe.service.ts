@@ -7,22 +7,22 @@ import { Equipe } from '../model/equipe';
   providedIn: 'root'
 })
 export class EquipeService {
-  public url=environment.url+'equipe/'
+  public url=environment.url+'/equipe'
 
   constructor(private http: HttpClient) { }
   getAllEquipe(){
-    return this.http.get<Equipe[]>(this.url+"all")
+    return this.http.get<Equipe[]>(this.url+"/display")
   }
   addEquipe(e:Equipe){
-    return this.http.post(this.url+"add/",e)
+    return this.http.post(this.url+"/ajouter",e)
   }
   deleteEquipe(id:number){
-    return this.http.delete(this.url+"delete/"+id)
+    return this.http.delete(this.url+"/supprimer/"+id)
   }
   updateEquipe(e:Equipe){
-    return this.http.put(this.url+"update",e)
+    return this.http.put(this.url+"/modifier",e)
   }
   getEquipeByID(id:number){
-    return this.http.get<Equipe>(this.url+"display/"+id)
+    return this.http.get<Equipe>(this.url+"/display/equipe/"+id)
   }
 }

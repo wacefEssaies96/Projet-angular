@@ -27,10 +27,10 @@
             </div>
             <div class="form-group">
                 <label for="dateOfBirth">Date of birth</label>
-                <input class="form-control" [(ngModel)]="etudiant.dateDebut" type="date" formControlName="dateDebut">
+                <input class="form-control" [(ngModel)]="etudiant.dateNaissance" type="date" formControlName="dateNaissance">
                 &nbsp;
-                <div class="alert alert-danger" *ngIf="form.controls['dateDebut'].invalid">
-                    <p *ngIf="form.controls['dateDebut'].hasError('required')">
+                <div class="alert alert-danger" *ngIf="form.controls['dateNaissance'].invalid">
+                    <p *ngIf="form.controls['dateNaissance'].hasError('required')">
                         Date of birth is required
                     </p>
                 </div>

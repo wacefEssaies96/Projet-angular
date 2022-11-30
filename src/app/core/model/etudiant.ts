@@ -2,11 +2,11 @@ export class Etudiant {
     idEtudiant: number;
     prenomE: String;
     nomE: String;
-    dateDebut: Date;
-    op: option;
+    dateNaissance: Date;
+    op: Option;
 }
 
-export enum option {
+export enum Option {
     TWIN = "TWIN",
     BI = "BI",
     SLEAM = "SLEAM"

@@ -31,9 +31,9 @@
       <div class="form-group">
         <label for="exampleInputPassword1">option detail equipe</label> &nbsp;
         <select name="opd" [(ngModel)]="detailequipe.opd" required  #opd="ngModel">
-          <option value="sport">sport</option>
-          <option value="technique">technique</option>
-          <option value="scientific">scientific</option>
+          <option value="SPORT">sport</option>
+          <option value="TECHNIQUE">technique</option>
+          <option value="SCIENTIFIC">scientific</option>
         </select>
         <div class="alert alert-danger" *ngIf="opd.invalid && opd.touched">
           <div *ngIf="opd.hasError('required')">

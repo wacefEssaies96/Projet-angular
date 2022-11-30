@@ -8,22 +8,22 @@ import { DetailEquipe } from '../model/detailequipe';
 })
 export class DetailequipeService {
 
-  public url= environment.url+'DetailEquipe/';
+  public url= environment.url+'/detailequipe';
   constructor(private http: HttpClient) { }
   getAllDepartements(){
-    return this.http.get<DetailEquipe[]>(this.url+'detailEquipes/');
-
+    return this.http.get<DetailEquipe[]>(this.url+'/display');
   }
   addDetailEquipe(detail:DetailEquipe){
-    return this.http.post(this.url+'AddDetailEquipe/', detail)
+    return this.http.post(this.url+'/ajouter', detail)
   }
   delete(id: number){
-    return this.http.delete(this.url+'DeleteDetail/'+id);
+    return this.http.delete(this.url+'/supprimer/'+id);
   }
   updateDetailEquipe(detail:DetailEquipe){
-    return this.http.put(this.url+'UpdateDetailEquipe/',detail);
+    return this.http.put(this.url+'/modifier',detail);
   }
   findById(idDetailEquipe:number){
-    return this.http.get<DetailEquipe>(this.url+'findById/'+idDetailEquipe);
+    return this.http.get<DetailEquipe>(this.url+'/display/detailequipe/'+idDetailEquipe);
   }
+
 }

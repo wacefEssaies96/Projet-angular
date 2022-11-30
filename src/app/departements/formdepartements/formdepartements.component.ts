@@ -33,13 +33,6 @@ public departement:Departement;
     { this.action="add";
       this.departement=new Departement();}
 
-
-
-
-
-
-
-
   }
 saveDepartement(){
     if(this.action=='add')

@@ -9,26 +9,26 @@ import { Contrat } from '../model/contrat';
 export class ContratService {
 
   
-  public url=environment.url+'contrat/'
+  public url=environment.url+'/contrat/'
   
   constructor(
     private http: HttpClient
   ) { }
 
   getAllContrats(){
-    return this.http.get<Contrat[]>(this.url+'Tous')
+    return this.http.get<Contrat[]>(this.url+'display')
   }
   addContrat(c:Contrat){
-    return this.http.post(this.url+"ajouter/",c)
+    return this.http.post(this.url+"ajouter",c)
   }
   deleteContrat(id:number){
     return this.http.delete(this.url+"supprimer/"+id)
   }
   updateContrat(c:Contrat){
-    return this.http.put(this.url+"modifier/",c)
+    return this.http.put(this.url+"modifier",c)
   }
   getContratByID(id:number){
-    return this.http.get<Contrat>(this.url+id)
+    return this.http.get<Contrat>(this.url+'display/contrat/'+id)
   }
 
 }
