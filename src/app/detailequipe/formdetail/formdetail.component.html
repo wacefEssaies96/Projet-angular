@@ -1,0 +1,52 @@
+
+
+<h1>{{action}} detail equipe</h1>
+
+
+<div class="card-body">
+    
+  <form #f="ngForm">
+      <div class="form-group">
+        <label>salle</label>
+        <input type="number" name="salle" class="form-control" [(ngModel)]="detailequipe.salle"  required  #s="ngModel" placeholder="salle">
+          <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
+            <div *ngIf="s.hasError('required')">
+                salle is required
+            </div>
+            
+         </div>
+
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">thematique</label>
+        <input type="text" name="thematique"   placeholder="thematique"  [(ngModel)]="detailequipe.thematique" class="form-control" required  #t="ngModel">
+
+        <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+            <div *ngIf="t.hasError('required')">
+                thematique is required
+            </div>
+            
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">option detail equipe</label> &nbsp;
+        <select name="opd" [(ngModel)]="detailequipe.opd" required  #opd="ngModel">
+          <option value="sport">sport</option>
+          <option value="technique">technique</option>
+          <option value="scientific">scientific</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="opd.invalid && opd.touched">
+          <div *ngIf="opd.hasError('required')">
+              Option is required
+          </div>
+          
+      </div>
+      </div>
+     
+      
+     
+      <button type="submit" class="btn btn-primary me-2" (click)="saveDetailEquipe()" [disabled]="f.invalid">Submit</button>
+      <button type="reset" class="btn btn-light">Cancel</button>
+    
+  </form>
+  </div>
