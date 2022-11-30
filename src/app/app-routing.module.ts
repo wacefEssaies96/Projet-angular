@@ -7,9 +7,10 @@ const ROUTES: Routes = [
   { path: 'equipes', loadChildren: () => import('./equipes/equipes.module').then(m => m.EquipesModule) },
   { path: 'student', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
   { path: 'departements', loadChildren: () => import('./departements/departements.module').then(m => m.DepartementsModule) },
-  { path: '**', component: NotFoundComponent },
   { path: 'detailequipe', loadChildren: () => import('./detailequipe/detailequipe.module').then(m => m.DetailequipeModule) },
   { path:'', component: ListdetailComponent },
+  { path: 'contrats', loadChildren: () => import('./contrats/contrats.module').then(m => m.ContratsModule) },
+  { path: '**', component: NotFoundComponent },
 ]
 @NgModule({
   imports: [
