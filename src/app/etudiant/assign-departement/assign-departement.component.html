@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Departements</h4>
+        <div style="float: right;">
+            <input type="text" class="form-control" placeholder="&#61442; Search Here" title="Search here"
+                [(ngModel)]="search">
+        </div>
+        <p class="card-description">
+            List of departements
+        </p>
+        <div class="table-responsive">
+            <form #f="ngForm">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let d of list | filter: search">
+                            <td>{{ d.idDepartement }} <input disabled type="hidden" [(ngModel)]="d.idDepartement"
+                                    name="departement-{{d.idDepartement}}" #i="ngModel"></td>
+                            <td>{{ d.nomDepart }} <input disabled type="hidden" [(ngModel)]="d.nomDepart"
+                                    name="departement-{{d.nomDepart}}" #n="ngModel"></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-success"
+                                    (click)="assignToDepartement(d)">Assign</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

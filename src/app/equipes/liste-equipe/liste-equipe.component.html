@@ -1,0 +1,19 @@
+<button class="btn btn-primary" [routerLink]="['/equipes/addEquipe']">Ajouter</button>
+<div class="row">
+    <div class="col-md-8 col-xl-4" *ngFor="let eq of list">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{eq.idEquipe}}</h5>
+          <p class="card-text">
+            {{eq.nomEquipe}}
+            <br>
+            {{eq.niveau}}
+           <br>
+          </p>
+          </div>
+          <button class="btn btn-warning" [routerLink]="['/equipes/UpdateEquipe',eq.idEquipe]">Modifier</button>
+          <button class="btn btn-danger" (click)="delete(eq)">Supprimer</button>
+      </div>
+      <br><br>
+    </div>
+  </div>

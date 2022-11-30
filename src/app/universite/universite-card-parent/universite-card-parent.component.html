@@ -1,0 +1,7 @@
+<h2>Details Universities</h2>
+<div class="row">
+    <app-universite-card-child class="col" [universite]="u" *ngFor="let u of listUniver"
+      (deleteEvent)="deleteUniversite($event)">
+    </app-universite-card-child>
+</div>
+<br>

@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ action }} departement</h4>
+    <p class="card-description">Basic form layout</p>
+    <form #f="ngForm" class="forms-sample">
+      <div class="form-group">
+        <label for="exampleInputUsername1">Departement name</label>
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="departement.nomDepart"
+          #n="ngModel"
+          pattern="[A-Za-z]*$"
+          required
+          minlength="5"
+          class="form-control"
+          id="exampleInputUsername1"
+          placeholder="Departement name"
+        />
+      </div>
+      <div>
+        <div *ngIf="n.hasError('required')">this field is required</div>
+        <div *ngIf="n.hasError('minlength')">minlength = 3 !</div>
+        <div *ngIf="n.hasError('pattern')">error pattern</div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary me-2"
+        [disabled]="f.invalid"
+        (click)="saveDepartement()"
+        [routerLink]="['departements']"
+      >
+        {{ action }}
+      </button>
+    </form>
+    <div *ngIf="msg">{{ msg }}</div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+
+<input [(ngModel)]="search" type="text" class="form-control" placeholder="Search" aria-label="Recipient's username">
+<a class="btn btn-sm btn-success" routerLink="/departements/new">new Departement</a>
+
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Departements</h4>
+    <p class="card-description">List of departements</p>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>nom departement</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of list | filter: search">
+            <td>{{ d.idDepartement }}</td>
+            <td>{{ d.nomDepart }}</td>
+            <td>
+              <button class="btn btn-dark btn-icon-text" [routerLink]="['/departements/edit', d.idDepartement]">edit</button>
+            &nbsp;
+              <button class="btn btn-danger btn-icon-text" (click)="delete(d)">remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
