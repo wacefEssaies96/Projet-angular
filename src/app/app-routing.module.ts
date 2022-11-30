@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const ROUTES: Routes = [
   { path: 'equipes', loadChildren: () => import('./equipes/equipes.module').then(m => m.EquipesModule) },
   { path: 'student', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
+  { path: 'departements', loadChildren: () => import('./departements/departements.module').then(m => m.DepartementsModule) },
   { path: '**', component: NotFoundComponent }
 ]
 @NgModule({
