@@ -1,0 +1,66 @@
+<li class="nav-item">
+  <!-- <form class="search-form"> -->
+    <div class="row offset-3" style="left:60%; position: relative;">
+      <div class="col">
+        <input type="text" [(ngModel)]="search" class="form-control" placeholder="Search here by Type or Name">
+        <!-- <div class="alert alert-danger" *ngIf="form.controls['nomUniv'].invalid">
+          <p *ngIf="form.controls['nomUniv'].hasError('nomUniv')">
+              Name invalid
+          </p>
+      </div> -->
+      </div>
+      <!-- <div class="col">
+        <button class="btn btn-sm btn-rounded" type="submit" [disabled]="form.invalid">
+          <i class="icon-search"></i>
+        </button>
+      </div> -->
+    </div>
+  <!-- </form> -->
+</li>
+<br>
+<div class="col-lg-6 grid-margin stretch-card" style="width: 70em;">
+  <div class="card" style="width: 50em;">
+    <div class="card-body mx-auto">
+        <h2 class="card-title">{{title}}</h2>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Creation date</th>
+                <th>Type</th>
+                <th>Action</th>
+                <th>More Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let universite of listUniver | filter:search">
+                <td>{{universite.idUniv}}</td>
+                <td>{{universite.nomUniv}}</td>
+                <td>{{universite.descriptionUniv}}</td>
+                <td>{{universite.dateCreationUniv}}</td>
+                <td>{{universite.typeuniv}}</td>
+                <td>
+                    <button class="btn btn-sm btn-danger btn-rounded badge badge-danger" (click)="deleteUniversite(universite)">
+                        Delete
+                    </button>
+                    &nbsp;
+                    <a [routerLink]="['/universite/update',universite.idUniv]" class="btn btn-sm btn-warning btn-rounded badge badge-warning">Update</a>
+                </td>
+                <td>
+                  <a [routerLink]="['/universite/cardUniv',universite.idUniv]" class="btn btn-sm btn-info btn-rounded badge badge-info">More Details</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+
+<!-- <div class="row" [hidden]="test">
+    <app-universite-card class="col" [universite]="u" *ngFor="let u of listUniver"
+      (deleteEvent)="deleteUniversite($event)">
+    </app-universite-card>
+</div>
+<br> -->

@@ -8,8 +8,9 @@ const ROUTES: Routes = [
   { path: 'student', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
   { path: 'departements', loadChildren: () => import('./departements/departements.module').then(m => m.DepartementsModule) },
   { path: 'detailequipe', loadChildren: () => import('./detailequipe/detailequipe.module').then(m => m.DetailequipeModule) },
-  { path:'', component: ListdetailComponent },
+  { path: 'universite', loadChildren: () => import('./universite/universite.module').then(m => m.UniversiteModule) },
   { path: 'contrats', loadChildren: () => import('./contrats/contrats.module').then(m => m.ContratsModule) },
+  { path: '', component: ListdetailComponent },
   { path: '**', component: NotFoundComponent },
 ]
 @NgModule({
