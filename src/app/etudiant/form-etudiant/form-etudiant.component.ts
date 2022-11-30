@@ -30,25 +30,29 @@ export class FormEtudiantComponent implements OnInit {
     });
     let id = this.currentRoute.snapshot.params['id'];
     if(id != null){
-      this.action = 'update';
+      this.action = 'Update';
       this.etudiantService.getEtudiantByID(id).subscribe(
         (object: Etudiant)=> this.etudiant = object
       )
     }else{
-      this.action = 'add';
+      this.action = 'Add';
       this.etudiant = new Etudiant();
     }
   }
 
   submit(){
-    if(this.action == 'add'){
+    if(this.action == 'Add'){
       this.etudiantService.addEtudiant(this.etudiant).subscribe(
-        ()=>{ this.router.navigate(['/etudiant/list'])}
+        ()=>{ this.router.navigate(['/student/list'])}
       );
-    }else{
+    }
+    if(this.action == 'Update'){
       this.etudiantService.updateEtudiant(this.etudiant).subscribe(
-        () => this.router.navigate(['/etudiant/list'])
+        () => this.router.navigate(['/student/list'])
       )
+    }
+    else{
+      this.router.navigate(['/student/list']);
     }
   }
 

@@ -1,34 +1,49 @@
-<p>list-etudiant works!</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Date de naissance</th>
-            <th>Option</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let e of etudiants">
-            <td>{{ e.idEtudiant }}</td>
-            <td>{{ e.nomE }}</td>
-            <td>{{ e.prenomE }}</td>
-            <td>{{ e.dateDebut }}</td>
-            <td>{{ e.op }}</td>
-            <td>
-                <button class="btn btn-sm btn-danger"
-                (click)="delete(e)">
-                  delete
-                </button>
-                &nbsp;
-                <a [routerLink]="['/etudiant/update',e.idEtudiant]" class="btn btn-sm btn-warning">
-                  update
-                </a>
-            </td>
-        </tr>
-    </tbody>
-
-</table>
+<a class="btn btn-sm btn-success" routerLink="/student/add">Add</a>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Students</h4>
+        <div style="float: right;">
+            <input type="text" class="form-control" placeholder="&#61442; Search Here" title="Search here"
+                [(ngModel)]="search">
+        </div>
+        <p class="card-description">
+            List of students
+        </p>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Date de naissance</th>
+                        <th>Option</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let e of etudiants | filter:search">
+                        <td>{{ e.idEtudiant }}</td>
+                        <td>{{ e.nomE }}</td>
+                        <td>{{ e.prenomE }}</td>
+                        <td>{{ e.dateDebut }}</td>
+                        <td>{{ e.op }}</td>
+                        <td>
+                            <a [routerLink]="['/student/update',e.idEtudiant]" class="btn btn-sm btn-warning">
+                                update
+                            </a>
+                            &nbsp;
+                            <a [routerLink]="['/student/assign-to-departement',e.idEtudiant]" class="btn btn-sm btn-warning">
+                                assign to departement
+                            </a>
+                            &nbsp;
+                            <button class="btn btn-sm btn-danger" (click)="delete(e)">
+                                delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

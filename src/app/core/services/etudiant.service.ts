@@ -27,5 +27,8 @@ export class EtudiantService {
   getEtudiantByID(id: number){
     return this.http.get<Etudiant>(this.url+'/display/etudiant/'+id);
   }
+  assignEtudiantToDepartement(idE: number, idD: number){
+    return this.http.get(this.url+'/assign-etudiant-departement/'+idE+'/'+idD);
+  }
   
 }

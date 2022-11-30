@@ -10,6 +10,7 @@ import { EtudiantService } from 'src/app/core/services/etudiant.service';
 export class ListEtudiantComponent implements OnInit {
 
   public etudiants: Etudiant[];
+  public search: string;
 
   constructor(private etudiantService : EtudiantService) { }
 
