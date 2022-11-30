@@ -46,4 +46,17 @@ export class FormUniversiteComponent implements OnInit {
     }
   }
 
+  cancel() {
+    this.router.navigate(['/universite/list'])
+  }
+
+  notRobot(){
+    console.log(""+document.getElementById("Robot"));
+    // let document : Document;
+    //   if (elem.checked == true)
+    //   document.getElementById("Robot").disabled = false;
+    //   else
+    //   document.getElementById("Robot").disabled = true;
+  }
+
 }

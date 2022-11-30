@@ -26,4 +26,7 @@ export class UniversiteServiceService {
   getUniversiteById(idUniver:number){
     return this.httpclient.get<Universite>(this.url+'displayUniversite/'+idUniver)
   }
+  getUniversiteByName(name:string){
+    return this.httpclient.get<Universite>(this.url+'displayUniversiteByName/'+name)
+  }
 }
