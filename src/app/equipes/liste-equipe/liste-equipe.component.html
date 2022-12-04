@@ -1,19 +1,40 @@
 <button class="btn btn-primary" [routerLink]="['/equipes/addEquipe']">Ajouter</button>
 <div class="row">
-    <div class="col-md-8 col-xl-4" *ngFor="let eq of list">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{eq.idEquipe}}</h5>
-          <p class="card-text">
-            {{eq.nomEquipe}}
-            <br>
-            {{eq.niveau}}
-           <br>
-          </p>
-          </div>
-          <button class="btn btn-warning" [routerLink]="['/equipes/UpdateEquipe',eq.idEquipe]">Modifier</button>
-          <button class="btn btn-danger" (click)="delete(eq)">Supprimer</button>
+        <div style="float: right;" >
+           
+          
       </div>
-      <br><br>
-    </div>
+        <div class="table-responsive">
+            
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>idEquipe</th>
+                      <th>nomEquipe</th>
+                      <th>Niveau</th>
+                      <th><input type="search" class="form-control" placeholder="Search Here" title="Search here"
+                     
+            [(ngModel)]="search"> </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let e of list | filter:search">
+
+                      <td>{{ e.idEquipe }}</td>
+                      <td>{{ e.nomEquipe }}</td>
+                      <td>{{ e.niveau }}</td>
+
+                      <td>
+                          <a [routerLink]="['/equipes/UpdateEquipe',e.idEquipe]" class="btn btn-sm btn-warning">
+                              update
+                          </a>
+                          &nbsp;
+                          <button class="btn btn-sm btn-danger" (click)="delete(e)">
+                              delete
+                          </button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
   </div>

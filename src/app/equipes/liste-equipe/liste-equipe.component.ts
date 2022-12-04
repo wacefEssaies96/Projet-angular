@@ -10,6 +10,7 @@ import { EquipeService } from 'src/app/core/services/equipe.service';
 })
 export class ListequipesComponent implements OnInit {
   public list: Equipe [];
+  public search: string;
   
   constructor(private equipeservice: EquipeService, private router:Router) { }
 

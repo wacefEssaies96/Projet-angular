@@ -1,0 +1,63 @@
+ <div class="container">
+ <h1>Formulaire projet</h1>
+ <form #f="ngForm" >
+    <div class="form-group">
+        <Label>Nom du projet</Label>
+        <input name="nom" type="text" class="form-control" required [(ngModel)]="projet.nomprojet" #l="ngModel" minlength="6" pattern="[A-Za-z]{6,12}$">
+    
+    <div class="alert alert-danger" *ngIf="l.invalid && l.touched">
+        <div *ngIf="l.hasError('required')">
+        This field is required
+    </div>
+    <div *ngIf="l.hasError('minlength')">
+        minlength= 6 !
+    </div>
+
+    <div *ngIf="l.hasError('pattern')">
+       error pattern
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <Label>Description</Label>
+        <input name="description" type="text" class="form-control" required [(ngModel)]="projet.description" #d="ngModel">
+    
+    <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+        This field is required
+
+    </div>
+</div>
+    <div class="form-group">
+        <Label>Date limite du projet </Label>
+        <input name="datelimiteduprojet" type="date" class="form-control" required [(ngModel)]="projet.datelimiteProjet" #dt="ngModel">
+    </div>
+    <div class="alert alert-danger" *ngIf="dt.invalid && dt.touched">
+        This field is required
+    </div>
+    <div class="form-group">
+        <Label>Evolution</Label>
+        <select name="evolution " class="form-control" required [(ngModel)]="projet.evolution" #e="ngModel">
+            <option value="En_cours" selected>En_cours</option>
+            <option value="Validé" >Validé</option>
+            <option value="Commence_prochainement">Commence_prochainement</option>
+        </select>
+    </div>
+    <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
+        This field is required
+    </div>
+    <div class="form-group">
+        <Label>Matiere</Label>
+        <select name="matiere" class="form-control" required [(ngModel)]="projet.matiere" #m="ngModel">
+            <option value="Spring" selected>Spring</option>
+            <option value="Angular" >Angular</option>
+            <option value="React">React</option>
+
+        </select>
+        <div class="alert alert-danger" *ngIf="m.invalid && m.touched">
+            This field is required
+        </div>
+    </div>
+    <button class="btn btn-success" [disabled]="f.invalid" type="submit" (click)="SaveProjet()">Save</button>
+ </form>
+</div>

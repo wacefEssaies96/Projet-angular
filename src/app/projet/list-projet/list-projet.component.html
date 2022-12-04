@@ -1,0 +1,49 @@
+<button class="btn btn-primary" [routerLink]="['/projets/add']">Ajouter</button>
+<div class="row">
+        <div style="float: right;" >
+           
+          
+      </div>
+        <div class="table-responsive">
+            
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>Nom projet</th>
+                      <th> Description</th> 
+                      <th>Date limite projet</th>
+                      <th>Evolution</th>
+                      <th>Matiere</th>
+                      <th>action</th>
+                      
+                      <th><input type="search" class="form-control" placeholder="Search Here" title="Search here"
+                     
+            [(ngModel)]="search"> </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let p of projet | filter:search">
+
+                     
+                      <td>{{ p.nomprojet }}</td>
+                      <td>{{ p.description}}</td>
+                      <td>{{ p.datelimiteProjet}}</td>
+                      <td>{{ p.evolution}}</td>
+                      <td>{{ p.matiere}}</td>
+                      
+
+
+                      <td>
+                          <a [routerLink]="['/projets/update',p.idprojet]" class="btn btn-sm btn-warning">
+                              update
+                          </a>
+                          &nbsp;
+                          <button class="btn btn-sm btn-danger" (click)="delete(p)">
+                              delete
+                          </button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
