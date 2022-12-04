@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Etudiant } from 'src/app/core/model/etudiant';
-import { EtudiantService } from 'src/app/core/services/etudiant.service';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-form-etudiant',
@@ -16,43 +17,81 @@ export class FormEtudiantComponent implements OnInit {
   public etudiant: Etudiant;
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private etudiantService: EtudiantService,
+    private formBuilder: FormBuilder,
+    private crudsService: CrudsService,
     private router: Router,
-    private currentRoute: ActivatedRoute) { }
+    private currentRoute: ActivatedRoute,
+    private auth: AuthenticationService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nomE: ['', [Validators.required]],
-      prenomE: ['', [Validators.required]],
-      dateDebut: ['', [Validators.required]],
-      op: ['', [Validators.required]]
+      nomE: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      prenomE: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      dateNaissance: ['', [Validators.required]],
+      op: ['', [Validators.required]],
+      sexe: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]]
     });
     let id = this.currentRoute.snapshot.params['id'];
-    if(id != null){
+    let u = this.currentRoute.snapshot.url[0].path;
+    if (id != null) {
       this.action = 'Update';
-      this.etudiantService.getEtudiantByID(id).subscribe(
-        (object: Etudiant)=> this.etudiant = object
+      this.crudsService.getById('/etudiant', id).subscribe(
+        (object: Etudiant) => this.etudiant = object
       )
-    }else{
-      this.action = 'Add';
+    } else {
+      if (u == "register") {
+        this.action = 'Register';
+      } else {
+        this.action = 'Add';
+      }
       this.etudiant = new Etudiant();
     }
   }
 
-  submit(){
-    if(this.action == 'Add'){
-      this.etudiantService.addEtudiant(this.etudiant).subscribe(
-        ()=>{ this.router.navigate(['/student/list'])}
-      );
+  submit() {
+    if (this.action == 'Add') {
+      this.crudsService.add('/etudiant', this.etudiant).subscribe({
+        next: () => {
+          this.router.navigate(['/student/'])
+        },
+        error: (error) => {
+          console.log(error)
+        },
+        complete: () => {
+          console.log("complete")
+        }
+      });
     }
-    if(this.action == 'Update'){
-      this.etudiantService.updateEtudiant(this.etudiant).subscribe(
-        () => this.router.navigate(['/student/list'])
-      )
+    else if(this.action == 'Register'){
+      this.auth.register(this.etudiant).subscribe({
+        next: () => {
+          this.router.navigate(['login'])
+        },
+        error: (error) => {
+          console.log(error)
+        },
+        complete: () => {
+          console.log("complete")
+        }
+      });
     }
-    else{
-      this.router.navigate(['/student/list']);
+    else if (this.action == 'Update') {
+      this.crudsService.update('/etudiant', this.etudiant).subscribe({
+        next: () => {
+          this.router.navigate(['/student/'])
+        },
+        error: (error) => {
+          console.log(error)
+        },
+        complete: () => {
+          console.log("complete")
+        }
+      });
+    }
+    else {
+      this.router.navigate(['/student/']);
     }
   }
 

@@ -1,9 +1,12 @@
 export class Etudiant {
     idEtudiant: number;
-    prenomE: String;
-    nomE: String;
+    prenomE: string;
+    nomE: string;
     dateNaissance: Date;
+    sexe: string;
     op: Option;
+    email: string;
+    password: string;
 }
 
 export enum Option {

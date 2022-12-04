@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Etudiant } from '../model/etudiant';
@@ -13,10 +13,12 @@ export class EtudiantService {
   constructor(private http : HttpClient) { }
 
   getAllEtudiants(){
-    return this.http.get<Etudiant[]>(this.url+'/display');
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(localStorage.getItem("username") + ':' + localStorage.getItem("password")) });
+    return this.http.get<Etudiant[]>(this.url+'/display', {headers});
   }
-  addEtudiant(e: Etudiant){
-    return this.http.post(this.url+'/ajouter',e);
+  addEtudiant(e: Etudiant) : any{
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(localStorage.getItem("username") + ':' + localStorage.getItem("password")) });
+    return this.http.post(this.url+'/ajouter',e,{headers});
   }
   deleteEtudiant(id: number){
     return this.http.delete(this.url+'/supprimer/'+id);

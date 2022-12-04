@@ -1,17 +1,20 @@
 <div class="card mx-auto" style="width: 50em;">
     <div class="card-body">
         <h4 class="card-title">{{action}}</h4>
-        <p class="card-description">
-            {{action}} a student
-        </p>
         <form class="forms-sample" [formGroup]="form" (ngSubmit)="submit()">
             <div class="form-group">
                 <label for="lastname">Lastname</label>
                 <input class="form-control" [(ngModel)]="etudiant.nomE" type="text" formControlName="nomE">
                 &nbsp;
-                <div class="alert alert-danger" *ngIf="form.controls['nomE'].invalid">
+                <div class="alert alert-danger" *ngIf="form.controls['nomE'].invalid && form.controls['nomE'].touched">
                     <p *ngIf="form.controls['nomE'].hasError('required')">
-                        Lastname is required
+                        Lastname is required !
+                    </p>
+                    <p *ngIf="form.controls['nomE'].hasError('minlength')">
+                        Minimum length is 3 chars !
+                    </p>
+                    <p *ngIf="form.controls['nomE'].hasError('maxlength')">
+                        Maximum length is 10 chars !
                     </p>
                 </div>
             </div>
@@ -19,9 +22,15 @@
                 <label for="firstname">Firstname</label>
                 <input class="form-control" [(ngModel)]="etudiant.prenomE" type="text" formControlName="prenomE">
                 &nbsp;
-                <div class="alert alert-danger" *ngIf="form.controls['prenomE'].invalid">
+                <div class="alert alert-danger" *ngIf="form.controls['prenomE'].invalid && form.controls['prenomE'].touched">
                     <p *ngIf="form.controls['prenomE'].hasError('required')">
                         Firstname is required
+                    </p>
+                    <p *ngIf="form.controls['prenomE'].hasError('minlength')">
+                        Minimum length is 3 chars !
+                    </p>
+                    <p *ngIf="form.controls['prenomE'].hasError('maxlength')">
+                        Maximum length is 7 chars !
                     </p>
                 </div>
             </div>
@@ -29,23 +38,65 @@
                 <label for="dateOfBirth">Date of birth</label>
                 <input class="form-control" [(ngModel)]="etudiant.dateNaissance" type="date" formControlName="dateNaissance">
                 &nbsp;
-                <div class="alert alert-danger" *ngIf="form.controls['dateNaissance'].invalid">
+                <div class="alert alert-danger" *ngIf="form.controls['dateNaissance'].invalid && form.controls['dateNaissance'].touched">
                     <p *ngIf="form.controls['dateNaissance'].hasError('required')">
                         Date of birth is required
                     </p>
                 </div>
             </div>
             <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" [(ngModel)]="etudiant.email" type="email" formControlName="email">
+                &nbsp;
+                <div class="alert alert-danger" *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+                    <p *ngIf="form.controls['email'].hasError('required')">
+                        Email is required
+                    </p>
+                    <p *ngIf="form.controls['email'].hasError('email')">
+                        Email is invalid
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" [(ngModel)]="etudiant.password" type="password" formControlName="password">
+                &nbsp;
+                <div class="alert alert-danger" *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+                    <p *ngIf="form.controls['password'].hasError('required')">
+                        Password is required
+                    </p>
+                    <p *ngIf="form.controls['password'].hasError('minlength')">
+                        Minimum length is 4 !
+                    </p>
+                    <p *ngIf="form.controls['password'].hasError('maxlength')">
+                        Maximum length is 10 !
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="option">Option</label>
                 <select class="form-control" id="option" [(ngModel)]="etudiant.op" formControlName="op">
-                    <option value="TWIN" selected>TWIN</option>
+                    <option value="TWIN">TWIN</option>
                     <option value="BI">BI</option>
                     <option value="SLEAM">SLEAM</option>
                 </select>
                 &nbsp;
-                <div class="alert alert-danger" *ngIf="form.controls['op'].invalid">
+                <div class="alert alert-danger" *ngIf="form.controls['op'].invalid && form.controls['op'].touched">
                     <p *ngIf="form.controls['op'].hasError('required')">
-                        option is required
+                        Option is required
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sexe">Sexe : </label>
+                <select class="form-control" id="sexe" [(ngModel)]="etudiant.sexe" formControlName="sexe">
+                    <option value="homme">Homme</option>
+                    <option value="femme">Femme</option>
+                </select>
+                &nbsp;
+                <div class="alert alert-danger" *ngIf="form.controls['sexe'].invalid && form.controls['sexe'].touched">
+                    <p *ngIf="form.controls['sexe'].hasError('required')">
+                        Sexe is required
                     </p>
                 </div>
             </div>

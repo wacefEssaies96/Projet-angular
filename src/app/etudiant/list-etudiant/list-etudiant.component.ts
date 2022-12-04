@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Etudiant } from 'src/app/core/model/etudiant';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 import { EtudiantService } from 'src/app/core/services/etudiant.service';
 
 @Component({
@@ -12,10 +13,10 @@ export class ListEtudiantComponent implements OnInit {
   public etudiants: Etudiant[];
   public search: string;
 
-  constructor(private etudiantService : EtudiantService) { }
+  constructor(private crudsService: CrudsService) { }
 
   ngOnInit(): void {
-    this.etudiantService.getAllEtudiants().subscribe({
+    this.crudsService.getAll("/etudiant").subscribe({
       next : (params) => {
         this.etudiants = params;
       },
@@ -30,7 +31,7 @@ export class ListEtudiantComponent implements OnInit {
 
   delete(e: Etudiant){
     let i = this.etudiants.indexOf(e);
-    this.etudiantService.deleteEtudiant(e.idEtudiant).subscribe(
+    this.crudsService.delete("/etudiant", e.idEtudiant).subscribe(
       ()=>{this.etudiants.splice(i,1)}
     );
   }

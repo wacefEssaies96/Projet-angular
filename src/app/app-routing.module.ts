@@ -2,6 +2,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
+import { FormEtudiantComponent } from './etudiant/form-etudiant/form-etudiant.component';
 const ROUTES: Routes = [
   { path: 'equipes', loadChildren: () => import('./equipes/equipes.module').then(m => m.EquipesModule) },
   { path: 'student', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
@@ -9,6 +11,8 @@ const ROUTES: Routes = [
   { path: 'detailequipe', loadChildren: () => import('./detailequipe/detailequipe.module').then(m => m.DetailequipeModule) },
   { path: 'universite', loadChildren: () => import('./universite/universite.module').then(m => m.UniversiteModule) },
   { path: 'contrats', loadChildren: () => import('./contrats/contrats.module').then(m => m.ContratsModule) },
+  { path: 'login', component: LoginComponent },
+  
   { path: '**', component: NotFoundComponent },
 ]
 @NgModule({

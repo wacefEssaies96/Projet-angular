@@ -29,6 +29,9 @@
                     <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                 </form>
             </li>
+            <li class="nav-item" *ngIf="username != null">
+                <button (click) = logout()>Logout</button>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                     <i class="icon-mail icon-lg"></i>

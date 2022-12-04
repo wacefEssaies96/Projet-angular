@@ -1,0 +1,32 @@
+<div class="card mx-auto" style="width: 50em;">
+    <div class="card-body">
+        <h4 class="card-title">Login</h4>
+        <p class="card-description">
+            Login
+        </p>
+        <form class="forms-sample" #f="ngForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" [(ngModel)]="username" type="text" name="username" required #nu="ngModel">
+                &nbsp;
+                <div class="alert alert-danger" *ngIf="nu.invalid && nu.touched">
+                    <p *ngIf="nu.hasError('required')">
+                        Username is required
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Password</label>
+                <input class="form-control" [(ngModel)]="pwd" type="password" name="pwd" required #np="ngModel">
+                &nbsp;
+                <div class="alert alert-danger" *ngIf="np.invalid && np.touched">
+                    <p *ngIf="np.hasError('required') ">
+                        Password is required
+                    </p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary me-2" (click)="submit()">Confirm</button>
+            <button class="btn btn-light">Cancel</button>
+        </form>
+    </div>
+</div>
