@@ -1,0 +1,62 @@
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+        <h4 class="card-title">
+            {{action}} Stage
+        </h4>
+        
+        <form #formStage="ngForm" class="forms-sample">
+
+            <div class="form-group">
+                <label>Date Debut Stage</label>
+                <input [(ngModel)]="stage.dateDebutStage" type="date" name="dateDebutStage" class="form-control" #dds="ngModel" required>
+                <div class="alert alert-danger" *ngIf="dds.touched && dds.invalid">
+                    <p *ngIf="dds.hasError('required')">
+                        Date Debut Stage is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Date Fin Stage</label>
+                <input [(ngModel)]="stage.dateFinStage" type="date" name="dateFinStage" class="form-control"  #dfs="ngModel"required>
+                <div class="alert alert-danger" *ngIf="dfs.touched && dfs.invalid && dfs.value > dds.value">
+                    <p *ngIf="dfs.hasError('required')">
+                        Date Fin Stage is required
+                    </p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Type Stage </label>
+                <select [(ngModel)]="stage.typeStage" name="typeStage" class="form-control" #ts="ngModel" required>
+                    <option value="StageEte" selected>Stage Ete</option>
+                    <option value="StageImmersion">Stage Immersion</option>
+                    <option value="PFE">PFE</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="ts.touched && ts.invalid">
+                    <p *ngIf="ts.hasError('required')">
+                        Type is required
+                    </p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Resume Stage</label>
+                <input [(ngModel)]="stage.resumeStage" type="text" name="resumeStage" class="form-control" #rs="ngModel" required>
+                <div class="alert alert-danger" *ngIf="rs.touched && rs.invalid">
+                    <p *ngIf="rs.hasError('required')">
+                        Resume is required
+                    </p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-sm btn-success  me-2" (click)="SaveStage()" [disabled]="formStage.invalid">
+                {{action}}
+            </button>
+            <button *ngIf="action == 'Add'" type="reset" class="btn btn-sm btn-success  me-2" >
+                Cancel
+            </button>
+        </form>
+    </div>
+<br>

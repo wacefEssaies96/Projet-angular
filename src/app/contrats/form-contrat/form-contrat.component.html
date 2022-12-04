@@ -32,7 +32,7 @@
                 <label>Archive</label>
                 <select [(ngModel)]="contrat.archive" formControlName="archive" class="form-control">
                     <option value="false" selected>Non</option>
-                    <option value="true">oui</option>
+                    <option value="true">Oui</option>
                 </select>
                 <div class="alert alert-danger" *ngIf="form.controls['archive'].touched && form.controls['archive'].invalid">
                     <p *ngIf="form.controls['archive'].hasError('required')">
