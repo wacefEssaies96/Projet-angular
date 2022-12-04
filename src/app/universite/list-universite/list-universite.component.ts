@@ -14,32 +14,21 @@ export class ListUniversiteComponent implements OnInit {
   public title: String;
   public universite: Universite;
   public listUniver: Universite[];
-  // public form : FormGroup;
   public search: string;
-  public test=this.activateRoute.snapshot.params[''];
+  public p:any;
+  public key: String ='id';
+  public reverse: boolean=false;
 
   constructor(
-    private serviceUniv:UniversiteServiceService,
-    private fb:FormBuilder,
-    private activateRoute:ActivatedRoute
-    ) { }
+    private serviceUniv:UniversiteServiceService) { }
 
   ngOnInit(): void {
-
-    // this.form=this.fb.group(
-    //   {
-    //     nomUniv:['',[Validators.required , Validators.name]]
-    //   }
-    //   )
 
     this.title='List of Universities';
     this.serviceUniv.displayUniversites().subscribe({
     next:(data)=>{
       this.listUniver=data;
-        // console.log(data);
-
     },
-    //(params) =>{console.log(params)},
     error: ()=>{console.log('error')},
     complete :()=>{console.log('complete')}
    })
@@ -51,19 +40,9 @@ export class ListUniversiteComponent implements OnInit {
       ()=>{this.listUniver.splice(i,1)}
     )
   }
-
-  // search(){
-  //   console.log('nomUniv:' + this.form.value.nomUniv);
-  //   this.serviceUniv.getUniversiteByName(this.form.value.nomUniv).subscribe(
-  //     {
-  //       next:(data)=>{
-  //         this.universite=data;
-  //         console.log(data);
-  //       },
-  //       error: ()=>{console.log('error')},
-  //       complete :()=>{console.log('complete')}
-  //     }
-  //   )
-  // }
-
+  
+  sort(key:String){
+    this.key = key;
+    this.reverse = !this.reverse;
+  }
 }

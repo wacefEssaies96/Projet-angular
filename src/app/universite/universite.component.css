@@ -1,3 +1,7 @@
 a, li{
     color: black;
 }
+
+.second-small{
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}

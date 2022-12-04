@@ -10,6 +10,8 @@ import { UniversiteServiceService } from 'src/app/core/services/universite-servi
 export class UniversiteCardParentComponent implements OnInit {
 
   public listUniver: Universite[]
+  public p:any
+  
   constructor(private us: UniversiteServiceService) { }
 
   ngOnInit(): void {
