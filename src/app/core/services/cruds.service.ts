@@ -15,7 +15,7 @@ export class CrudsService {
     return this.http.get<any[]>(this.url+u+'/display');
   }
   getById(u: string, id: number) : any{
-    return this.http.get<Object>(this.url+u+'/display/etudiant/'+id);
+    return this.http.get<Object>(this.url+u+'/display'+u+'/'+id);
   }
   add(u: string, object: any){
     return this.http.post(this.url+u+'/ajouter',object);

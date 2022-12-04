@@ -6,7 +6,10 @@ import { ContratsComponent } from './contrats.component';
 import { ListContratComponent } from './list-contrat/list-contrat.component';
 import { FormContratComponent } from './form-contrat/form-contrat.component';
 import { DetailsContratComponent } from './details-contrat/details-contrat.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { searchContrat } from '../core/search/search-contrat';
 
 
 @NgModule({
@@ -14,12 +17,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContratsComponent,
     ListContratComponent,
     FormContratComponent,
-    DetailsContratComponent
+    DetailsContratComponent,
+    searchContrat
   ],
   imports: [
     CommonModule,
     ContratsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    FormsModule,
+    Ng2SearchPipeModule
   ]
 })
 export class ContratsModule { }

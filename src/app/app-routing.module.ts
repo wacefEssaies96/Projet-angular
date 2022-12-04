@@ -12,8 +12,9 @@ const ROUTES: Routes = [
   { path: 'contrats', loadChildren: () => import('./contrats/contrats.module').then(m => m.ContratsModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
+  { path: 'stages', loadChildren: () => import('./stages/stages.module').then(m => m.StagesModule) },
   { path: 'login', component: LoginComponent },
-  { path: '**', component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent },
 ]
 @NgModule({
   imports: [

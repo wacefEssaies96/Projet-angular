@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contrat } from 'src/app/core/model/contrat';
 import { ContratService } from 'src/app/core/services/contrat.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-form-contrat',
@@ -16,6 +17,7 @@ export class FormContratComponent implements OnInit {
   public form:FormGroup;
   constructor(
     private fb : FormBuilder,
+    private crudsService : CrudsService,
     private contratService : ContratService,
     private router : Router,
     private route : ActivatedRoute
@@ -34,7 +36,7 @@ export class FormContratComponent implements OnInit {
     let id = this.route.snapshot.params['idC'];
     if(id!=null){
       this.action="Update";
-      this.contratService.getContratByID(id).subscribe(
+      this.crudsService.getById(this.contratService.ContratControllerName,id).subscribe(
         (data:Contrat)=>this.contrat=data
       )
     }else{
@@ -44,12 +46,12 @@ export class FormContratComponent implements OnInit {
   }
   SaveContrat(){
     if(this.action=="Add"){
-      this.contratService.addContrat(this.contrat).subscribe(
+      this.crudsService.add(this.contratService.ContratControllerName,this.contrat).subscribe(
         ()=>this.router.navigate(['/contrats/ListeContrats'])
       )
       
     }else if(this.action=="Update"){
-      this.contratService.updateContrat(this.contrat).subscribe(
+      this.crudsService.update(this.contratService.ContratControllerName,this.contrat).subscribe(
         ()=>this.router.navigate(['/contrats/ListeContrats'])
       )
     }
