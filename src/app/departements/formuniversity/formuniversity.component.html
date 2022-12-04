@@ -1,0 +1,43 @@
+<form class="form-inline" [formGroup]="form">
+
+  <label class="sr-only" for="inlineFormInputGroupUsername2">University</label>
+  <div class="input-group mb-2 mr-sm-2">
+
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername2"  placeholder="university"  formControlName="id">
+  </div>
+  <div class="alert alert-danger" *ngIf="!form.valid&&form.touched" >
+
+      <p *ngIf="form.controls['id'].hasError('required')&&form.touched">id is required</p>
+      <p *ngIf="form.controls['id'].hasError('pattern')&&form.touched">error pattern</p>
+
+</div>
+
+  <button type="submit" class="btn btn-primary mb-2"  (click)="retreived()" [disabled]="!form.valid">retreive</button>
+</form>
+<div class="card" *ngIf="list">
+  <div class="card-body">
+    <h4 class="card-title">Basic Table</h4>
+    <p class="card-description">
+      Add class <code>.table</code>
+    </p>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>id departement</th>
+            <th>nom depatement</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of list">
+            <td>{{d. idDepartement}}</td>
+            <td>{{d.nomDepart}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

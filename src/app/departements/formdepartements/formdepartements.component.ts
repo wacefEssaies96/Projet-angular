@@ -13,11 +13,14 @@ public label:String;
 public action:String="editer";
 public departement:Departement;
   id: any;
-  msg:String
+  msg:String;
+  url:any
   constructor(  private router:Router, private currentRoute: ActivatedRoute,private ds:DepartementService) { }
 
   ngOnInit(): void {
    this.id= this.currentRoute.snapshot.params['id'];
+   this.url = this.currentRoute.snapshot.paramMap.get("url"); // Snapshot param
+console.log("url"+this.url)
     console.log("le id est "+this.id)
     if(this.id!=null){
       //update
