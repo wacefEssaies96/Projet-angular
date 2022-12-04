@@ -13,6 +13,7 @@ const ROUTES: Routes = [
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   { path: 'stages', loadChildren: () => import('./stages/stages.module').then(m => m.StagesModule) },
+  { path: 'cours', loadChildren: () => import('./cours/cours.module').then(m => m.CoursModule) },
   { path: 'login', component: LoginComponent },
   { path: '**', component: NotFoundComponent },
 ]

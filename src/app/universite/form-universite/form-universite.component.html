@@ -2,9 +2,6 @@
     <div class="card-body">
       <h2 class="card-title">{{action}} an University</h2>
       <form class="forms-sample" #f="ngForm">
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
         <br><br>
         <div class="form-group row">
           <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Image</label>
@@ -20,7 +17,7 @@
         <div class="form-group row">
           <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="nomUniv" [(ngModel)]="universite.nomUniv" id="exampleInputUsername2" placeholder="University name" required pattern="[A-Za-z]{3,12}$" #n="ngModel">
+            <input type="text" class="form-control" name="nomUniv" [(ngModel)]="universite.nomUniv" placeholder="University name" required pattern="[A-Za-z\s]{3,12}$" #n="ngModel" #nomUniv>
           </div>
         </div>
         <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
@@ -34,7 +31,7 @@
         <div class="form-group row">
           <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Description</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="descriptionUniv" [(ngModel)]="universite.descriptionUniv" id="exampleInputEmail2" placeholder="University description" required pattern="[A-Za-z]{3,12}$" #n="ngModel">
+            <input type="text" class="form-control" name="descriptionUniv" [(ngModel)]="universite.descriptionUniv" id="exampleInputEmail2" placeholder="University description" required pattern="[A-Za-z\s]{3,}$" #n="ngModel">
           </div>
         </div>
         <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
@@ -59,10 +56,10 @@
         <div class="form-group row">
           <label class="col-sm-3 col-form-label">Type</label>
           <div class="col-sm-9">
-            <select type="text" class="form-control" id="exampleInputPassword2" name="typeuniv" [(ngModel)]="universite.typeuniv" required>
-                <option value="PUBLIC">Public</option>
-                <option value="PRIVATE">Private</option>
-                <option value="SEMIPUBLIC">Semi-public</option>
+            <select type="text" class="form-control form-select form-select-sm" aria-label=".form-select-sm example" name="typeuniv" [(ngModel)]="universite.typeuniv" required #n="ngModel">
+              <option value="PUBLIC">PUBLIC</option>
+              <option value="PRIVATE">PRIVATE</option>
+              <option value="SEMIPUBLIC">SEMIPUBLIC</option>
             </select>
           </div>
         </div>
@@ -71,17 +68,8 @@
                 This field is required
             </div>
         </div>
-        <div class="form-check form-check-flat form-check-primary">
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" required *ngIf="f.valid" (click)="notRobot()">
-            I'm not a Robot !
-          <i class="input-helper"></i></label>
-        </div>
         <button type="submit" id="Robot" class="btn btn-sm btn-success me-2" (click)="saveUniversite()" [disabled]="f.invalid">{{action}}</button>
         <button class="btn btn-sm btn-light me-2" (click)="cancel()">Cancel</button>
-        <div class="alert alert-success" *ngIf="f.valid">
-            <strong>{{action}} with Success !</strong>
-        </div>
       </form>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <div class="col-md-3">
-    <div class="card" style="width: 18rem;">
-        <img src="{{universite.imgUniv}}" class="card-img-top" alt="UnivImg" style="height:200px; width:200px;">
+    <div class="card" style="width: 18rem;" [ngClass]="{'new-class':true}">
+        <img src="{{universite.imgUniv}}" class="card-img-top" alt="UnivImg" style="height:200px; width:18rem;">
         <div class="card-body">
             <h5 class="card-title">{{universite.nomUniv}}</h5>
             <p class="card-text">
@@ -21,4 +21,5 @@
             </button>
         </div>
     </div>
+    <br><br><br>
 </div>

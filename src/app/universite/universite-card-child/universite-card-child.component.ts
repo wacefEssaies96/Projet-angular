@@ -10,9 +10,16 @@ export class UniversiteCardChildComponent implements OnInit {
 
   @Input() universite: Universite;
   @Output() deleteEvent = new EventEmitter<Universite>();
+  public type : String;
+  public test :boolean;
   constructor() { }
 
   ngOnInit(): void {
+    if(this.type==='PUBLIC'){
+      this.test=true;
+    } else {
+      this.test=false;
+    }
   }
 
   notifyListUniversite(){

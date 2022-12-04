@@ -29,4 +29,10 @@ export class UniversiteServiceService {
   getUniversiteByName(name:string){
     return this.httpclient.get<Universite>(this.url+'/displayUniversiteByName/'+name)
   }
+  assignUniversityToDepartement(idUniv: number,idDepartement:number){
+    return this.httpclient.get(this.url+'/assignUnivDepJpql/'+idUniv+'/'+idDepartement)
+  }
+  getUniversitiesSortedWithAnyField(field: String){
+    return this.httpclient.get<Universite[]>(this.url+'/getUniversitesWithSort'+field)
+  }
 }
