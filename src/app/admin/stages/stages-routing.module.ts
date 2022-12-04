@@ -7,7 +7,7 @@ import { ListStageComponent } from './list-stage/list-stage.component';
 import { StagesComponent } from './stages.component';
 
 const routes: Routes = [{ path: '', component: StagesComponent ,children:[ 
-  { path: '', component: ListStageComponent },
+  { path: '', component: ListStageComponent, canActivate: [AuthGuardService] },
   { path: 'details/:idS', component: DetailsStageComponent, canActivate: [AuthGuardService] },
   { path: 'ListeStages', component: ListStageComponent, canActivate: [AuthGuardService] },
   { path: 'addStage', component: FormStageComponent, canActivate: [AuthGuardService] },

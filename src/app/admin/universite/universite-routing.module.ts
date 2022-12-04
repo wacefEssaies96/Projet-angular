@@ -9,7 +9,7 @@ import { AssignCoursToUniversityComponent } from './assign-cours-to-university/a
 import { AuthGuardService } from 'src/app/core/services/auth-guard.service';
 
 const routes: Routes = [{ path: '', component: UniversiteComponent, children:[
-  {path:'', component:ListUniversiteComponent},
+  {path:'', component:ListUniversiteComponent, canActivate: [AuthGuardService]},
   {path:'list',redirectTo:'', pathMatch:"full", canActivate: [AuthGuardService]},
   {path:'update/:id', component:FormUniversiteComponent, canActivate: [AuthGuardService]},
   {path:'form', component:FormUniversiteComponent, canActivate: [AuthGuardService]},
