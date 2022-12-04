@@ -20,7 +20,7 @@ export class ListequipesComponent implements OnInit {
   delete(eq:Equipe){
     this.equipeservice.deleteEquipe(eq.idEquipe).subscribe(
 
-    ()=> {this.router.navigate(['/equipes'])})
+    ()=> {this.router.navigate(['/admin/equipes'])})
   }
 
 }

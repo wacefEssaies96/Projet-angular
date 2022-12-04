@@ -41,13 +41,13 @@ export class FormEquipeComponent implements OnInit {
   SaveEquipe(){
     if(this.action="Add"){
       this.equipeservice.addEquipe(this.equipe).subscribe(
-        ()=>this.router.navigate(['/equipes/ListeEquipes'])
+        ()=>this.router.navigate(['/admin/equipes/ListeEquipes'])
   
       )
     }
     else if(this.action="Update"){
       this.equipeservice.updateEquipe(this.equipe).subscribe(
-        ()=>this.router.navigate(['/equipes/ListeEquipes'])
+        ()=>this.router.navigate(['/admin/equipes/ListeEquipes'])
       )
     }
   }

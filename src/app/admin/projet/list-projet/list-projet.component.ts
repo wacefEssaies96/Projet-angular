@@ -21,7 +21,7 @@ export class ListProjetComponent implements OnInit {
   delete(p:Projet){
     this.projetservice.deleteProjet(p.idprojet).subscribe(
 
-    ()=> {this.router.navigate(['/projets'])})
+    ()=> {this.router.navigate(['/admin/projets'])})
   }
 
 }

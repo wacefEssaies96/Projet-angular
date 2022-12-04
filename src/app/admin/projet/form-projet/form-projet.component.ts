@@ -39,7 +39,7 @@ SaveProjet(){
   if(this.action="Add"){
     console.log("add")
     this.projetservice.addProjet(this.projet).subscribe(
-      ()=>this.router.navigate(['/projets/list'])
+      ()=>this.router.navigate(['/admin/projets/list'])
 
     )
   }
@@ -47,7 +47,7 @@ SaveProjet(){
     
     console.log("update")
     this.projetservice.updateProjet(this.projet).subscribe(
-      ()=>this.router.navigate(['/projets/list'])
+      ()=>this.router.navigate(['/admin/projets/list'])
     )
   }
 
