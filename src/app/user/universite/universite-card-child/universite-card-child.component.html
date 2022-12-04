@@ -1,0 +1,25 @@
+<div class="col-md-3">
+    <div class="card" style="width: 18rem;" [ngClass]="{'new-class':true}">
+        <img src="{{universite.imgUniv}}" class="card-img-top" alt="UnivImg" style="height:200px; width:18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{universite.nomUniv}}</h5>
+            <p class="card-text">
+                Description : {{universite.descriptionUniv}}
+            </p>
+            <p>
+                Creation date : {{universite.dateCreationUniv}}
+            </p>
+            <p>
+                Type : {{universite.typeuniv}}
+            </p>
+            <!-- <button class="btn btn-sm btn-danger btn-rounded badge badge-danger" (click)="notifyListUniversite()">
+                Delete
+            </button>
+            &nbsp;
+            <button [routerLink]="['/universite/cardUniv/update',universite.idUniv]" class="btn btn-sm btn-warning btn-rounded badge badge-warning">
+                Update
+            </button> -->
+        </div>
+    </div>
+    <br><br><br>
+</div>

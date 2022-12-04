@@ -1,0 +1,34 @@
+<a class="btn btn-sm btn-success" routerLink="/admin/cours/form">Add a Course</a>
+<div class="col-lg-6 grid-margin stretch-card" style="width: 50em; margin-left: 15%;">
+    <div class="card" style="width: 50em;">
+      <div class="card-body mx-auto">
+          <h2 class="card-title">{{title}}</h2>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Course Code</th>
+                  <th>Course Title</th>
+                  <th>Course Type</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cours of listCours">
+                  <td>{{cours.idCour}}</td>
+                  <td>{{cours.codeCour}}</td>
+                  <td>{{cours.intituleCour}}</td>
+                  <td>{{cours.typeCour}}</td>
+                  <td>
+                      <button class="btn btn-sm btn-danger btn-rounded badge badge-danger" (click)="deleteCours(cours)">
+                          Delete
+                      </button>
+                      &nbsp;
+                      <a [routerLink]="['/admin/cours/update',cours.idCour]" class="btn btn-sm btn-warning btn-rounded badge badge-warning">Update</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>

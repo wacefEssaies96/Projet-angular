@@ -1,0 +1,72 @@
+<h1>{{title}}</h1>
+
+      
+<div class="row">
+  <div class="col-md-3">
+    <button   [routerLink]="['/admin/stages/addStage']"  class="btn btn-sm btn-primary">
+      Add Stage
+    </button>
+  </div>
+  <div class="col-md-3">
+    <label for="searchCategory">Category </label>
+    <select [formControl]="searchCategory" id="searchCategory"  class="form-control" style="border: 1px solid blue;">
+      <option value="dateDebutStage" selected>Date Debut</option>
+      <option value="dateFinStage">Date Fin</option>
+      <option value="typeStage">Type Stage</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="searchValue"><i class="icon-search"></i> Search </label>
+    <input *ngIf="searchCategory.value=='dateDebutStage'" type="date" id="searchValue" [formControl]="searchValue"  class="form-control">
+    <input *ngIf="searchCategory.value=='dateFinStage'" type="date" id="searchValue" [formControl]="searchValue"  class="form-control">
+    <select *ngIf="searchCategory.value=='typeStage'" id="searchValue" [formControl]="searchValue" class="form-control">
+      <option value="StageEte" selected>Stage Ete</option>
+      <option value="StageImmersion">Stage Immersion</option>
+      <option value="PFE">PFE</option>
+    </select>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Date Debut</th>
+        <th>Date Fin</th>
+        <th>Type</th>
+        <th>Resume</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr  *ngFor="let stage of listStage
+        | searchStage: [searchValue.value] : [searchCategory.value]
+        | paginate : {
+          itemsPerPage: tableSize,
+          currentPage: page,
+          totalItems: count
+        };
+        let i = index">
+        <td>{{stage.dateDebutStage}}</td>
+        <td>{{stage.dateFinStage}}</td>
+        <td>{{stage.typeStage}}</td>
+        <td>{{stage.resumeStage}}</td>
+        <td>
+          <button [routerLink]="['/admin/stages/details',stage.idStage]"  class="btn btn-sm btn-primary">
+            Details
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
+  </div>
+</div>
+<br>

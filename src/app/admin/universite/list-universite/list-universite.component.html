@@ -1,0 +1,57 @@
+<div class="col-lg-6 grid-margin stretch-card" style="width: 76em;">
+  <div class="card">
+    <div class="card-body mx-auto">
+      <h2 class="card-title">{{title}}</h2>
+          <div class="row offset-3" style="left:50%; position: relative; float: left;">
+            <div class="col">
+              <div class="alert alert-info" role="alert">
+                You Can Sort and Search By Any Field  <i class='far fa-grin-beam'></i>
+              </div>
+              <input type="text" [(ngModel)]="search" class="form-control" placeholder="Search Dynamically" size="30">
+            </div>
+          </div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th (click)="sort('id')">Id&nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th (click)="sort('name')">Name&nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th (click)="sort('description')">Description&nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th (click)="sort('date')">Creation date&nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th (click)="sort('type')">Type&nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th>Action</th>
+                <th>More Details</th>
+                <th>Assign Dep</th>
+                <th>Assign Course</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr [ngStyle]="{'font-weight':universite.typeuniv === 'PUBLIC' ? 'normal' : 'bold'}" *ngFor="let universite of listUniver | filter:search | paginate: {itemsPerPage: 3, currentPage: p} |orderBy: key: reverse">
+                <td>{{universite.idUniv}}</td>
+                <td>{{universite.nomUniv}}</td>
+                <td>{{universite.descriptionUniv}}</td>
+                <td>{{universite.dateCreationUniv}}</td>
+                <td>{{universite.typeuniv}}</td>
+                <td>
+                    <button class="btn btn-sm btn-danger btn-rounded badge badge-danger" (click)="deleteUniversite(universite)">
+                        Delete
+                    </button>
+                    &nbsp;
+                    <a [routerLink]="['/admin/universite/update',universite.idUniv]" class="btn btn-sm btn-warning btn-rounded badge badge-warning">Update</a>
+                </td>
+                <td>
+                  <a [routerLink]="['/admin/universite/cardUniv',universite.idUniv]" class="btn btn-sm btn-info btn-rounded badge badge-info">More Details</a>
+                </td>
+                <td>
+                  <a [routerLink]="['/admin/universite/assign',universite.idUniv]" class="btn btn-sm btn-outline-info btn-fw btn-rounded badge badge-info">View Deps</a>
+                </td>
+                <td>
+                  <a [routerLink]="['/admin/universite/assignCours',universite.idUniv]" class="btn btn-sm btn-outline-info btn-fw btn-rounded badge badge-info">View Courses</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <pagination-controls (pageChange)="p = $event" class="float-right" style="justify-content:right;color: #52CDFF;"></pagination-controls>

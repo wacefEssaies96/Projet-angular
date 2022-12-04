@@ -15,7 +15,7 @@ import { SideBarComponent } from '../shared/side-bar/side-bar.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
   ]
 })
 export class AdminModule { }
