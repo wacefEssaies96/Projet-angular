@@ -4,6 +4,7 @@ import { NotFoundComponent } from '../pages/not-found/not-found.component';
 
 import { DepartementsComponent } from './departements.component';
 import { FormdepartementsComponent } from './formdepartements/formdepartements.component';
+import { FormuniversityComponent } from './formuniversity/formuniversity.component';
 import { ListDepartementsComponent } from './list-departements/list-departements.component';
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
 
   {path:'edit/:id', component: FormdepartementsComponent},
   {path:'remove', component: ListDepartementsComponent},
-  {path:'new', component: FormdepartementsComponent},
+  {path:'new', component: FormdepartementsComponent}, {path:'retreive', component:FormuniversityComponent},
 ]}]
 
 @NgModule({
