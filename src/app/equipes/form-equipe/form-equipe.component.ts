@@ -13,12 +13,13 @@ export class FormEquipeComponent implements OnInit {
   public equipe:Equipe;
   public action: String;
   public form: FormGroup;
+  eqnamePattern = "[A-Za-z]{6,12}$";
 
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private equipeservice: EquipeService) {  }
 
   ngOnInit(): void {
     this.form=this.fb.group({
-      nomEquipe: ['', [Validators.required]],
+      nomEquipe: ['', [Validators.required,Validators.pattern(this.eqnamePattern)]],
       niveau: ['',[Validators.required]]
 
     }); 

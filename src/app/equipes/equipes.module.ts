@@ -6,6 +6,8 @@ import { EquipesComponent } from './equipes.component';
 import { ListequipesComponent } from './liste-equipe/liste-equipe.component';
 import { FormEquipeComponent } from './form-equipe/form-equipe.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     EquipesRoutingModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ]
 })
 export class EquipesModule { }
