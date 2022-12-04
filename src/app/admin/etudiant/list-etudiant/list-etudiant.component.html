@@ -1,4 +1,4 @@
-<a class="btn btn-sm btn-success" routerLink="/student/add">Add</a>
+<a class="btn btn-sm btn-success" routerLink="/admin/student/add">Add</a>
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Students</h4>
@@ -29,11 +29,11 @@
                         <td>{{ e.dateNaissance }}</td>
                         <td>{{ e.op }}</td>
                         <td>
-                            <a [routerLink]="['/student/update',e.idEtudiant]" class="btn btn-sm btn-warning">
+                            <a [routerLink]="['/admin/student/update',e.idEtudiant]" class="btn btn-sm btn-warning">
                                 update
                             </a>
                             &nbsp;
-                            <a [routerLink]="['/student/assign-to-departement',e.idEtudiant]" class="btn btn-sm btn-warning">
+                            <a [routerLink]="['/admin/student/assign-to-departement',e.idEtudiant]" class="btn btn-sm btn-warning">
                                 assign to departement
                             </a>
                             &nbsp;

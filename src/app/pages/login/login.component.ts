@@ -22,13 +22,17 @@ export class LoginComponent implements OnInit {
 
   submit(){
     this.authService.login(this.username, this.pwd).subscribe(
-      (data)=>{
-        this.response = JSON.stringify(data);
-        console.log(this.response);
-        if(this.response != "Bad credentials !" && this.response != "Error !"){
+      (data: string)=>{
+        this.response = data;
+        if(this.response != 'null'){
           localStorage.setItem("username", this.username);
           localStorage.setItem("password", this.pwd);
-          this.router.navigate(['/student/'])
+          if(this.response == "ADMIN"){
+            this.router.navigate(['/admin'])
+          }
+          if(this.response == "ETUDIANT"){
+            this.router.navigate(['/user'])
+          }
         }
       }
     );

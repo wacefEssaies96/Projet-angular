@@ -54,7 +54,7 @@ export class FormEtudiantComponent implements OnInit {
     if (this.action == 'Add') {
       this.crudsService.add('/etudiant', this.etudiant).subscribe({
         next: () => {
-          this.router.navigate(['/student/'])
+          this.router.navigate(['/admin/student/'])
         },
         error: (error) => {
           console.log(error)
@@ -80,7 +80,7 @@ export class FormEtudiantComponent implements OnInit {
     else if (this.action == 'Update') {
       this.crudsService.update('/etudiant', this.etudiant).subscribe({
         next: () => {
-          this.router.navigate(['/student/'])
+          this.router.navigate(['/admin/student/'])
         },
         error: (error) => {
           console.log(error)
@@ -89,9 +89,6 @@ export class FormEtudiantComponent implements OnInit {
           console.log("complete")
         }
       });
-    }
-    else {
-      this.router.navigate(['/student/']);
     }
   }
 
