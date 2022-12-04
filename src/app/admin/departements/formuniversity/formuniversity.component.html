@@ -3,16 +3,17 @@
   <label class="sr-only" for="inlineFormInputGroupUsername2">University</label>
   <div class="input-group mb-2 mr-sm-2">
 
-    <input type="text" class="form-control" id="inlineFormInputGroupUsername2"  placeholder="university"  formControlName="id">
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="university"
+      formControlName="id">
   </div>
-  <div class="alert alert-danger" *ngIf="!form.valid&&form.touched" >
+  <div class="alert alert-danger" *ngIf="!form.valid&&form.touched">
 
-      <p *ngIf="form.controls['id'].hasError('required')&&form.touched">id is required</p>
-      <p *ngIf="form.controls['id'].hasError('pattern')&&form.touched">error pattern</p>
+    <p *ngIf="form.controls['id'].hasError('required')&&form.touched">id is required</p>
+    <p *ngIf="form.controls['id'].hasError('pattern')&&form.touched">error pattern</p>
 
-</div>
+  </div>
 
-  <button type="submit" class="btn btn-primary mb-2"  (click)="retreived()" [disabled]="!form.valid">retreive</button>
+  <button type="submit" class="btn btn-primary mb-2" (click)="retreived()" [disabled]="!form.valid">retreive</button>
 </form>
 <div class="card" *ngIf="list">
   <div class="card-body">

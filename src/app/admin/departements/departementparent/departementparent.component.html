@@ -2,5 +2,5 @@
 <td [ngClass]="{'text-success':true}" >{{departement.nomDepart}}</td>
 <td [ngStyle]="{'color':departement.nomDepart === 'informatique' ? 'green' : 'red' }">{{departement.nomDepart}}</td>
 <!--<td><button [routerLink]="['/detailequipe/add']">add</button></td>-->
-<td><button class="btn btn-warning" [routerLink]="['/departements/edit',departement.idDepartement]">edit</button></td>
+<td><button class="btn btn-warning" [routerLink]="['/admin/departements/edit',departement.idDepartement]">edit</button></td>
 <td><button class="btn btn-danger" (click)="notifyDelete()">remove</button></td>

@@ -9,19 +9,20 @@ import { DepartementService } from 'src/app/core/services/departement.service';
 })
 export class ListDepartementsComponent implements OnInit {
   list: any;
-  search:any;
-  constructor(private ds:DepartementService) { }
+  search: any;
+  constructor(private ds: DepartementService) { }
 
   ngOnInit(): void {
-    this.ds.getAllDepartements().subscribe(res=>{this.list=res;console.log(res)
+    this.ds.getAllDepartements().subscribe(res => {
+      this.list = res; console.log(res)
 
     }
-     )
+    )
   }
-  delete(d:Departement){
+  delete(d: Departement) {
     let i = this.list.indexOf(d);
     this.ds.delete(d.idDepartement).subscribe(
-      ()=>{this.list.splice(i,1)}
+      () => { this.list.splice(i, 1) }
     )
   }
 }

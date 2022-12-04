@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { DetailEquipe } from 'src/app/core/model/detailequipe';
 
-
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',

@@ -6,8 +6,6 @@ import { LoginComponent } from './pages/login/login.component';
 
 const ROUTES: Routes = [
   { path: 'equipes', loadChildren: () => import('./equipes/equipes.module').then(m => m.EquipesModule) },
-  { path: 'departements', loadChildren: () => import('./departements/departements.module').then(m => m.DepartementsModule) },
-  { path: 'detailequipe', loadChildren: () => import('./detailequipe/detailequipe.module').then(m => m.DetailequipeModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   { path: 'login', component: LoginComponent },

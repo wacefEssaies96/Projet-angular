@@ -42,12 +42,12 @@ saveDepartement(){
     {
     //this.productService.list.push(this.product);
     this.ds.save(this.departement).subscribe(
-      ()=>{this.router.navigate(["/departements/list"])}
+      ()=>{this.router.navigate(["/admin/departements/list"])}
     )
    }
     else {
       this.ds.update(this.departement,this.id).subscribe(
-       ()=>{this.router.navigate(["/departements/list"])}
+       ()=>{this.router.navigate(["/admin/departements/list"])}
       )
     }
 

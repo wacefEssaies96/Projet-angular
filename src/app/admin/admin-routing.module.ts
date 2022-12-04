@@ -9,6 +9,8 @@ const routes: Routes = [{
     { path: 'contrats', loadChildren: () => import('./contrats/contrats.module').then(m => m.ContratsModule) },
     { path: 'cours', loadChildren: () => import('./cours/cours.module').then(m => m.CoursModule) },
     { path: 'universite', loadChildren: () => import('./universite/universite.module').then(m => m.UniversiteModule) },
+    { path: 'departements', loadChildren: () => import('./departements/departements.module').then(m => m.DepartementsModule) },
+    { path: 'detailequipe', loadChildren: () => import('./detailequipe/detailequipe.module').then(m => m.DetailequipeModule) },
   ]
 }];
 

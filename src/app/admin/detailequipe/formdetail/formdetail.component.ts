@@ -38,12 +38,12 @@ export class FormdetailComponent implements OnInit {
          console.log(this.detailequipe)
 
       this.detailService.addDetailEquipe(this.detailequipe).subscribe(
-        ()=>{this.router.navigate(['/detailequipe'])}
+        ()=>{this.router.navigate(['/admin/detailequipe'])}
       )
     }
     else if(this.action=='update'){
       this.detailService.updateDetailEquipe(this.detailequipe).subscribe(
-        ()=>{this.router.navigate(['/detailequipe'])}
+        ()=>{this.router.navigate(['/admin/detailequipe'])}
       )
     }
   }

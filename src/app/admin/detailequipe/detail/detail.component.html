@@ -1,0 +1,6 @@
+<td>{{detail.salle}}</td>
+<td [ngClass]="{'text-success':true}">{{detail.thematique}}</td>
+<td [ngStyle]="{'color':detail.opd === 'sport' ? 'green' : 'red' }">{{detail.opd}}</td>
+<!--<td><button [routerLink]="['/detailequipe/add']">add</button></td>-->
+<td><button class="btn btn-warning" [routerLink]="['/admin/detailequipe/edit',detail.idDetailEquipe]">edit</button></td>
+<td><button class="btn btn-danger" (click)="notifyDelete()">remove</button></td>
