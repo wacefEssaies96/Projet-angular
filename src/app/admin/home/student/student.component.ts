@@ -10,41 +10,40 @@ import { AdvancedServicesService } from 'src/app/core/services/advanced-services
 export class StudentComponent implements OnInit {
 
   public chart: any;
-  public nbrFemme: number;
-  public nbrHomme: number;
+  public labels: string[];
+  public data: number[];
 
   constructor(private as: AdvancedServicesService) { }
 
   ngOnInit(): void {
-    this.createChart();
+    this.labels = new Array();
+    this.data = new Array();
+    this.as.getNbrEtudiantBySexe().subscribe(
+      (data) => {
+        for (let i = 0; i < data.length; i++) {
+          this.labels.push(data[i][1])
+          this.data.push(data[i][0])
+        }
+        this.createChart();
+      }
+    )
+
   }
   createChart() {
-    this.as.getNbrEtudiantBySexe('femme').subscribe(
-      (data) => {
-        this.nbrFemme = data;
-        this.as.getNbrEtudiantBySexe('homme').subscribe(
-          (data) => {
-            this.nbrHomme = data;
-            this.chart = new Chart("MyChart", {
-              type: 'pie',
-        
-              data: {
-                labels: ['Homme', 'Femme'],
-                datasets: [{
-                  data: [this.nbrHomme,this.nbrFemme]
-                }]
-              },
-              options: {
-                aspectRatio: 2.5
-              }
-        
-            });
-          }
-        );
+    this.chart = new Chart("chartEtudiant", {
+      type: 'pie',
+      data: {
+        labels: this.labels,
+        datasets: [
+          {
+            data: this.data
+          },
+        ]
+      },
+      options: {
+        aspectRatio: 2.5
       }
-    );
-    
-    
+    });
   }
 
 }

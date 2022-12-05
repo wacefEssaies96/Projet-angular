@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import Chart from 'chart.js/auto';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 
 @Component({
-  selector: 'app-university',
-  templateUrl: './university.component.html',
-  styleUrls: ['./university.component.css']
+  selector: 'app-stage',
+  templateUrl: './stage.component.html',
+  styleUrls: ['./stage.component.css']
 })
-export class UniversityComponent implements OnInit {
+export class StageComponent implements OnInit {
 
   public chart: any;
   public labels: string[];
@@ -18,7 +18,7 @@ export class UniversityComponent implements OnInit {
   ngOnInit(): void {
     this.labels = new Array();
     this.data = new Array();
-    this.as.getNbrUniversiteByTypeuniv().subscribe(
+    this.as.getNbrStageByType().subscribe(
       (data) => {
         for (let i = 0; i < data.length; i++) {
           this.labels.push(data[i][1])
@@ -30,14 +30,13 @@ export class UniversityComponent implements OnInit {
 
   }
   createChart() {
-    this.chart = new Chart("chartUniversity", {
-      type: 'bar',
+    this.chart = new Chart("chartStage", {
+      type: 'radar',
       data: {
         labels: this.labels,
         datasets: [
           {
-            label: "",
-            data: this.data,
+            data: this.data
           },
         ]
       },
@@ -46,5 +45,5 @@ export class UniversityComponent implements OnInit {
       }
     });
   }
-  
+
 }
