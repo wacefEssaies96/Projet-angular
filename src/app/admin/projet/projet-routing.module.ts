@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AssignProjetComponent } from './assign-projet/assign-projet.component';
+import { AssignProjetComponent } from '../equipes/assign-projet/assign-projet.component';
 import { FormProjetComponent } from './form-projet/form-projet.component';
 import { ListProjetComponent } from './list-projet/list-projet.component';
 import { ProjetComponent } from './projet.component';
