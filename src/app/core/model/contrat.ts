@@ -5,7 +5,7 @@ export class Contrat {
   specialite: Spec;
   archive: boolean;
   montantContrat: number;
-  etudiant: number
+  nbrLike: number
 }
 
 export enum Spec {

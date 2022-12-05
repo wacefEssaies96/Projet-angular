@@ -16,6 +16,7 @@ export class FormCoursComponent implements OnInit {
   public form: FormGroup;
   public action: String;
   public cours: Cours;
+  public test: boolean=false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -64,6 +65,10 @@ export class FormCoursComponent implements OnInit {
     else{
       this.router.navigate(['/admin/cours/list']);
     }
+  }
+
+  removeAlertMsg(){
+    this.test=true
   }
 
 }

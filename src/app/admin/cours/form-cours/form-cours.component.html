@@ -9,7 +9,8 @@
                 <label>Course Code</label>
                 <input class="form-control" [(ngModel)]="cours.codeCour" type="text" formControlName="codeCour">
                 &nbsp;
-                <div class="alert alert-danger" *ngIf="form.controls['codeCour'].invalid && form.controls['codeCour'].touched">
+                <div [ngClass]="{'fade-out-alert':test==true}" class="alert alert-danger" *ngIf="form.controls['codeCour'].invalid && form.controls['codeCour'].touched">
+                    <button (click)="removeAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right;"></button>
                     <p *ngIf="form.controls['codeCour'].hasError('required')">
                         Course Code is required !
                     </p>
@@ -22,7 +23,8 @@
                 <label>Course Title</label>
                 <input class="form-control" [(ngModel)]="cours.intituleCour" type="text" formControlName="intituleCour">
                 &nbsp;
-                <div class="alert alert-danger" *ngIf="form.controls['intituleCour'].invalid  && form.controls['intituleCour'].touched">
+                <div [ngClass]="{'fade-out-alert':test==true}" class="alert alert-danger" *ngIf="form.controls['intituleCour'].invalid  && form.controls['intituleCour'].touched">
+                    <button (click)="removeAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right;"></button>
                     <p *ngIf="form.controls['intituleCour'].hasError('required')">
                         Course Title is required !
                     </p>
@@ -36,7 +38,8 @@
                     <option value="ALTERNANCE">ALTERNANCE</option>
                 </select>
                 &nbsp;
-                <div class="alert alert-danger" *ngIf="form.controls['typeCour'].invalid   && form.controls['typeCour'].touched">
+                <div [ngClass]="{'fade-out-alert':test==true}" class="alert alert-danger" *ngIf="form.controls['typeCour'].invalid   && form.controls['typeCour'].touched">
+                    <button (click)="removeAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right;"></button>
                     <p *ngIf="form.controls['typeCour'].hasError('required')">
                         Course Type is required !
                     </p>

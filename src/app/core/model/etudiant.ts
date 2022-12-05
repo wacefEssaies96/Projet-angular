@@ -7,6 +7,7 @@ export class Etudiant {
     op: Option;
     email: string;
     password: string;
+    nbrLike: number
 }
 
 export enum Option {

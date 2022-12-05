@@ -19,20 +19,24 @@ export class UniversiteCardParentComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.crudsService.getAll(this.AdvancedService.UniversiteControllerName).subscribe({
-      next:(data)=>{
-        this.listUniver=data;  
-      },
-      error: ()=>{console.log('error')},
-      complete :()=>{console.log('complete')}
-     })
+    this.getAll()
     }
 
-    deleteUniversite(u:Universite){
-      let i=this.listUniver.indexOf(u);
-      this.crudsService.delete(this.AdvancedService.UniversiteControllerName,u.idUniv).subscribe(
-        ()=>{this.listUniver.splice(i,1)}
+    incrementNbrLike(u: Universite) {
+      this.AdvancedService.incrementLikes(this.AdvancedService.UniversiteControllerName, u).subscribe(
+        () => {
+          this.getAll()
+        }
       )
     }
 
+    getAll(){
+      this.crudsService.getAll(this.AdvancedService.UniversiteControllerName).subscribe({
+        next:(data)=>{
+          this.listUniver=data;  
+        },
+        error: ()=>{console.log('error')},
+        complete :()=>{console.log('complete')}
+       })
+    }
 }

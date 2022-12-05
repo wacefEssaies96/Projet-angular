@@ -12,13 +12,9 @@
             <p>
                 Type : {{universite.typeuniv}}
             </p>
-            <!-- <button class="btn btn-sm btn-danger btn-rounded badge badge-danger" (click)="notifyListUniversite()">
-                Delete
+            <button (click)="notifyParent()" type="button" class="btn btn-outline-secondary btn-rounded btn-icon" style="float:right;">
+                <i class="ti-heart text-danger"></i> <br><div style="padding: bottom 15px;">{{universite.nbrLike}}</div>
             </button>
-            &nbsp;
-            <button [routerLink]="['/universite/cardUniv/update',universite.idUniv]" class="btn btn-sm btn-warning btn-rounded badge badge-warning">
-                Update
-            </button> -->
         </div>
     </div>
     <br><br><br>

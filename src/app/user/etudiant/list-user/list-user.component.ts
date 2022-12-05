@@ -16,6 +16,18 @@ export class ListUserComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.getAll()
+  }
+
+  incrementNbrLike(e: Etudiant) {
+    this.AdvancedService.incrementLikes(this.AdvancedService.EtudiantControllerName, e).subscribe(
+      () => {
+        this.getAll()
+      }
+    )
+  }
+
+  getAll(){
     this.crudsService.getAll(this.AdvancedService.EtudiantControllerName).subscribe({
       next : (params) => {
         this.etudiants = params;
@@ -28,5 +40,4 @@ export class ListUserComponent implements OnInit {
       }
     });
   }
-
 }

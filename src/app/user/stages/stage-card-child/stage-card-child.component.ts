@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Stage } from 'src/app/core/model/stage';
 
 @Component({
@@ -9,9 +9,13 @@ import { Stage } from 'src/app/core/model/stage';
 export class StageCardChildComponent implements OnInit {
 
   @Input() stage: Stage;
+  @Output() incrementEvent = new EventEmitter<Stage>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  notifyParent(){
+    this.incrementEvent.emit(this.stage)
+  }
 }

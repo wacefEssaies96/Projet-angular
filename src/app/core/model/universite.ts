@@ -5,6 +5,7 @@ export class Universite {
     dateCreationUniv: Date;
     typeuniv: TypeUniv;
     imgUniv: String;
+    nbrLike: number
 }
 
 enum TypeUniv {

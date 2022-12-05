@@ -10,11 +10,11 @@ import { AuthGuardFrontService } from './core/services/auth-guard-front.service'
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 
 const ROUTES: Routes = [
-  { path: '', loadChildren: () => import('./user/user.module').then(m => m.UserModule) , canActivate: [AuthGuardFrontService] },
-  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) , canActivate: [AuthGuardFrontService] },
+  { path: '', loadChildren: () => import('./user/user.module').then(m => m.UserModule), canActivate: [AuthGuardFrontService] },
+  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule), canActivate: [AuthGuardFrontService] },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: FormEtudiantComponent},
+  { path: 'register', component: FormEtudiantComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '**', component: NotFoundComponent }
 ]

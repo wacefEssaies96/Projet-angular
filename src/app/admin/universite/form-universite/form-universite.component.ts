@@ -15,6 +15,7 @@ export class FormUniversiteComponent implements OnInit {
 
   public action : String;
   public universite : Universite;
+  public test: boolean=false;
 
   constructor(
     private alertService : AlertService,
@@ -57,7 +58,11 @@ export class FormUniversiteComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/universite/list']);
+    this.router.navigate(['/admin/universite/list']);
+  }
+
+  removeAlertMsg(){
+    this.test=true
   }
 
 }

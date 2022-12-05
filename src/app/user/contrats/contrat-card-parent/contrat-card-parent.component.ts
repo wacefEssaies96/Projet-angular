@@ -11,13 +11,24 @@ import { CrudsService } from 'src/app/core/services/cruds.service';
 export class ContratCardParentComponent implements OnInit {
 
   public listContrat: Contrat[]
-  
+
   constructor(
-    private AdvancedService : AdvancedServicesService,
-    private crudsService : CrudsService
-    ) { }
+    private AdvancedService: AdvancedServicesService,
+    private crudsService: CrudsService
+  ) { }
 
   ngOnInit(): void {
+    this.getAll()
+  }
+
+  incrementNbrLike(c: Contrat) {
+    this.AdvancedService.incrementLikes(this.AdvancedService.ContratControllerName, c).subscribe(
+      () => {
+        this.getAll()
+      }
+    )
+  }
+  getAll(){
     this.crudsService.getAll(this.AdvancedService.ContratControllerName).subscribe({
       next:(data)=>{
         this.listContrat=data;  
@@ -25,6 +36,6 @@ export class ContratCardParentComponent implements OnInit {
       error: ()=>{console.log('error')},
       complete :()=>{console.log('complete')}
      })
-    }
+  }
 
 }

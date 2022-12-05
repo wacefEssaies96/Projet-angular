@@ -47,4 +47,23 @@ export class AdvancedServicesService {
   retrieve(id: number) {
     return this.httpclient.get<Universite[]>(this.url + '/departement/get-departements-universite/' + id);
   }
+  incrementLikes(controller: string,object: any){
+    return this.httpclient.put(this.url + controller + '/incrementLikes', object)
+  }
+  getNbrEtudiantBySexe(){
+    return this.httpclient.get<any>(this.url + '/etudiant/count-nbr-sexe');
+  }
+  getNbrUniversiteByTypeuniv(){
+    return this.httpclient.get<any>(this.url + '/universite/count-nbr-typeuniv');
+  }
+  getNbrContratBySpecialite(){
+    return this.httpclient.get<any>(this.url + '/contrat/count-nbr-specialite');
+  }
+  getNbrEquipeByNiveau(){
+    return this.httpclient.get<any>(this.url + '/equipe/count-nbr-niveau');
+  }
+  getNbrStageByType(){
+    return this.httpclient.get<any>(this.url + '/stage/count-nbr-type');
+  }
+  
 }

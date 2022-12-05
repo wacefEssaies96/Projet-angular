@@ -18,13 +18,25 @@ export class EquipeCardParentComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.crudsService.getAll(this.AdvancedService.EquipeControllerName).subscribe({
-      next:(data)=>{
-        this.listEquipe=data;  
-      },
-      error: ()=>{console.log('error')},
-      complete :()=>{console.log('complete')}
-     })
+    this.getAll()
+    }
+
+    incrementNbrLike(e: Equipe) {
+      this.AdvancedService.incrementLikes(this.AdvancedService.EquipeControllerName, e).subscribe(
+        () => {
+          this.getAll()
+        }
+      )
+    }
+
+    getAll(){
+      this.crudsService.getAll(this.AdvancedService.EquipeControllerName).subscribe({
+        next:(data)=>{
+          this.listEquipe=data;  
+        },
+        error: ()=>{console.log('error')},
+        complete :()=>{console.log('complete')}
+       })
     }
 
 }

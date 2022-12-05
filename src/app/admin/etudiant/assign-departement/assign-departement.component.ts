@@ -15,13 +15,13 @@ export class AssignDepartementComponent implements OnInit {
   public list: Departement[];
   public ide: number;
   public search: string;
+  public test: boolean=true;
 
   constructor(
      private alertService : AlertService,
      private AdvancedService : AdvancedServicesService,
      private crudsService : CrudsService,
-     private currentRoute: ActivatedRoute,
-     private router: Router) { }
+     private currentRoute: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.ide = this.currentRoute.snapshot.params['ide'];
@@ -42,8 +42,14 @@ export class AssignDepartementComponent implements OnInit {
     this.AdvancedService.assignEtudiantToDepartement(this.ide,departement.idDepartement).subscribe(
       () => {
         this.alertService.alert("SUCCESS","Etudiant assigned to Departement  successfuly");
-        this.router.navigate(['/admin/student/list'])}
+        this.test=false;
+        //this.router.navigate(['/admin/student/list'])
+      }
+     
     );
   }
 
+  removeSuccessAlertMsg(){
+    this.test=true
+  }
 }
