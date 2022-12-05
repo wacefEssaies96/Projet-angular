@@ -43,4 +43,10 @@ export class AdvancedServicesService {
   retrieve(id: number) {
     return this.httpclient.get<Universite[]>(this.url + '/departement/get-departements-universite/' + id);
   }
+  getNbrEtudiantBySexe(name: string){
+    return this.httpclient.get<number>(this.url + '/etudiant/count-nbr-sexe/' + name);
+  }
+  getNbrUniversiteByTypeuniv(){
+    return this.httpclient.get<any>(this.url + '/universite/count-nbr-typeuniv');
+  }
 }
