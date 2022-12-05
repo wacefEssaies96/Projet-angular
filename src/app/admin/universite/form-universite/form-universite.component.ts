@@ -14,6 +14,7 @@ export class FormUniversiteComponent implements OnInit {
 
   public action : String;
   public universite : Universite;
+  public test: boolean=false;
 
   constructor(
     private AdvancedService : AdvancedServicesService,
@@ -51,7 +52,11 @@ export class FormUniversiteComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/universite/list']);
+    this.router.navigate(['/admin/universite/list']);
+  }
+
+  removeAlertMsg(){
+    this.test=true
   }
 
 }
