@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Universite } from 'src/app/core/model/universite';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
-import { UniversiteServiceService } from 'src/app/core/services/universite-service.service';
 
 @Component({
   selector: 'app-list-universite',

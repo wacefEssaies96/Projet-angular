@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Equipe } from 'src/app/core/model/equipe';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
-import { EquipeService } from 'src/app/core/services/equipe.service';
 
 @Component({
   selector: 'app-form-equipe',
