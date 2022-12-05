@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Equipe } from 'src/app/core/model/equipe';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { AlertService } from 'src/app/core/services/alert.service';

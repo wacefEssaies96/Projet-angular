@@ -3,7 +3,7 @@
  <form #f="ngForm" >
     <div class="form-group">
         <Label>Nom du projet</Label>
-        <input name="nom" type="text" class="form-control" required [(ngModel)]="projet.nomprojet" #l="ngModel" minlength="6" pattern="[A-Za-z]{6,12}$">
+        <input name="nom" type="text" class="form-control" required [(ngModel)]="projet.nomprojet" #l="ngModel" minlength="6" maxlength="12" pattern="[A-Za-z\s]{6,12}">
     
     <div class="alert alert-danger" *ngIf="l.invalid && l.touched">
         <div *ngIf="l.hasError('required')">

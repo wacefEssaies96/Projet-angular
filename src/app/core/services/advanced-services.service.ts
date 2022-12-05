@@ -33,19 +33,19 @@ export class AdvancedServicesService {
     return this.httpclient.get(this.url + this.EtudiantControllerName + '/assign-etudiant-departement/' + idE + '/' + idD);
   }
   getUniversiteByName(name: string) {
-    return this.httpclient.get<Universite>(this.url + '/universite/displayUniversiteByName/' + name);
+    return this.httpclient.get<Universite>(this.url + this.UniversiteControllerName +'/displayUniversiteByName/' + name);
   }
   assignUniversityToDepartement(idUniv: number, idDepartement: number) {
-    return this.httpclient.get(this.url + '/universite/assignUnivDepJpql/' + idUniv + '/' + idDepartement);
+    return this.httpclient.get(this.url + this.UniversiteControllerName +'/assignUnivDepJpql/' + idUniv + '/' + idDepartement);
   }
   assignUniversityTocour(idUniv: number, idCour: number) {
-    return this.httpclient.get(this.url + '/universite/assignUnivCourJpql/' + idUniv + '/' + idCour);
+    return this.httpclient.get(this.url + this.UniversiteControllerName +'/assignUnivCourJpql/' + idUniv + '/' + idCour);
   }
   getUniversitiesSortedWithAnyField(field: String) {
-    return this.httpclient.get<Universite[]>(this.url + '/universite/getUniversitesWithSort' + field);
+    return this.httpclient.get<Universite[]>(this.url + this.UniversiteControllerName +'/getUniversitesWithSort' + field);
   }
   retrieve(id: number) {
-    return this.httpclient.get<Universite[]>(this.url + '/departement/get-departements-universite/' + id);
+    return this.httpclient.get<Universite[]>(this.url + this.DepartementControllerName +'/get-departements-universite/' + id);
   }
   incrementLikes(controller: string,object: any){
     return this.httpclient.put(this.url + controller + '/incrementLikes', object)
@@ -66,4 +66,8 @@ export class AdvancedServicesService {
     return this.httpclient.get<any>(this.url + '/stage/count-nbr-type');
   }
   
+  assignProjetToEquipe(idprojet: number, idequipe: number){
+    return this.httpclient.get(this.url + this.ProjetControllerName+'/assignProToEquipe/' + idprojet +'/' + idequipe );
+  }
+
 }

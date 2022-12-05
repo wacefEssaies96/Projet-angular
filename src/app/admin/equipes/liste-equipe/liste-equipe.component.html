@@ -1,4 +1,4 @@
-<button class="btn btn-primary" [routerLink]="['/admin/equipes/addEquipe']">Ajouter</button>
+<button class="btn btn-primary" [routerLink]="['/admin/equipes/addEquipe']">Add</button>
 <div class="row">
     <div style="float: right;">
 
@@ -8,7 +8,7 @@
 
         <table class="table table-hover">
             <thead>
-                <tr>
+                <tr >
                     <th>idEquipe</th>
                     <th>nomEquipe</th>
                     <th>Niveau</th>
@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let e of list | filter:search">
+                <tr *ngFor="let e of list | filter: search " [ngStyle]="{'background-color':  e.niveau === 'EXPERT'  ? '#E8FEE7' : e.niveau=== 'SENIOR' ? '#E7FEFE' : '#D8DFFE'}" >
 
                     <td>{{ e.idEquipe }}</td>
                     <td>{{ e.nomEquipe }}</td>
@@ -31,6 +31,9 @@
                         <button class="btn btn-sm btn-danger" (click)="delete(e)">
                             delete
                         </button>
+                        &nbsp;
+                        <a [routerLink]="['/admin/equipes/assign-projet-to-equipe/',e.idEquipe]" class="btn btn-sm btn-outline-info btn-fw btn-rounded badge badge-info">Assign Projet</a>
+                        
                     </td>
                 </tr>
             </tbody>

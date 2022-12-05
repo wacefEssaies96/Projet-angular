@@ -25,7 +25,7 @@
                 <select [(ngModel)]="equipe.niveau" formControlName="niveau" class="form-control">
                     <option value="JUNIOR" selected>JUNIOR</option>
                     <option value="SENIOR">SENIOR</option>
-                    <option value="EXPERT">EXPERT</option>
+                    <option value="EXPERT" >EXPERT</option>
                 </select>
                 <div class="alert alert-danger" *ngIf="form.controls['niveau'].touched && form.controls['niveau'].invalid">
                     <p *ngIf="form.controls['niveau'].hasError('required')">
