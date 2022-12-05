@@ -11,6 +11,10 @@
             Evolution : {{pr.evolution}}
             <br>
             Matiere : {{pr.matiere}}
+            <br>
+            <button (click)="notifyParent()" type="button" class="btn btn-outline-secondary btn-rounded btn-icon" style="float:right;">
+              <i class="ti-heart text-danger"></i> <br><div style="padding: bottom 15px;">{{pr.nbrLike}}</div>
+            </button>
           </p>
         </div>
       </div>

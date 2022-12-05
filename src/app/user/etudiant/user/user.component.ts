@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { Etudiant } from 'src/app/core/model/etudiant';
 
 @Component({
@@ -8,9 +8,14 @@ import { Etudiant } from 'src/app/core/model/etudiant';
 })
 export class UserComponent implements OnInit {
   @Input() e: Etudiant;
+  @Output() incrementEvent = new EventEmitter<Etudiant>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  notifyParent(){
+    this.incrementEvent.emit(this.e)
   }
 
 }

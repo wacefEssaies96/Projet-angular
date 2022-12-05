@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Equipe } from 'src/app/core/model/equipe';
 
 @Component({
@@ -9,9 +9,13 @@ import { Equipe } from 'src/app/core/model/equipe';
 export class EquipeCardChildComponent implements OnInit {
 
   @Input() equipe: Equipe;
+  @Output() incrementEvent = new EventEmitter<Equipe>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  notifyParent(){
+    this.incrementEvent.emit(this.equipe)
+  }
 }

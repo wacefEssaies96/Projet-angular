@@ -4,6 +4,7 @@ export class Stage {
   dateFinStage: Date;
   typeStage: TStage;
   resumeStage: string;
+  nbrLike: number
 }
 
 export enum TStage {

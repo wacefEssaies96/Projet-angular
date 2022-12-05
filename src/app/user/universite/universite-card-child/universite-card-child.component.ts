@@ -9,7 +9,7 @@ import { Universite } from 'src/app/core/model/universite';
 export class UniversiteCardChildComponent implements OnInit {
 
   @Input() universite: Universite;
-  @Output() deleteEvent = new EventEmitter<Universite>();
+  @Output() incrementEvent = new EventEmitter<Universite>();
   public type : String;
   public test :boolean;
   constructor() { }
@@ -22,7 +22,7 @@ export class UniversiteCardChildComponent implements OnInit {
     }
   }
 
-  notifyListUniversite(){
-    this.deleteEvent.emit(this.universite)
+  notifyParent(){
+    this.incrementEvent.emit(this.universite)
   }
 }

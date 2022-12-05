@@ -19,14 +19,24 @@ export class StageCardParentComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.crudsService.getAll(this.AdvancedService.StageControllerName).subscribe({
-      next:(data)=>{
-        this.listStage=data;  
-      },
-      error: ()=>{console.log('error')},
-      complete :()=>{console.log('complete')}
-     })
+    this.getAll()
     }
 
+    incrementNbrLike(s: Stage) {
+      this.AdvancedService.incrementLikes(this.AdvancedService.StageControllerName, s).subscribe(
+        () => {
+          this.getAll()
+        }
+      )
+    }
 
+    getAll(){
+      this.crudsService.getAll(this.AdvancedService.StageControllerName).subscribe({
+        next:(data)=>{
+          this.listStage=data;  
+        },
+        error: ()=>{console.log('error')},
+        complete :()=>{console.log('complete')}
+       })
+    }
 }

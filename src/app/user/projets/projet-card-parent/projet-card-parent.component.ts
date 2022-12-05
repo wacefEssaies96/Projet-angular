@@ -18,14 +18,25 @@ export class ProjetCardParentComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.crudsService.getAll(this.AdvancedService.ProjetControllerName).subscribe({
-      next:(data)=>{
-        this.listProjet=data;  
-        console.log(data);
-      },
-      error: ()=>{console.log('error')},
-      complete :()=>{console.log('complete')}
-     })
+    this.getAll()
     }
 
+    incrementNbrLike(p: Projet) {
+      this.AdvancedService.incrementLikes(this.AdvancedService.ProjetControllerName, p).subscribe(
+        () => {
+          this.getAll()
+        }
+      )
+    }
+
+    getAll(){
+      this.crudsService.getAll(this.AdvancedService.ProjetControllerName).subscribe({
+        next:(data)=>{
+          this.listProjet=data;  
+          console.log(data);
+        },
+        error: ()=>{console.log('error')},
+        complete :()=>{console.log('complete')}
+       })
+    }
 }

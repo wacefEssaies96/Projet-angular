@@ -43,4 +43,7 @@ export class AdvancedServicesService {
   retrieve(id: number) {
     return this.httpclient.get<Universite[]>(this.url + '/departement/get-departements-universite/' + id);
   }
+  incrementLikes(controller: string,object: any){
+    return this.httpclient.put(this.url + controller + '/incrementLikes', object)
+  }
 }

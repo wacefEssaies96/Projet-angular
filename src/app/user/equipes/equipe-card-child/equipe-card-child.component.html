@@ -7,6 +7,10 @@
           Nom Equipe: {{equipe.nomEquipe}}
           <br>
           Niveau Equipe : {{equipe.niveau}}
+          <br>
+          <button (click)="notifyParent()" type="button" class="btn btn-outline-secondary btn-rounded btn-icon" style="float:right;">
+            <i class="ti-heart text-danger"></i> <br><div style="padding: bottom 15px;">{{equipe.nbrLike}}</div>
+          </button>
         </p>
       </div>
     </div>

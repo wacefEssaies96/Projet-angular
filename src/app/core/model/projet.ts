@@ -5,4 +5,5 @@ export class Projet {
     datelimiteProjet: Date;
     evolution: String;
     matiere: String;
+    nbrLike: number
 }
