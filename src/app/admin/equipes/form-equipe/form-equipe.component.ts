@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Equipe } from 'src/app/core/model/equipe';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 import { EquipeService } from 'src/app/core/services/equipe.service';
 
 @Component({
@@ -15,7 +17,13 @@ export class FormEquipeComponent implements OnInit {
   public form: FormGroup;
   eqnamePattern = "[A-Za-z]{6,12}$";
 
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private equipeservice: EquipeService) {  }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService
+  ) {  }
 
   ngOnInit(): void {
     this.form=this.fb.group({
@@ -26,7 +34,7 @@ export class FormEquipeComponent implements OnInit {
     let id= this.route.snapshot.params['id']
     if(id!=null){
       this.action="Update";
-      this.equipeservice.getEquipeByID(id).subscribe(
+      this.crudsService.getById(this.AdvancedService.EquipeControllerName,id).subscribe(
         
         (data:Equipe)=>this.equipe=data
       )
@@ -40,13 +48,13 @@ export class FormEquipeComponent implements OnInit {
   }
   SaveEquipe(){
     if(this.action="Add"){
-      this.equipeservice.addEquipe(this.equipe).subscribe(
+      this.crudsService.add(this.AdvancedService.EquipeControllerName,this.equipe).subscribe(
         ()=>this.router.navigate(['/admin/equipes/ListeEquipes'])
   
       )
     }
     else if(this.action="Update"){
-      this.equipeservice.updateEquipe(this.equipe).subscribe(
+      this.crudsService.update(this.AdvancedService.EquipeControllerName,this.equipe).subscribe(
         ()=>this.router.navigate(['/admin/equipes/ListeEquipes'])
       )
     }

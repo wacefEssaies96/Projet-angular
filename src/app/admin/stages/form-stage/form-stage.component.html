@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label>Date Fin Stage</label>
                 <input [(ngModel)]="stage.dateFinStage" type="date" name="dateFinStage" class="form-control"  #dfs="ngModel"required>
-                <div class="alert alert-danger" *ngIf="dfs.touched && dfs.invalid && dfs.value > dds.value">
+                <div class="alert alert-danger" *ngIf="dfs.touched && dfs.invalid">
                     <p *ngIf="dfs.hasError('required')">
                         Date Fin Stage is required
                     </p>

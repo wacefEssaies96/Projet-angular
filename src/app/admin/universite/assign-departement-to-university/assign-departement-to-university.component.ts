@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
-import { DepartementService } from 'src/app/core/services/departement.service';
-import { UniversiteServiceService } from 'src/app/core/services/universite-service.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-assign-departement-to-university',
@@ -18,14 +17,14 @@ export class AssignDepartementToUniversityComponent implements OnInit {
   public test: boolean=false
 
   constructor(
-    private serviceUniv:UniversiteServiceService,
-    private serviceDep: DepartementService,
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService,
     private currentRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.idUniv = this.currentRoute.snapshot.params['idUniv'];
-    this.serviceDep.getAllDepartements().subscribe({
+    this.crudsService.getAll(this.AdvancedService.DepartementControllerName).subscribe({
       next: (params) => {
         this.listDep = params;
       },
@@ -35,7 +34,7 @@ export class AssignDepartementToUniversityComponent implements OnInit {
     }
 
     assingUnivDep(departement: Departement){
-      this.serviceUniv.assignUniversityToDepartement(this.idUniv,departement.idDepartement).subscribe(
+      this.AdvancedService.assignUniversityToDepartement(this.idUniv,departement.idDepartement).subscribe(
         () => {this.test=true;}
     )
   }

@@ -13,7 +13,7 @@
                 <input [(ngModel)]="contrat.dateDebutContrat" type="date" formControlName="dateDebutContrat" class="form-control">
                 <div class="alert alert-danger" *ngIf="form.controls['dateDebutContrat'].touched && form.controls['dateDebutContrat'].invalid">
                     <p *ngIf="form.controls['dateDebutContrat'].hasError('required')">
-                        dateDebutContrat is required
+                        Date Debut Contrat is required
                     </p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <input [(ngModel)]="contrat.dateFinContrat" type="date" formControlName="dateFinContrat" class="form-control">
                 <div class="alert alert-danger" *ngIf="form.controls['dateFinContrat'].touched && form.controls['dateFinContrat'].invalid">
                     <p *ngIf="form.controls['dateFinContrat'].hasError('required')">
-                        dateFinContrat is required
+                        Date Fin Contrat is required
                     </p>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 </select>
                 <div class="alert alert-danger" *ngIf="form.controls['archive'].touched && form.controls['archive'].invalid">
                     <p *ngIf="form.controls['archive'].hasError('required')">
-                        specialite is required
+                        Archive is required
                     </p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 </select>
                 <div class="alert alert-danger" *ngIf="form.controls['specialite'].touched && form.controls['specialite'].invalid">
                     <p *ngIf="form.controls['specialite'].hasError('required')">
-                        option is required
+                        Specialite is required
                     </p>
                 </div>
             </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Projet } from 'src/app/core/model/projet';
-import { ProjetService } from 'src/app/core/services/project.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-list-projet',
@@ -13,13 +14,16 @@ export class ListProjetComponent implements OnInit {
   projet: Projet[];
   search: string;
 
-  constructor(private projetservice: ProjetService, private router:Router) { }
+  constructor(
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService,
+    private router:Router) { }
 
   ngOnInit(): void {
-    this.projetservice.getAllProjet().subscribe((data: Projet[]) =>{this.projet=data} )
+    this.crudsService.getAll(this.AdvancedService.ProjetControllerName).subscribe((data: Projet[]) =>{this.projet=data} )
   }
   delete(p:Projet){
-    this.projetservice.deleteProjet(p.idprojet).subscribe(
+    this.crudsService.delete(this.AdvancedService.ProjetControllerName,p.idprojet).subscribe(
 
     ()=> {this.router.navigate(['/admin/projets'])})
   }

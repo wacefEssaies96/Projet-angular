@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
-import { DepartementService } from 'src/app/core/services/departement.service';
-import { EtudiantService } from 'src/app/core/services/etudiant.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-assign-departement',
@@ -15,14 +15,15 @@ export class AssignDepartementComponent implements OnInit {
   public ide: number;
   public search: string;
 
-  constructor(private ds: DepartementService,
-     private es: EtudiantService,
+  constructor(
+     private AdvancedService : AdvancedServicesService,
+     private crudsService : CrudsService,
      private currentRoute: ActivatedRoute,
      private router: Router) { }
 
   ngOnInit(): void {
     this.ide = this.currentRoute.snapshot.params['ide'];
-    this.ds.getAllDepartements().subscribe({
+    this.crudsService.getAll(this.AdvancedService.DepartementControllerName).subscribe({
       next: (params) => {
         this.list = params;
       },
@@ -35,7 +36,7 @@ export class AssignDepartementComponent implements OnInit {
     })
   }
   assignToDepartement(departement: Departement){
-    this.es.assignEtudiantToDepartement(this.ide,departement.idDepartement).subscribe(
+    this.AdvancedService.assignEtudiantToDepartement(this.ide,departement.idDepartement).subscribe(
       () => {this.router.navigate(['/student/list'])}
     );
   }

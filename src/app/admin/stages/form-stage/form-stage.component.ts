@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stage } from 'src/app/core/model/stage';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
-import { StageService } from 'src/app/core/services/stage.service';
 
 @Component({
   selector: 'app-form-stage',
@@ -15,8 +15,8 @@ export class FormStageComponent implements OnInit {
   public stage : Stage;
 
   constructor(
-    private crudsService: CrudsService,
-    private stageService: StageService,
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService,
     private router: Router, 
     private route: ActivatedRoute) { }
 
@@ -24,7 +24,7 @@ export class FormStageComponent implements OnInit {
   let id= this.route.snapshot.params['idS'];
   if(id!=null){
     this.action="Update";
-    this.crudsService.getById(this.stageService.StageControllerName,id).subscribe(
+    this.crudsService.getById(this.AdvancedService.StageControllerName,id).subscribe(
       (data:Stage)=> {this.stage=data}
     )
     
@@ -35,12 +35,12 @@ export class FormStageComponent implements OnInit {
 
   SaveStage(){
     if(this.action=='Add'){
-      this.crudsService.add(this.stageService.StageControllerName,this.stage).subscribe(
+      this.crudsService.add(this.AdvancedService.StageControllerName,this.stage).subscribe(
         ()=>{this.router.navigate(['/admin/stages/ListeStages'])}
       )
     }
     else if(this.action=='Update'){
-      this.crudsService.update(this.stageService.StageControllerName,this.stage).subscribe(
+      this.crudsService.update(this.AdvancedService.StageControllerName,this.stage).subscribe(
         ()=>{this.router.navigate(['/admin/stages/ListeStages'])}
       )
     }

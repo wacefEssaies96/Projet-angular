@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Universite } from 'src/app/core/model/universite';
-import { UniversiteServiceService } from 'src/app/core/services/universite-service.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-form-universite',
@@ -15,7 +16,8 @@ export class FormUniversiteComponent implements OnInit {
   public universite : Universite;
 
   constructor(
-    private univerService: UniversiteServiceService,
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService,
     private router: Router, 
     private currentRoute: ActivatedRoute,
     ) { }
@@ -25,7 +27,7 @@ export class FormUniversiteComponent implements OnInit {
     let idUniver=this.currentRoute.snapshot.params['id'];
     if(idUniver!=null){
       this.action="Update";
-      this.univerService.getUniversiteById(idUniver).subscribe(
+      this.crudsService.getById(this.AdvancedService.UniversiteControllerName,idUniver).subscribe(
         (object: Universite)=>this.universite=object
       );
     }
@@ -37,12 +39,12 @@ export class FormUniversiteComponent implements OnInit {
 
   saveUniversite(){
     if(this.action=='Add'){
-      this.univerService.addUniversite(this.universite).subscribe(
+      this.crudsService.add(this.AdvancedService.UniversiteControllerName,this.universite).subscribe(
         ()=>{this.router.navigate(['/admin/universite/list'])}
       )
     }
     else if(this.action=='Update'){
-      this.univerService.updateUniversite(this.universite).subscribe(
+      this.crudsService.update(this.AdvancedService.UniversiteControllerName,this.universite).subscribe(
         ()=>{this.router.navigate(['/admin/universite/list'])}
       )
     }

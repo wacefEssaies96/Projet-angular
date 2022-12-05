@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Stage } from 'src/app/core/model/stage';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
-import { StageService } from 'src/app/core/services/stage.service';
 
 @Component({
   selector: 'app-list-stage',
@@ -22,8 +22,8 @@ export class ListStageComponent implements OnInit {
   public listStage: any[];
 
   constructor(
-    private crudsService: CrudsService,
-    private stageService : StageService
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class ListStageComponent implements OnInit {
     
   }
   fetchStages(): void {
-    this.crudsService.getAll(this.stageService.StageControllerName).subscribe(
+    this.crudsService.getAll(this.AdvancedService.StageControllerName).subscribe(
       (data:Stage[]) => {
         this.listStage = data;
         console.log(data);

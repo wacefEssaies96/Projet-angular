@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Universite } from 'src/app/core/model/universite';
-import { UniversiteServiceService } from 'src/app/core/services/universite-service.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-universite-card-parent',
@@ -12,10 +13,13 @@ export class UniversiteCardParentComponent implements OnInit {
   public listUniver: Universite[]
   public p:any
   
-  constructor(private us: UniversiteServiceService) { }
+  constructor(
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService
+    ) { }
 
   ngOnInit(): void {
-    this.us.displayUniversites().subscribe({
+    this.crudsService.getAll(this.AdvancedService.UniversiteControllerName).subscribe({
       next:(data)=>{
         this.listUniver=data;  
       },
@@ -26,7 +30,7 @@ export class UniversiteCardParentComponent implements OnInit {
 
     deleteUniversite(u:Universite){
       let i=this.listUniver.indexOf(u);
-      this.us.deleteUniversite(u.idUniv).subscribe(
+      this.crudsService.delete(this.AdvancedService.UniversiteControllerName,u.idUniv).subscribe(
         ()=>{this.listUniver.splice(i,1)}
       )
     }

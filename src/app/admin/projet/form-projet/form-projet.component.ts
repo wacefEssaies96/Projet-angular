@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Projet } from 'src/app/core/model/projet';
-import { ProjetService } from 'src/app/core/services/project.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
  
 
 @Component({
@@ -14,7 +15,12 @@ export class FormProjetComponent implements OnInit {
   action: String; 
   projet: Projet;
 
-  constructor(private router: Router, private route: ActivatedRoute, private projetservice: ProjetService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute, 
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService
+    ) { }
 
   ngOnInit(): void {
     this.projet= new Projet();
@@ -22,7 +28,7 @@ export class FormProjetComponent implements OnInit {
   let id= this.route.snapshot.params['id']
   if(id!=null){
     this.action="Update";
-    this.projetservice.getProjetByID(id).subscribe(
+    this.crudsService.getById(this.AdvancedService.ProjetControllerName,id).subscribe(
       
       (data:Projet)=>this.projet=data
     )
@@ -38,7 +44,7 @@ SaveProjet(){
   console.log(this.projet)
   if(this.action="Add"){
     console.log("add")
-    this.projetservice.addProjet(this.projet).subscribe(
+    this.crudsService.add(this.AdvancedService.ProjetControllerName,this.projet).subscribe(
       ()=>this.router.navigate(['/admin/projets/list'])
 
     )
@@ -46,7 +52,7 @@ SaveProjet(){
   else if(this.action="Update"){
     
     console.log("update")
-    this.projetservice.updateProjet(this.projet).subscribe(
+    this.crudsService.update(this.AdvancedService.ProjetControllerName,this.projet).subscribe(
       ()=>this.router.navigate(['/admin/projets/list'])
     )
   }

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cours } from 'src/app/core/model/cours';
-import { CoursService } from 'src/app/core/services/cours.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-form-cours',
@@ -16,8 +17,9 @@ export class FormCoursComponent implements OnInit {
   public cours: Cours;
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private coursService: CoursService,
+    private formBuilder: FormBuilder,
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService,
     private router: Router,
     private currentRoute: ActivatedRoute
   ) { }
@@ -32,7 +34,7 @@ export class FormCoursComponent implements OnInit {
     let id = this.currentRoute.snapshot.params['id'];
     if(id != null){
       this.action = 'Update';
-      this.coursService.getCoursById(id).subscribe(
+      this.crudsService.getById(this.AdvancedService.CoursControllerName,id).subscribe(
         (object: Cours)=> this.cours = object
       )
     }else{
@@ -43,12 +45,12 @@ export class FormCoursComponent implements OnInit {
 
   submit(){
     if(this.action == 'Add'){
-      this.coursService.addCours(this.cours).subscribe(
+      this.crudsService.add(this.AdvancedService.CoursControllerName,this.cours).subscribe(
         ()=>{ this.router.navigate(['/admin/cours/list'])}
       );
     }
     else if(this.action == 'Update'){
-      this.coursService.updateCours(this.cours).subscribe(
+      this.crudsService.update(this.AdvancedService.CoursControllerName,this.cours).subscribe(
         () => this.router.navigate(['/admin/cours/list'])
       )
     }

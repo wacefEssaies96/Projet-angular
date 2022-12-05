@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cours } from 'src/app/core/model/cours';
-import { CoursService } from 'src/app/core/services/cours.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-list-cours',
@@ -13,12 +14,15 @@ export class ListCoursComponent implements OnInit {
   public cours: Cours;
   public listCours: Cours[];
   public search: string;
-  constructor(private coursService: CoursService) { }
+  constructor(
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService
+    ) { }
 
   ngOnInit(): void {
   
     this.title='List of Courses';
-    this.coursService.displayCours().subscribe({
+    this.crudsService.getAll(this.AdvancedService.CoursControllerName).subscribe({
     next:(data)=>{
       this.listCours=data;
     },
@@ -29,7 +33,7 @@ export class ListCoursComponent implements OnInit {
 
   deleteCours(c:Cours){
     let i=this.listCours.indexOf(c);
-    this.coursService.deleteCours(c.idCour).subscribe(
+    this.crudsService.delete(this.AdvancedService.CoursControllerName,c.idCour).subscribe(
       ()=>{this.listCours.splice(i,1)}
     )
   }

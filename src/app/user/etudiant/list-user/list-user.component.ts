@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Etudiant } from 'src/app/core/model/etudiant';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -9,10 +10,13 @@ import { CrudsService } from 'src/app/core/services/cruds.service';
 })
 export class ListUserComponent implements OnInit {
   public etudiants: Etudiant[];
-  constructor(private crudsService: CrudsService) { }
+  constructor(
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService,
+    ) { }
 
   ngOnInit(): void {
-    this.crudsService.getAll("/etudiant").subscribe({
+    this.crudsService.getAll(this.AdvancedService.EtudiantControllerName).subscribe({
       next : (params) => {
         this.etudiants = params;
       },

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cours } from 'src/app/core/model/cours';
-import { CoursService } from 'src/app/core/services/cours.service';
-import { UniversiteServiceService } from 'src/app/core/services/universite-service.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-assign-cours-to-university',
@@ -17,15 +17,15 @@ export class AssignCoursToUniversityComponent implements OnInit {
   public test: boolean=false
 
   constructor(
-    private serviceUniv:UniversiteServiceService,
-    private serviceCour: CoursService,
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService,
     private currentRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
 
     this.idUniv = this.currentRoute.snapshot.params['idUniv'];
-    this.serviceCour.displayCours().subscribe({
+    this.crudsService.getAll(this.AdvancedService.CoursControllerName).subscribe({
       next: (params) => {
         this.listCour = params;
       },
@@ -35,7 +35,7 @@ export class AssignCoursToUniversityComponent implements OnInit {
     }
 
     assingUnivDep(cours: Cours){
-      this.serviceUniv.assignUniversityToDepartement(this.idUniv,cours.idCour).subscribe(
+      this.AdvancedService.assignUniversityToDepartement(this.idUniv,cours.idCour).subscribe(
         () => {this.test=true;}
     )
   }

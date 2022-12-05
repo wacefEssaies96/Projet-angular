@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contrat } from 'src/app/core/model/contrat';
-import { ContratService } from 'src/app/core/services/contrat.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class DetailsContratComponent implements OnInit {
   
   constructor(
     private crudsService : CrudsService,
-    private contratService : ContratService,
+    private AdvancedService : AdvancedServicesService,
     private router : Router,
     private route : ActivatedRoute
   ) { }
@@ -24,7 +24,7 @@ export class DetailsContratComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.params['idC'];
     if(id!=null){
-      this.crudsService.getById(this.contratService.ContratControllerName,id).subscribe(
+      this.crudsService.getById(this.AdvancedService.ContratControllerName,id).subscribe(
         (data:Contrat)=>this.contrat=data
       )
     }else{
@@ -33,7 +33,7 @@ export class DetailsContratComponent implements OnInit {
     }
   }
   deleteContrat(c: Contrat): void{
-    this.crudsService.delete(this.contratService.ContratControllerName,c.idContrat).subscribe(
+    this.crudsService.delete(this.AdvancedService.ContratControllerName,c.idContrat).subscribe(
       ()=>{this.router.navigate(['/admin/contrats/ListeContrats'])}
     );
   }

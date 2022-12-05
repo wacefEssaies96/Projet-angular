@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stage } from 'src/app/core/model/stage';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
-import { StageService } from 'src/app/core/services/stage.service';
 
 @Component({
   selector: 'app-details-stage',
@@ -15,8 +15,8 @@ export class DetailsStageComponent implements OnInit {
   public title:String;
   
   constructor(
+    private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
-    private stageService : StageService,
     private router : Router,
     private route : ActivatedRoute
   ) { }
@@ -24,7 +24,7 @@ export class DetailsStageComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.params['idS'];
     if(id!=null){
-      this.crudsService.getById(this.stageService.StageControllerName,id).subscribe(
+      this.crudsService.getById(this.AdvancedService.StageControllerName,id).subscribe(
         (data:Stage)=>this.stage=data
       )
     }else{
@@ -33,7 +33,7 @@ export class DetailsStageComponent implements OnInit {
     }
   }
   deleteStage(s: Stage): void{
-    this.crudsService.delete(this.stageService.StageControllerName,s.idStage).subscribe(
+    this.crudsService.delete(this.AdvancedService.StageControllerName,s.idStage).subscribe(
       ()=>{this.router.navigate(['/admin/stages/ListeStages'])}
     );
   }

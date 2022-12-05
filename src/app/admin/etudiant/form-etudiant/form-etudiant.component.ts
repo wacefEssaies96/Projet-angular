@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Etudiant } from 'src/app/core/model/etudiant';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
@@ -18,7 +19,8 @@ export class FormEtudiantComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private crudsService: CrudsService,
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService,
     private router: Router,
     private currentRoute: ActivatedRoute,
     private auth: AuthenticationService) { }
@@ -37,7 +39,7 @@ export class FormEtudiantComponent implements OnInit {
     let u = this.currentRoute.snapshot.url[0].path;
     if (id != null) {
       this.action = 'Update';
-      this.crudsService.getById('/etudiant', id).subscribe(
+      this.crudsService.getById(this.AdvancedService.EtudiantControllerName, id).subscribe(
         (object: Etudiant) => this.etudiant = object
       )
     } else {
@@ -52,7 +54,7 @@ export class FormEtudiantComponent implements OnInit {
 
   submit() {
     if (this.action == 'Add') {
-      this.crudsService.add('/etudiant', this.etudiant).subscribe({
+      this.crudsService.add(this.AdvancedService.EtudiantControllerName, this.etudiant).subscribe({
         next: () => {
           this.router.navigate(['/admin/student/'])
         },
@@ -78,7 +80,7 @@ export class FormEtudiantComponent implements OnInit {
       });
     }
     else if (this.action == 'Update') {
-      this.crudsService.update('/etudiant', this.etudiant).subscribe({
+      this.crudsService.update(this.AdvancedService.EtudiantControllerName, this.etudiant).subscribe({
         next: () => {
           this.router.navigate(['/admin/student/'])
         },

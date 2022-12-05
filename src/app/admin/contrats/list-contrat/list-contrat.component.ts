@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Contrat } from 'src/app/core/model/contrat';
-import { ContratService } from 'src/app/core/services/contrat.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -22,8 +22,8 @@ export class ListContratComponent implements OnInit {
   public listContrat: any[];
 
   constructor(
-  private contratService : ContratService,
-  private crudsService : CrudsService
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class ListContratComponent implements OnInit {
     
   }
   fetchContrats(): void {
-    this.crudsService.getAll(this.contratService.ContratControllerName).subscribe(
+    this.crudsService.getAll(this.AdvancedService.ContratControllerName).subscribe(
       (data:Contrat[]) => {
         this.listContrat = data;
         console.log(data);

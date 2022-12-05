@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Universite } from 'src/app/core/model/universite';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 import { UniversiteServiceService } from 'src/app/core/services/universite-service.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-universite',
@@ -20,12 +20,14 @@ export class ListUniversiteComponent implements OnInit {
   public reverse: boolean=false;
 
   constructor(
-    private serviceUniv:UniversiteServiceService) { }
+    private AdvancedService : AdvancedServicesService,
+    private crudsService : CrudsService
+    ) { }
 
   ngOnInit(): void {
 
     this.title='List of Universities';
-    this.serviceUniv.displayUniversites().subscribe({
+    this.crudsService.getAll(this.AdvancedService.UniversiteControllerName).subscribe({
     next:(data)=>{
       this.listUniver=data;
     },
@@ -36,7 +38,7 @@ export class ListUniversiteComponent implements OnInit {
 
   deleteUniversite(u:Universite){
     let i=this.listUniver.indexOf(u);
-    this.serviceUniv.deleteUniversite(u.idUniv).subscribe(
+    this.crudsService.delete(this.AdvancedService.UniversiteControllerName,u.idUniv).subscribe(
       ()=>{this.listUniver.splice(i,1)}
     )
   }
