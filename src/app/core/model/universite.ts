@@ -9,6 +9,6 @@ export class Universite {
 
 enum TypeUniv {
     PRIVATE,
-    PUBLIC, 
+    PUBLIC,
     SEMIPUBLIC
 } 

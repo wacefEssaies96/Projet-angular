@@ -4,6 +4,7 @@ import { UserComponent } from './user.component';
 
 const routes: Routes = [{
   path: '', component: UserComponent, children: [
+    { path: '', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
     { path: 'student', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
     { path: 'universite', loadChildren: () => import('./universite/universite.module').then(m => m.UniversiteModule) },
     { path: 'contrats', loadChildren: () => import('./contrats/contrats.module').then(m => m.ContratsModule) },

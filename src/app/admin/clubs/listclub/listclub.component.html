@@ -1,0 +1,46 @@
+<a class="btn btn-sm btn-success" routerLink="/admin/clubs/add">Add</a>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Clubs</h4>
+        <div style="float: right;">
+            <input type="text" class="form-control" placeholder="&#61442; Search Here" title="Search here"
+                [(ngModel)]="search">
+        </div>
+        <p class="card-description">
+            List of clubs
+        </p>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>nom</th>
+                        <th>description</th>
+                        <th>Date de creation</th>
+                        <th>image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of clubs | filter:search">
+                        <td>{{ c.idClub }}</td>
+                        <td>{{ c.nomClub }}</td>
+                        <td>{{ c.description }}</td>
+                        <td>{{ c.dateDeCreation }}</td>
+                        <td><img src="{{c.image}}"></td>
+                        <td>
+                            <a [routerLink]="['/admin/clubs/update',c.idClub]" class="btn btn-sm btn-warning">
+                                update club
+                            </a>
+                            &nbsp;
+                            
+                        
+                            <button class="btn btn-sm btn-danger" (click)="delete(c)">
+                                delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

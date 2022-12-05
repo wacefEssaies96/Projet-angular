@@ -7,6 +7,6 @@ export class Cours {
 
 enum TypeCours {
     COURSDUJOUR,
-	COURSDUSOIR,
-	ALTERNANCE
+    COURSDUSOIR,
+    ALTERNANCE
 } 
