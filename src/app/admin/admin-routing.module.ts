@@ -4,6 +4,7 @@ import { AdminComponent } from './admin.component';
 
 const routes: Routes = [{
   path: '', component: AdminComponent, children: [
+    { path: '', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
     { path: 'student', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
     { path: 'stages', loadChildren: () => import('./stages/stages.module').then(m => m.StagesModule) },
     { path: 'contrats', loadChildren: () => import('./contrats/contrats.module').then(m => m.ContratsModule) },

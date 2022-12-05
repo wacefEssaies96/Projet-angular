@@ -8,14 +8,12 @@ import { FormdetailComponent } from './formdetail/formdetail.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DetailComponent } from './detail/detail.component';
 
-
-
 @NgModule({
   declarations: [
     FormdetailComponent,
     ListdetailComponent,
     DetailequipeComponent,
-    DetailComponent
+    DetailComponent,
   ],
   imports: [
     FormsModule,
