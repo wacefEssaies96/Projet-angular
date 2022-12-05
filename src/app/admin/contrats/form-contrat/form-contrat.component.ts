@@ -32,7 +32,7 @@ export class FormContratComponent implements OnInit {
       dateFinContrat: ['', [Validators.required]],
       specialite: ['', [Validators.required]],
       archive: ['', [Validators.required]],
-      montantContrat: ['', [Validators.required]]
+      montantContrat: ['', [Validators.required, Validators.min(100), Validators.max(90000)]]
     });
 
     let id = this.route.snapshot.params['idC'];

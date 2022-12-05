@@ -50,7 +50,7 @@
         let i = index">
         <td>{{stage.dateDebutStage}}</td>
         <td>{{stage.dateFinStage}}</td>
-        <td>{{stage.typeStage}}</td>
+        <td [ngStyle]="{'color': stage.StageEte === 'IA'  ? 'green' : stage.StageImmersion === 'SECURITE' ? 'blue' : 'red'}" >{{stage.typeStage}}</td>
         <td>{{stage.resumeStage}}</td>
         <td>
           <button [routerLink]="['/admin/stages/details',stage.idStage]"  class="btn btn-sm btn-primary">

@@ -44,10 +44,17 @@
             
             <div class="form-group">
                 <label>Resume Stage</label>
-                <input [(ngModel)]="stage.resumeStage" type="text" name="resumeStage" class="form-control" #rs="ngModel" required>
+                <input [(ngModel)]="stage.resumeStage" type="text" name="resumeStage" class="form-control" #rs="ngModel" required
+                minlength="10" maxlength="50">
                 <div class="alert alert-danger" *ngIf="rs.touched && rs.invalid">
                     <p *ngIf="rs.hasError('required')">
                         Resume is required
+                    </p>
+                    <p *ngIf="rs.hasError('minlength')">
+                        Resume is required with minlength 10
+                    </p>
+                    <p *ngIf="rs.hasError('maxlength')">
+                        Resume is required with maxlength 50
                     </p>
                 </div>
             </div>

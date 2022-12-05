@@ -48,7 +48,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let contrat of listContrat
+      <tr [ngStyle]="{'background-color': contrat.specialite === 'IA'  ? '#E8FEE7' : contrat.specialite === 'SECURITE' ? '#E7FEFE' : contrat.specialite === 'CLOUD' ? '#F3D8FE' : '#D8DFFE'}" *ngFor="let contrat of listContrat
         | searchContrat: [searchValue.value] : [searchCategory.value]
         | paginate : {
           itemsPerPage: tableSize,
