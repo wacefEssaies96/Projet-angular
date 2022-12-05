@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
@@ -19,6 +20,7 @@ export class FormEtudiantComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
     private router: Router,
@@ -56,6 +58,7 @@ export class FormEtudiantComponent implements OnInit {
     if (this.action == 'Add') {
       this.crudsService.add(this.AdvancedService.EtudiantControllerName, this.etudiant).subscribe({
         next: () => {
+          this.alertService.alert("SUCCESS","Etudiant Added successfuly");
           this.router.navigate(['/admin/student/'])
         },
         error: (error) => {
@@ -69,6 +72,7 @@ export class FormEtudiantComponent implements OnInit {
     else if(this.action == 'Register'){
       this.auth.register(this.etudiant).subscribe({
         next: () => {
+          this.alertService.alert("SUCCESS","Registration success");
           this.router.navigate(['login'])
         },
         error: (error) => {
@@ -82,6 +86,7 @@ export class FormEtudiantComponent implements OnInit {
     else if (this.action == 'Update') {
       this.crudsService.update(this.AdvancedService.EtudiantControllerName, this.etudiant).subscribe({
         next: () => {
+          this.alertService.alert("SUCCESS","Etudiant Updated successfuly");
           this.router.navigate(['/admin/student/'])
         },
         error: (error) => {

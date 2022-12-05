@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Projet } from 'src/app/core/model/projet';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
  
 
@@ -18,6 +19,7 @@ export class FormProjetComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute, 
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService
     ) { }
@@ -45,7 +47,10 @@ SaveProjet(){
   if(this.action="Add"){
     console.log("add")
     this.crudsService.add(this.AdvancedService.ProjetControllerName,this.projet).subscribe(
-      ()=>this.router.navigate(['/admin/projets/list'])
+      ()=>{
+        this.alertService.alert("SUCCESS","Projet Added successfuly");
+        this.router.navigate(['/admin/projets/list'])
+      }
 
     )
   }
@@ -53,7 +58,10 @@ SaveProjet(){
     
     console.log("update")
     this.crudsService.update(this.AdvancedService.ProjetControllerName,this.projet).subscribe(
-      ()=>this.router.navigate(['/admin/projets/list'])
+      ()=>{
+        this.alertService.alert("SUCCESS","Projet Updated successfuly");
+        this.router.navigate(['/admin/projets/list'])
+      }
     )
   }
 

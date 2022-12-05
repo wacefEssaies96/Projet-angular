@@ -9,21 +9,21 @@
         <form [formGroup]="form" (ngSubmit)="SaveContrat()" class="forms-sample">
 
             <div class="form-group">
-                <label>Date Debut Contrat</label>
+                <label>Start Date Contrat</label>
                 <input [(ngModel)]="contrat.dateDebutContrat" type="date" formControlName="dateDebutContrat" class="form-control">
                 <div class="alert alert-danger" *ngIf="form.controls['dateDebutContrat'].touched && form.controls['dateDebutContrat'].invalid">
                     <p *ngIf="form.controls['dateDebutContrat'].hasError('required')">
-                        Date Debut Contrat is required
+                        Start Date Contrat is required
                     </p>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Date Fin Contrat</label>
+                <label>End Date Contrat</label>
                 <input [(ngModel)]="contrat.dateFinContrat" type="date" formControlName="dateFinContrat" class="form-control">
                 <div class="alert alert-danger" *ngIf="form.controls['dateFinContrat'].touched && form.controls['dateFinContrat'].invalid">
                     <p *ngIf="form.controls['dateFinContrat'].hasError('required')">
-                        Date Fin Contrat is required
+                        End Date Contrat is required
                     </p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             </div>
             
             <div class="form-group">
-                <label>Specialite </label>
+                <label>Speciality </label>
                 <select [(ngModel)]="contrat.specialite" formControlName="specialite" class="form-control">
                     <option value="IA" selected>IA</option>
                     <option value="RESEAUX">RESEAUX</option>
@@ -51,17 +51,17 @@
                 </select>
                 <div class="alert alert-danger" *ngIf="form.controls['specialite'].touched && form.controls['specialite'].invalid">
                     <p *ngIf="form.controls['specialite'].hasError('required')">
-                        Specialite is required
+                        Speciality is required
                     </p>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>Montant</label>
+                <label>Amount</label>
                 <input [(ngModel)]="contrat.montantContrat" type="number" formControlName="montantContrat" class="form-control">
                 <div class="alert alert-danger" *ngIf="form.controls['montantContrat'].touched && form.controls['montantContrat'].invalid">
                     <p *ngIf="form.controls['montantContrat'].hasError('required')">
-                        Montant is required
+                        Amount is required
                     </p>
                 </div>
             </div>

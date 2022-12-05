@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class AssignDepartementToUniversityComponent implements OnInit {
   public test: boolean=false
 
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
     private currentRoute: ActivatedRoute) { }
@@ -35,7 +37,10 @@ export class AssignDepartementToUniversityComponent implements OnInit {
 
     assingUnivDep(departement: Departement){
       this.AdvancedService.assignUniversityToDepartement(this.idUniv,departement.idDepartement).subscribe(
-        () => {this.test=true;}
+        () => {
+          this.alertService.alert("SUCCESS","University assigned to departement successfuly");
+          this.test=true;
+        }
     )
   }
 

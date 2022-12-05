@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class ListEtudiantComponent implements OnInit {
   public search: string;
 
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService
     ) { }
@@ -35,7 +37,9 @@ export class ListEtudiantComponent implements OnInit {
   delete(e: Etudiant){
     let i = this.etudiants.indexOf(e);
     this.crudsService.delete(this.AdvancedService.EtudiantControllerName, e.idEtudiant).subscribe(
-      ()=>{this.etudiants.splice(i,1)}
+      ()=>{
+        this.alertService.alert("SUCCESS","Etudiant Deleted successfuly");
+        this.etudiants.splice(i,1)}
     );
   }
 

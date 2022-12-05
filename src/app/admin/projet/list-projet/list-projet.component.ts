@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Projet } from 'src/app/core/model/projet';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class ListProjetComponent implements OnInit {
   search: string;
 
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
     private router:Router) { }
@@ -25,7 +27,10 @@ export class ListProjetComponent implements OnInit {
   delete(p:Projet){
     this.crudsService.delete(this.AdvancedService.ProjetControllerName,p.idprojet).subscribe(
 
-    ()=> {this.router.navigate(['/admin/projets'])})
+    ()=> {
+      this.alertService.alert("SUCCESS","Projet Deleted successfuly");
+      this.router.navigate(['/admin/projets'])
+    })
   }
 
 }

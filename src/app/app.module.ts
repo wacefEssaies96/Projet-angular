@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardService } from './core/services/auth-guard.service';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*.In our AppModule, we then need to specify the component that will serve as the entry point component for our application.
 In our app.module.ts file where we import the entry component (conventionally AppComponent) and supply it as the only item
 in our bootstrap array inside the NgModule configuration object. eg. bootstrap[AppComponent]*/
@@ -23,7 +25,9 @@ in our bootstrap array inside the NgModule configuration object. eg. bootstrap[A
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

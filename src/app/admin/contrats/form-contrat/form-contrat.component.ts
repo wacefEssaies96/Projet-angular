@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contrat } from 'src/app/core/model/contrat';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class FormContratComponent implements OnInit {
   public action:String;
   public form:FormGroup;
   constructor(
+    private alertService : AlertService,
     private fb : FormBuilder,
     private crudsService : CrudsService,
     private AdvancedService : AdvancedServicesService,
@@ -47,12 +49,18 @@ export class FormContratComponent implements OnInit {
   SaveContrat(){
     if(this.action=="Add"){
       this.crudsService.add(this.AdvancedService.ContratControllerName,this.contrat).subscribe(
-        ()=>this.router.navigate(['/admin/contrats/ListeContrats'])
+        ()=>{
+          this.alertService.alert("SUCCESS","Contrat  Added successfuly");
+          this.router.navigate(['/admin/contrats/ListeContrats'])
+        }
       )
       
     }else if(this.action=="Update"){
       this.crudsService.update(this.AdvancedService.ContratControllerName,this.contrat).subscribe(
-        ()=>this.router.navigate(['/admin/contrats/ListeContrats'])
+        ()=>{
+          this.alertService.alert("SUCCESS","Contrat  Updated successfuly");
+          this.router.navigate(['/admin/contrats/ListeContrats'])
+        }
       )
     }
     

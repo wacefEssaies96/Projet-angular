@@ -10,11 +10,11 @@
   <div class="col-md-3">
     <label for="searchCategory">Category </label>
     <select [formControl]="searchCategory" id="searchCategory"  class="form-control" style="border: 1px solid blue;">
-      <option value="dateDebutContrat" selected>Date Debut</option>
-      <option value="dateFinContrat">Date Fin</option>
+      <option value="dateDebutContrat" selected>Start Debut</option>
+      <option value="dateFinContrat">End Date</option>
       <option value="archive">Archive</option>
-      <option value="specialite">Specialite</option>
-      <option value="montantContrat">Montant</option>
+      <option value="specialite">Speciality</option>
+      <option value="montantContrat">Amount</option>
     </select>
   </div>
   <div class="col-md-3">
@@ -22,8 +22,8 @@
     <input *ngIf="searchCategory.value=='dateDebutContrat'" type="date" id="searchValue" [formControl]="searchValue"  class="form-control">
     <input *ngIf="searchCategory.value=='dateFinContrat'" type="date" id="searchValue" [formControl]="searchValue"  class="form-control">
     <select  *ngIf="searchCategory.value=='archive'" id="searchValue" [formControl]="searchValue" class="form-control">
-      <option value="true" selected>Oui</option>
-      <option value="false">Non</option>
+      <option value="true" selected>Yes</option>
+      <option value="false">No</option>
     </select>
     <select *ngIf="searchCategory.value=='specialite'" id="searchValue" [formControl]="searchValue" class="form-control">
       <option value="IA" selected>IA</option>
@@ -39,12 +39,12 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Date Debut</th>
-        <th>Date Fin</th>
-        <th>Specialite</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Speciality</th>
         <th>Archive</th>
-        <th>Montant</th>
-        <th>Details</th>
+        <th>Amount  </th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -64,6 +64,10 @@
         <td>
           <button   [routerLink]="['/admin/contrats/details',contrat.idContrat]"  class="btn btn-sm btn-primary">
             Details
+          </button>
+          &nbsp;
+          <button   [routerLink]="['/admin/contrats/affect-Contrat-to-Etudiant',contrat.idContrat]"  class="btn btn-sm btn-primary">
+            Asign To Etudiant 
           </button>
         </td>
       </tr>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Universite } from 'src/app/core/model/universite';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class FormUniversiteComponent implements OnInit {
   public universite : Universite;
 
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
     private router: Router, 
@@ -40,12 +42,16 @@ export class FormUniversiteComponent implements OnInit {
   saveUniversite(){
     if(this.action=='Add'){
       this.crudsService.add(this.AdvancedService.UniversiteControllerName,this.universite).subscribe(
-        ()=>{this.router.navigate(['/admin/universite/list'])}
+        ()=>{
+          this.alertService.alert("SUCCESS","University Added successfuly");
+          this.router.navigate(['/admin/universite/list'])}
       )
     }
     else if(this.action=='Update'){
       this.crudsService.update(this.AdvancedService.UniversiteControllerName,this.universite).subscribe(
-        ()=>{this.router.navigate(['/admin/universite/list'])}
+        ()=>{
+          this.alertService.alert("SUCCESS","University Update successfuly");
+          this.router.navigate(['/admin/universite/list'])}
       )
     }
   }

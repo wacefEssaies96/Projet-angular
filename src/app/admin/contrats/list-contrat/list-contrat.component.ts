@@ -27,7 +27,7 @@ export class ListContratComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.title=" Liste Contrats";
+    this.title="Contrats list";
     this.fetchContrats();
     
   }

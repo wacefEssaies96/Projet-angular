@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { searchContrat } from 'src/app/core/search/search-contrat';
+import { AffectContratToEtudiantComponent } from './affect-contrat-to-etudiant/affect-contrat-to-etudiant.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { searchContrat } from 'src/app/core/search/search-contrat';
     ListContratComponent,
     FormContratComponent,
     DetailsContratComponent,
-    searchContrat
+    searchContrat,
+    AffectContratToEtudiantComponent
   ],
   imports: [
     CommonModule,

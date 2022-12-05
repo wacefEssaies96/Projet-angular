@@ -1,12 +1,12 @@
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Departements</h4>
+        <h4 class="card-title">Students</h4>
         <div style="float: right;">
             <input type="text" class="form-control" placeholder="&#61442; Search Here" title="Search here"
                 [(ngModel)]="search">
         </div>
         <p class="card-description">
-            List of departements
+            List of students
         </p>
         <div class="table-responsive">
             <form #f="ngForm">
@@ -14,19 +14,24 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Date de naissance</th>
+                            <th>Option</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let d of list | filter: search">
-                            <td>{{ d.idDepartement }} <input disabled type="hidden" [(ngModel)]="d.idDepartement"
-                                    name="departement-{{d.idDepartement}}" #i="ngModel"></td>
-                            <td>{{ d.nomDepart }} <input disabled type="hidden" [(ngModel)]="d.nomDepart"
-                                    name="departement-{{d.nomDepart}}" #n="ngModel"></td>
+                        <tr *ngFor="let e of etudiants | filter:search">
+                            <td>{{ e.idEtudiant }}</td>
+                            <td>{{ e.nomE }}</td>
+                            <td>{{ e.prenomE }}</td>
+                            <td>{{ e.dateNaissance }}</td>
+                            <td>{{ e.op }}</td>
                             <td>
                                 <button class="btn btn-sm btn-outline-success"
-                                    (click)="assignToDepartement(d)">Assign</button>
+                                    (click)="affectContrattoEtudiant(e)">Assign
+                                </button>
                             </td>
                         </tr>
                     </tbody>

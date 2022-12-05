@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cours } from 'src/app/core/model/cours';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class ListCoursComponent implements OnInit {
   public listCours: Cours[];
   public search: string;
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService
     ) { }
@@ -34,7 +36,10 @@ export class ListCoursComponent implements OnInit {
   deleteCours(c:Cours){
     let i=this.listCours.indexOf(c);
     this.crudsService.delete(this.AdvancedService.CoursControllerName,c.idCour).subscribe(
-      ()=>{this.listCours.splice(i,1)}
+      ()=>{
+        this.alertService.alert("SUCCESS","Cour  Deleted successfuly");
+        this.listCours.splice(i,1)
+      }
     )
   }
 

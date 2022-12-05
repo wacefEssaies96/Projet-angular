@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cours } from 'src/app/core/model/cours';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class AssignCoursToUniversityComponent implements OnInit {
   public test: boolean=false
 
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
     private currentRoute: ActivatedRoute
@@ -36,7 +38,9 @@ export class AssignCoursToUniversityComponent implements OnInit {
 
     assingUnivDep(cours: Cours){
       this.AdvancedService.assignUniversityTocour(this.idUniv,cours.idCour).subscribe(
-        () => {this.test=true;}
+        () => {
+          this.alertService.alert("SUCCESS","University assigned to cour successfuly");
+          this.test=true;}
     )
   }
 

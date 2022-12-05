@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Stage } from 'src/app/core/model/stage';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
@@ -18,6 +19,8 @@ export class ListStageComponent implements OnInit {
   count: number = 0;
   tableSize: number = 5;
 
+  
+
   public title: String;
   public listStage: any[];
 
@@ -27,6 +30,7 @@ export class ListStageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.title=" Liste Stages";
     this.fetchStages();
     

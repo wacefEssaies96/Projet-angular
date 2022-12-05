@@ -9,21 +9,21 @@
         <form #formStage="ngForm" class="forms-sample">
 
             <div class="form-group">
-                <label>Date Debut Stage</label>
+                <label>Start Date Stage</label>
                 <input [(ngModel)]="stage.dateDebutStage" type="date" name="dateDebutStage" class="form-control" #dds="ngModel" required>
                 <div class="alert alert-danger" *ngIf="dds.touched && dds.invalid">
                     <p *ngIf="dds.hasError('required')">
-                        Date Debut Stage is required
+                        Start Date Stage is required
                     </p>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Date Fin Stage</label>
+                <label>End Date Stage</label>
                 <input [(ngModel)]="stage.dateFinStage" type="date" name="dateFinStage" class="form-control"  #dfs="ngModel"required>
                 <div class="alert alert-danger" *ngIf="dfs.touched && dfs.invalid">
                     <p *ngIf="dfs.hasError('required')">
-                        Date Fin Stage is required
+                        End Date Stage is required
                     </p>
                 </div>
             </div>

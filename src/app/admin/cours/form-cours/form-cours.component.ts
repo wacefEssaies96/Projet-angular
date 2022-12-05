@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cours } from 'src/app/core/model/cours';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class FormCoursComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
     private router: Router,
@@ -46,12 +48,17 @@ export class FormCoursComponent implements OnInit {
   submit(){
     if(this.action == 'Add'){
       this.crudsService.add(this.AdvancedService.CoursControllerName,this.cours).subscribe(
-        ()=>{ this.router.navigate(['/admin/cours/list'])}
+        ()=>{
+          this.alertService.alert("SUCCESS","Cour Added successfuly");
+          this.router.navigate(['/admin/cours/list'])}
       );
     }
     else if(this.action == 'Update'){
       this.crudsService.update(this.AdvancedService.CoursControllerName,this.cours).subscribe(
-        () => this.router.navigate(['/admin/cours/list'])
+        () => {
+          this.alertService.alert("SUCCESS","Cour Updated successfuly");
+          this.router.navigate(['/admin/cours/list'])
+        }
       )
     }
     else{

@@ -4,7 +4,8 @@ export class Contrat {
   dateFinContrat: Date;
   specialite: Spec;
   archive: boolean;
-  montantContrat: number
+  montantContrat: number;
+  etudiant: number
 }
 
 export enum Spec {

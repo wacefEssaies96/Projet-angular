@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stage } from 'src/app/core/model/stage';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class DetailsStageComponent implements OnInit {
   public title:String;
   
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
     private router : Router,
@@ -34,7 +36,9 @@ export class DetailsStageComponent implements OnInit {
   }
   deleteStage(s: Stage): void{
     this.crudsService.delete(this.AdvancedService.StageControllerName,s.idStage).subscribe(
-      ()=>{this.router.navigate(['/admin/stages/ListeStages'])}
+      ()=>{
+        this.alertService.alert("SUCCESS","Stage  Deleted successfuly");
+        this.router.navigate(['/admin/stages/ListeStages'])}
     );
   }
   

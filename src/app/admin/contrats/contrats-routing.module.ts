@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AffectContratToEtudiantComponent } from './affect-contrat-to-etudiant/affect-contrat-to-etudiant.component';
 import { ContratsComponent } from './contrats.component';
 import { DetailsContratComponent } from './details-contrat/details-contrat.component';
 import { FormContratComponent } from './form-contrat/form-contrat.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
     { path: 'details/:idC', component: DetailsContratComponent },
     { path: 'ListeContrats', component: ListContratComponent },
     { path: 'addContrat', component: FormContratComponent },
-    { path: 'updateContrat/:idC', component: FormContratComponent }
+    { path: 'updateContrat/:idC', component: FormContratComponent },
+    { path: 'affect-Contrat-to-Etudiant/:idC', component: AffectContratToEtudiantComponent }
   ]}
   
 ];

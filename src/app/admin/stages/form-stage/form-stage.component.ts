@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stage } from 'src/app/core/model/stage';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class FormStageComponent implements OnInit {
   public stage : Stage;
 
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService,
     private router: Router, 
@@ -36,12 +38,18 @@ export class FormStageComponent implements OnInit {
   SaveStage(){
     if(this.action=='Add'){
       this.crudsService.add(this.AdvancedService.StageControllerName,this.stage).subscribe(
-        ()=>{this.router.navigate(['/admin/stages/ListeStages'])}
+        ()=>{
+          this.alertService.alert("SUCCESS","Stage Added successfuly");
+          this.router.navigate(['/admin/stages/ListeStages'])
+        }
       )
     }
     else if(this.action=='Update'){
       this.crudsService.update(this.AdvancedService.StageControllerName,this.stage).subscribe(
-        ()=>{this.router.navigate(['/admin/stages/ListeStages'])}
+        ()=>{
+          this.alertService.alert("SUCCESS","Stage  Updated successfuly");
+          this.router.navigate(['/admin/stages/ListeStages'])
+        }
       )
     }
   }

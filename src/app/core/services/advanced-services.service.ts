@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Contrat } from '../model/contrat';
 import { Universite } from '../model/universite';
 
 @Injectable({
@@ -24,6 +25,9 @@ export class AdvancedServicesService {
     private httpclient: HttpClient
   ) { }
 
+  affectContratToEtudiant(nom : string,prenom : string, contrat: Contrat){
+    return this.httpclient.post(this.url+this.ContratControllerName+'/affect-contrat-etudiant/'+nom+'/'+prenom,contrat );
+  }
 
   assignEtudiantToDepartement(idE: number, idD: number) {
     return this.httpclient.get(this.url + this.EtudiantControllerName + '/assign-etudiant-departement/' + idE + '/' + idD);

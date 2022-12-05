@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class AssignDepartementComponent implements OnInit {
   public search: string;
 
   constructor(
+     private alertService : AlertService,
      private AdvancedService : AdvancedServicesService,
      private crudsService : CrudsService,
      private currentRoute: ActivatedRoute,
@@ -35,9 +37,12 @@ export class AssignDepartementComponent implements OnInit {
       }
     })
   }
+
   assignToDepartement(departement: Departement){
     this.AdvancedService.assignEtudiantToDepartement(this.ide,departement.idDepartement).subscribe(
-      () => {this.router.navigate(['/student/list'])}
+      () => {
+        this.alertService.alert("SUCCESS","Etudiant assigned to Departement  successfuly");
+        this.router.navigate(['/admin/student/list'])}
     );
   }
 

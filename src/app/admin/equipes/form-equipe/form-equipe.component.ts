@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Equipe } from 'src/app/core/model/equipe';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class FormEquipeComponent implements OnInit {
   eqnamePattern = "[A-Za-z]{6,12}$";
 
   constructor(
+    private alertService : AlertService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -48,13 +50,19 @@ export class FormEquipeComponent implements OnInit {
   SaveEquipe(){
     if(this.action="Add"){
       this.crudsService.add(this.AdvancedService.EquipeControllerName,this.equipe).subscribe(
-        ()=>this.router.navigate(['/admin/equipes/ListeEquipes'])
+        ()=>{
+          this.alertService.alert("SUCCESS","Equipe Added successfuly");
+          this.router.navigate(['/admin/equipes/ListeEquipes'])
+        }
   
       )
     }
     else if(this.action="Update"){
       this.crudsService.update(this.AdvancedService.EquipeControllerName,this.equipe).subscribe(
-        ()=>this.router.navigate(['/admin/equipes/ListeEquipes'])
+        ()=>{
+          this.alertService.alert("SUCCESS","Equipe Updated successfuly");
+          this.router.navigate(['/admin/equipes/ListeEquipes'])
+        }
       )
     }
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contrat } from 'src/app/core/model/contrat';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class DetailsContratComponent implements OnInit {
   public title:String;
   
   constructor(
+    private alertService : AlertService,
     private crudsService : CrudsService,
     private AdvancedService : AdvancedServicesService,
     private router : Router,
@@ -34,7 +36,10 @@ export class DetailsContratComponent implements OnInit {
   }
   deleteContrat(c: Contrat): void{
     this.crudsService.delete(this.AdvancedService.ContratControllerName,c.idContrat).subscribe(
-      ()=>{this.router.navigate(['/admin/contrats/ListeContrats'])}
+      ()=>{
+        this.alertService.alert("SUCCESS","Contrat  Deleted successfuly");
+        this.router.navigate(['/admin/contrats/ListeContrats'])
+      }
     );
   }
   

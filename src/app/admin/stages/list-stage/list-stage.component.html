@@ -10,9 +10,9 @@
   <div class="col-md-3">
     <label for="searchCategory">Category </label>
     <select [formControl]="searchCategory" id="searchCategory"  class="form-control" style="border: 1px solid blue;">
-      <option value="dateDebutStage" selected>Date Debut</option>
-      <option value="dateFinStage">Date Fin</option>
-      <option value="typeStage">Type Stage</option>
+      <option value="dateDebutStage" selected>Start Date</option>
+      <option value="dateFinStage">End Date</option>
+      <option value="typeStage">Stage Type</option>
     </select>
   </div>
   <div class="col-md-3">
@@ -31,10 +31,11 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Date Debut</th>
-        <th>Date Fin</th>
+        <th>Start Date</th>
+        <th>End Date</th>
         <th>Type</th>
         <th>Resume</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>

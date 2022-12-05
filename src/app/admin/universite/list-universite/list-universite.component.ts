@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Universite } from 'src/app/core/model/universite';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { AlertService } from 'src/app/core/services/alert.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class ListUniversiteComponent implements OnInit {
   public reverse: boolean=false;
 
   constructor(
+    private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
     private crudsService : CrudsService
     ) { }
@@ -38,7 +40,9 @@ export class ListUniversiteComponent implements OnInit {
   deleteUniversite(u:Universite){
     let i=this.listUniver.indexOf(u);
     this.crudsService.delete(this.AdvancedService.UniversiteControllerName,u.idUniv).subscribe(
-      ()=>{this.listUniver.splice(i,1)}
+      ()=>{
+        this.alertService.alert("SUCCESS","University Deleted successfuly");
+        this.listUniver.splice(i,1)}
     )
   }
   
