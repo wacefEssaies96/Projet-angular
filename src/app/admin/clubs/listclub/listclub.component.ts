@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Club } from 'src/app/core/model/club';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-listclub',
@@ -9,10 +11,10 @@ import { Club } from 'src/app/core/model/club';
 export class ListclubComponent implements OnInit {
   public clubs: Club[];
   public search: string;
-  constructor(private clubService : ClubService) { }
+  constructor(private clubService : CrudsService, private u : AdvancedServicesService) { }
 
   ngOnInit(): void {
-    this.clubService.getAllClub().subscribe({
+    this.clubService.getAll(this.u.ClubControllerName).subscribe({
       next : (params) => {
         this.clubs = params;
       },
@@ -26,7 +28,7 @@ export class ListclubComponent implements OnInit {
   }
   delete(c: Club){
     let i = this.clubs.indexOf(c);
-    this.clubService.deleteClub(c.idClub).subscribe(
+    this.clubService.delete(this.u.ClubControllerName,c.idClub).subscribe(
       ()=>{this.clubs.splice(i,1)}
     );
   }

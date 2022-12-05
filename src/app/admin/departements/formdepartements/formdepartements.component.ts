@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
-import { DepartementService } from 'src/app/core/services/departement.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-formdepartements',
@@ -9,49 +10,43 @@ import { DepartementService } from 'src/app/core/services/departement.service';
   styleUrls: ['./formdepartements.component.css']
 })
 export class FormdepartementsComponent implements OnInit {
-public label:String;
-public action:String="editer";
-public departement:Departement;
-  id: any;
-  msg:String;
-  url:any
-  constructor(  private router:Router, private currentRoute: ActivatedRoute,private ds:DepartementService) { }
+  public label: String;
+  public action: String = "editer";
+  public departement: Departement;
+  msg: String;
+  url: any
+  constructor(private router: Router, private currentRoute: ActivatedRoute, private ds: CrudsService, private u: AdvancedServicesService) { }
 
   ngOnInit(): void {
-   this.id= this.currentRoute.snapshot.params['id'];
-   this.url = this.currentRoute.snapshot.paramMap.get("url"); // Snapshot param
-console.log("url"+this.url)
-    console.log("le id est "+this.id)
-    if(this.id!=null){
+
+    let id = this.currentRoute.snapshot.params['id'];
+    if (id != null) {
       //update
-      this.action="editer ";
-
-      //this.product= this.productService.getProductByID(id);
-      this.ds.getDepartementById(this.id).subscribe(
-        (object: Departement)=> this.departement=object
+      this.action = "editer ";
+      this.ds.getById(this.u.DepartementControllerName, id).subscribe(
+        (object: Departement) => { this.departement = object }
       )
-      console.log(this.departement)
-      console.log(this.id)
-    }else
-    { this.action="add";
-      this.departement=new Departement();}
-
-  }
-saveDepartement(){
-    if(this.action=='add')
-    {
-    //this.productService.list.push(this.product);
-    this.ds.save(this.departement).subscribe(
-      ()=>{this.router.navigate(["/admin/departements/list"])}
-    )
-   }
-    else {
-      this.ds.update(this.departement,this.id).subscribe(
-       ()=>{this.router.navigate(["/admin/departements/list"])}
-      )
+    } else {
+      this.action = "add";
+      this.departement = new Departement();
     }
 
-    console.log(this.msg)
+  }
+  saveDepartement() {
+    if (this.action == 'add') {
+      //this.productService.list.push(this.product);
+      this.ds.add(this.u.DepartementControllerName, this.departement).subscribe(
+        () => { this.router.navigate(["/admin/departements/list"]) }
+      )
+    }
+    else if (this.action == "editer ") {
+      this.ds.update(this.u.DepartementControllerName, this.departement).subscribe(
+        () => {
+         // console.log('update : ' + this.departement)
+          this.router.navigate(["/admin/departements/list"]) 
+        }
+      )
+    }
   }
 
 

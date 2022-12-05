@@ -8,7 +8,7 @@ import { Projet } from 'src/app/core/model/projet';
 })
 export class ProjetCardChildComponent implements OnInit {
 
-  @Input() projet: Projet;
+  @Input() pr: Projet;
   constructor() { }
 
   ngOnInit(): void {

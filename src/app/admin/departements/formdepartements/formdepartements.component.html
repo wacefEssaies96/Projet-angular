@@ -25,11 +25,10 @@
       </div>
 
       <button
-        type="submit"
+        type="button"
         class="btn btn-primary me-2"
         [disabled]="f.invalid"
         (click)="saveDepartement()"
-        [routerLink]="['/admin/departements']"
       >
         {{ action }}
       </button>

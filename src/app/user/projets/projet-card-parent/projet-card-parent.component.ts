@@ -18,9 +18,10 @@ export class ProjetCardParentComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.crudsService.getAll(this.AdvancedService.StageControllerName).subscribe({
+    this.crudsService.getAll(this.AdvancedService.ProjetControllerName).subscribe({
       next:(data)=>{
         this.listProjet=data;  
+        console.log(data);
       },
       error: ()=>{console.log('error')},
       complete :()=>{console.log('complete')}

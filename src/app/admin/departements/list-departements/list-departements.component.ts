@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Departement } from 'src/app/core/model/departement';
-import { DepartementService } from 'src/app/core/services/departement.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-list-departements',
@@ -10,10 +11,10 @@ import { DepartementService } from 'src/app/core/services/departement.service';
 export class ListDepartementsComponent implements OnInit {
   list: any;
   search: any;
-  constructor(private ds: DepartementService) { }
+  constructor(private ds: CrudsService, private u: AdvancedServicesService) { }
 
   ngOnInit(): void {
-    this.ds.getAllDepartements().subscribe(res => {
+    this.ds.getAll(this.u.DepartementControllerName).subscribe(res => {
       this.list = res; console.log(res)
 
     }
@@ -21,7 +22,7 @@ export class ListDepartementsComponent implements OnInit {
   }
   delete(d: Departement) {
     let i = this.list.indexOf(d);
-    this.ds.delete(d.idDepartement).subscribe(
+    this.ds.delete(this.u.DepartementControllerName, d.idDepartement).subscribe(
       () => { this.list.splice(i, 1) }
     )
   }

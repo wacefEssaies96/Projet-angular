@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Club } from 'src/app/core/model/club';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class FormclubComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private clubService: CrudsService,
     private router: Router,
-    private currentRoute: ActivatedRoute
+    private currentRoute: ActivatedRoute,
+    private u: AdvancedServicesService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class FormclubComponent implements OnInit {
     let id = this.currentRoute.snapshot.params['id'];
     if (id != null) {
       this.action = 'Update';
-      this.clubService.getClubByID(id).subscribe(
+      this.clubService.getById(this.u.ClubControllerName, id).subscribe(
         (object: Club) => this.club = object
       )
     } else {
@@ -40,12 +42,12 @@ export class FormclubComponent implements OnInit {
   }
   submit() {
     if (this.action == 'Add') {
-      this.clubService.addClub(this.club).subscribe(
+      this.clubService.add(this.u.ClubControllerName, this.club).subscribe(
         () => { this.router.navigate(['/admin/clubs/list']) }
       );
     }
     else if (this.action == 'Update') {
-      this.clubService.updateClub(this.club).subscribe(
+      this.clubService.update(this.u.ClubControllerName, this.club).subscribe(
         () => this.router.navigate(['/admin/clubs/list'])
       )
     }

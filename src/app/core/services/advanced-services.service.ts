@@ -17,22 +17,30 @@ export class AdvancedServicesService {
   public ProjetControllerName = '/projet';
   public StageControllerName = '/stage';
   public UniversiteControllerName = '/universite';
+  public DetaileEquipeControllerName = '/detailequipe';
+  public ClubControllerName = '/club';
 
   constructor(
-    private httpclient : HttpClient
+    private httpclient: HttpClient
   ) { }
 
-  
-  assignEtudiantToDepartement(idE: number, idD: number){
-    return this.httpclient.get(this.url+this.EtudiantControllerName+'/assign-etudiant-departement/'+idE+'/'+idD);
+
+  assignEtudiantToDepartement(idE: number, idD: number) {
+    return this.httpclient.get(this.url + this.EtudiantControllerName + '/assign-etudiant-departement/' + idE + '/' + idD);
   }
-  getUniversiteByName(name:string){
-    return this.httpclient.get<Universite>(this.url+'/displayUniversiteByName/'+name)
+  getUniversiteByName(name: string) {
+    return this.httpclient.get<Universite>(this.url + '/universite/displayUniversiteByName/' + name);
   }
-  assignUniversityToDepartement(idUniv: number,idDepartement:number){
-    return this.httpclient.get(this.url+'/assignUnivDepJpql/'+idUniv+'/'+idDepartement)
+  assignUniversityToDepartement(idUniv: number, idDepartement: number) {
+    return this.httpclient.get(this.url + '/universite/assignUnivDepJpql/' + idUniv + '/' + idDepartement);
   }
-  getUniversitiesSortedWithAnyField(field: String){
-    return this.httpclient.get<Universite[]>(this.url+'/getUniversitesWithSort'+field)
+  assignUniversityTocour(idUniv: number, idCour: number) {
+    return this.httpclient.get(this.url + '/universite/assignUnivCourJpql/' + idUniv + '/' + idCour);
+  }
+  getUniversitiesSortedWithAnyField(field: String) {
+    return this.httpclient.get<Universite[]>(this.url + '/universite/getUniversitesWithSort' + field);
+  }
+  retrieve(id: number) {
+    return this.httpclient.get<Universite[]>(this.url + '/departement/get-departements-universite/' + id);
   }
 }

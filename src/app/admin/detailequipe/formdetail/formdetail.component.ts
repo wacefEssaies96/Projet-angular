@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DetailEquipe } from 'src/app/core/model/detailequipe';
-import { DetailequipeService } from 'src/app/core/services/detailequipe.service';
+import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
+import { CrudsService } from 'src/app/core/services/cruds.service';
 
 @Component({
   selector: 'app-formdetail',
@@ -13,7 +14,8 @@ export class FormdetailComponent implements OnInit {
   public detailequipe: DetailEquipe;
 
   constructor(
-    private detailService: DetailequipeService,
+    private detailService: CrudsService,
+    private u: AdvancedServicesService,
     private router: Router,
     private currentRoute: ActivatedRoute) { }
 
@@ -23,7 +25,7 @@ export class FormdetailComponent implements OnInit {
       //update
       this.action = "update";
       //this.product= this.productService.getProductByID(id);
-      this.detailService.findById(id).subscribe(
+      this.detailService.getById(this.u.DetaileEquipeControllerName, id).subscribe(
         (object: DetailEquipe) => { this.detailequipe = object }
       )
 
@@ -38,12 +40,12 @@ export class FormdetailComponent implements OnInit {
       //this.detailequipe.opd="sport";
       console.log(this.detailequipe)
 
-      this.detailService.addDetailEquipe(this.detailequipe).subscribe(
+      this.detailService.add(this.u.DetaileEquipeControllerName, this.detailequipe).subscribe(
         () => { this.router.navigate(['/admin/detailequipe']) }
       )
     }
     else if (this.action == 'update') {
-      this.detailService.updateDetailEquipe(this.detailequipe).subscribe(
+      this.detailService.update(this.u.DetaileEquipeControllerName, this.detailequipe).subscribe(
         () => { this.router.navigate(['/admin/detailequipe']) }
       )
     }
