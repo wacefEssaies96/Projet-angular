@@ -13,6 +13,9 @@ export class ListEtudiantComponent implements OnInit {
 
   public etudiants: Etudiant[];
   public search: string;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
 
   constructor(
     private alertService : AlertService,
@@ -21,6 +24,9 @@ export class ListEtudiantComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.getAll();
+  }
+  getAll(){
     this.crudsService.getAll(this.AdvancedService.EtudiantControllerName).subscribe({
       next : (params) => {
         this.etudiants = params;
@@ -38,9 +44,12 @@ export class ListEtudiantComponent implements OnInit {
     let i = this.etudiants.indexOf(e);
     this.crudsService.delete(this.AdvancedService.EtudiantControllerName, e.idEtudiant).subscribe(
       ()=>{
-        this.alertService.alert("SUCCESS","Etudiant Deleted successfuly");
+        this.alertService.alert("SUCCESS","Student deleted successfuly");
         this.etudiants.splice(i,1)}
     );
   }
-
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getAll();
+  }
 }

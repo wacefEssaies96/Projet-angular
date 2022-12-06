@@ -32,10 +32,12 @@ export class StageComponent implements OnInit {
   createChart() {
     this.chart = new Chart("chartStage", {
       type: 'radar',
+      
       data: {
         labels: this.labels,
         datasets: [
           {
+            label: '',
             data: this.data
           },
         ]

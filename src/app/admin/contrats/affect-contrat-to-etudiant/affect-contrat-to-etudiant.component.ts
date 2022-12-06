@@ -45,7 +45,7 @@ export class AffectContratToEtudiantComponent implements OnInit {
   affectContrattoEtudiant(etudiant: Etudiant){
     this.AdvancedService.affectContratToEtudiant(etudiant.nomE,etudiant.prenomE,this.contrat).subscribe(
       () => {
-        this.alertService.alert("SUCCESS"," Contrat assigned to Etudiant successfuly");
+        this.alertService.alert("SUCCESS"," Contract assigned to student successfuly");
         this.router.navigate(['/admin/contrats/ListeContrats'])}
     );
   }

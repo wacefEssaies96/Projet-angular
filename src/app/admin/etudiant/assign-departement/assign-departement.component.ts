@@ -41,7 +41,7 @@ export class AssignDepartementComponent implements OnInit {
   assignToDepartement(departement: Departement){
     this.AdvancedService.assignEtudiantToDepartement(this.ide,departement.idDepartement).subscribe(
       () => {
-        this.alertService.alert("SUCCESS","Etudiant assigned to Departement  successfuly");
+        this.alertService.alert("SUCCESS","Student assigned to departement successfuly");
         this.test=false;
         //this.router.navigate(['/admin/student/list'])
       }

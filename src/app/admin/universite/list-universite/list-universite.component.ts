@@ -41,7 +41,7 @@ export class ListUniversiteComponent implements OnInit {
     let i=this.listUniver.indexOf(u);
     this.crudsService.delete(this.AdvancedService.UniversiteControllerName,u.idUniv).subscribe(
       ()=>{
-        this.alertService.alert("SUCCESS","University Deleted successfuly");
+        this.alertService.alert("SUCCESS","University deleted successfuly");
         this.listUniver.splice(i,1)}
     )
   }

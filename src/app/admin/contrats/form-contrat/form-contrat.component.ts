@@ -50,7 +50,7 @@ export class FormContratComponent implements OnInit {
     if(this.action=="Add"){
       this.crudsService.add(this.AdvancedService.ContratControllerName,this.contrat).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","Contrat  Added successfuly");
+          this.alertService.alert("SUCCESS","Contract added successfuly");
           this.router.navigate(['/admin/contrats/ListeContrats'])
         }
       )
@@ -58,7 +58,7 @@ export class FormContratComponent implements OnInit {
     }else if(this.action=="Update"){
       this.crudsService.update(this.AdvancedService.ContratControllerName,this.contrat).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","Contrat  Updated successfuly");
+          this.alertService.alert("SUCCESS","Contract updated successfuly");
           this.router.navigate(['/admin/contrats/ListeContrats'])
         }
       )

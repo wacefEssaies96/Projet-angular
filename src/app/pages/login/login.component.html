@@ -10,7 +10,7 @@
                     <h6 class="fw-light">Sign in to continue.</h6>
                     <form class="pt-3">
                         <div class="form-group">
-                            <input class="form-control" [(ngModel)]="username" type="text" name="username" required minlength="3" maxlength="7"
+                            <input class="form-control" [(ngModel)]="username" type="text" name="username" required minlength="3" maxlength="7" placeholder="Username or firstname"
                                 #nu="ngModel">
                             &nbsp;
                             <div class="alert alert-danger" *ngIf="nu.invalid && nu.touched">
@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group">
                             <input class="form-control" [(ngModel)]="pwd" type="password" name="pwd" required minlength="4" maxlength="10"
-                                #np="ngModel">
+                                #np="ngModel" placeholder="Password">
                             &nbsp;
                             <div class="alert alert-danger" *ngIf="np.invalid && np.touched">
                                 <p *ngIf="np.hasError('required') ">

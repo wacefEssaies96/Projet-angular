@@ -37,7 +37,7 @@ export class DetailsContratComponent implements OnInit {
   deleteContrat(c: Contrat): void{
     this.crudsService.delete(this.AdvancedService.ContratControllerName,c.idContrat).subscribe(
       ()=>{
-        this.alertService.alert("SUCCESS","Contrat  Deleted successfuly");
+        this.alertService.alert("SUCCESS","Contract deleted successfuly");
         this.router.navigate(['/admin/contrats/ListeContrats'])
       }
     );

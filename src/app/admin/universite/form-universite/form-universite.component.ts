@@ -44,14 +44,14 @@ export class FormUniversiteComponent implements OnInit {
     if(this.action=='Add'){
       this.crudsService.add(this.AdvancedService.UniversiteControllerName,this.universite).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","University Added successfuly");
+          this.alertService.alert("SUCCESS","University added successfuly");
           this.router.navigate(['/admin/universite/list'])}
       )
     }
     else if(this.action=='Update'){
       this.crudsService.update(this.AdvancedService.UniversiteControllerName,this.universite).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","University Update successfuly");
+          this.alertService.alert("SUCCESS","University update successfuly");
           this.router.navigate(['/admin/universite/list'])}
       )
     }

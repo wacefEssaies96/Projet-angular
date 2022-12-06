@@ -37,7 +37,7 @@ export class DetailsStageComponent implements OnInit {
   deleteStage(s: Stage): void{
     this.crudsService.delete(this.AdvancedService.StageControllerName,s.idStage).subscribe(
       ()=>{
-        this.alertService.alert("SUCCESS","Stage  Deleted successfuly");
+        this.alertService.alert("SUCCESS","Stage deleted successfuly");
         this.router.navigate(['/admin/stages/ListeStages'])}
     );
   }

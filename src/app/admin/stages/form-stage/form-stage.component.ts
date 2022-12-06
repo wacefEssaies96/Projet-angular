@@ -39,7 +39,7 @@ export class FormStageComponent implements OnInit {
     if(this.action=='Add'){
       this.crudsService.add(this.AdvancedService.StageControllerName,this.stage).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","Stage Added successfuly");
+          this.alertService.alert("SUCCESS","Stage added successfuly");
           this.router.navigate(['/admin/stages/ListeStages'])
         }
       )
@@ -47,7 +47,7 @@ export class FormStageComponent implements OnInit {
     else if(this.action=='Update'){
       this.crudsService.update(this.AdvancedService.StageControllerName,this.stage).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","Stage  Updated successfuly");
+          this.alertService.alert("SUCCESS","Stage updated successfuly");
           this.router.navigate(['/admin/stages/ListeStages'])
         }
       )

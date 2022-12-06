@@ -39,7 +39,7 @@ export class AssignCoursToUniversityComponent implements OnInit {
     assingUnivDep(cours: Cours){
       this.AdvancedService.assignUniversityTocour(this.idUniv,cours.idCour).subscribe(
         () => {
-          this.alertService.alert("SUCCESS","University assigned to cour successfuly");
+          this.alertService.alert("SUCCESS","University assigned to course successfuly");
           this.test=true;}
     )
   }

@@ -58,7 +58,7 @@ export class FormEtudiantComponent implements OnInit {
     if (this.action == 'Add') {
       this.crudsService.add(this.AdvancedService.EtudiantControllerName, this.etudiant).subscribe({
         next: () => {
-          this.alertService.alert("SUCCESS","Etudiant Added successfuly");
+          this.alertService.alert("SUCCESS","Student added successfuly");
           this.router.navigate(['/admin/student/'])
         },
         error: (error) => {
@@ -86,7 +86,7 @@ export class FormEtudiantComponent implements OnInit {
     else if (this.action == 'Update') {
       this.crudsService.update(this.AdvancedService.EtudiantControllerName, this.etudiant).subscribe({
         next: () => {
-          this.alertService.alert("SUCCESS","Etudiant Updated successfuly");
+          this.alertService.alert("SUCCESS","Student updated successfuly");
           this.router.navigate(['/admin/student/'])
         },
         error: (error) => {

@@ -8,10 +8,10 @@ export class InterceptorService implements HttpInterceptor {
   constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.headers.get("skip")){
+    if (req.headers.get("skip")) {
       return next.handle(req);
     }
-    const modifiedReq = req.clone({ 
+    const modifiedReq = req.clone({
       headers: req.headers.set('Authorization', 'Basic ' + btoa(localStorage.getItem("username") + ':' + localStorage.getItem("password"))),
     });
     return next.handle(modifiedReq);

@@ -48,7 +48,7 @@ SaveProjet(){
     console.log("add")
     this.crudsService.add(this.AdvancedService.ProjetControllerName,this.projet).subscribe(
       ()=>{
-        this.alertService.alert("SUCCESS","Projet Added successfuly");
+        this.alertService.alert("SUCCESS","Project added successfuly");
         this.router.navigate(['/admin/projets/list'])
       }
 
@@ -59,7 +59,7 @@ SaveProjet(){
     console.log("update")
     this.crudsService.update(this.AdvancedService.ProjetControllerName,this.projet).subscribe(
       ()=>{
-        this.alertService.alert("SUCCESS","Projet Updated successfuly");
+        this.alertService.alert("SUCCESS","Project updated successfuly");
         this.router.navigate(['/admin/projets/list'])
       }
     )

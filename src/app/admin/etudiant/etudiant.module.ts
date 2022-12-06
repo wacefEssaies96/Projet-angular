@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AssignDepartementComponent } from './assign-departement/assign-departement.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AssignDepartementComponent } from './assign-departement/assign-departem
     EtudiantRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ]
 })
 export class EtudiantModule { }

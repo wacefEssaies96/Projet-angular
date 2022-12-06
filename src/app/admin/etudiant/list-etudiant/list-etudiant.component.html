@@ -22,18 +22,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr [ngStyle]="{'background-color' : e.sexe === 'homme' ? '#E7FBFE' : '#FEE7F3'}" *ngFor="let e of etudiants | filter:search">
+                    <tr [ngStyle]="{'background-color' : e.sexe === 'homme' ? '#E7FBFE' : '#FEE7F3'}" *ngFor="let e of etudiants | filter:search | paginate : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                      let i = index">
                         <td>{{ e.idEtudiant }}</td>
                         <td>{{ e.nomE }}</td>
                         <td>{{ e.prenomE }}</td>
                         <td>{{ e.dateNaissance }}</td>
                         <td>{{ e.op }}</td>
                         <td>
-                            <a [routerLink]="['/admin/student/update',e.idEtudiant]" class="btn btn-sm btn-outline-warning">
+                            <a [routerLink]="['/admin/student/update',e.idEtudiant]"
+                                class="btn btn-sm btn-outline-warning">
                                 update
                             </a>
                             &nbsp;
-                            <a [routerLink]="['/admin/student/assign-to-departement',e.idEtudiant]" class="btn btn-sm btn-outline-warning">
+                            <a [routerLink]="['/admin/student/assign-to-departement',e.idEtudiant]"
+                                class="btn btn-sm btn-outline-warning">
                                 assign to departement
                             </a>
                             &nbsp;
@@ -44,6 +51,10 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+            </div>
         </div>
     </div>
 </div>

@@ -27,7 +27,7 @@ export class ListequipesComponent implements OnInit {
     this.crudsService.delete(this.AdvancedService.EquipeControllerName,eq.idEquipe).subscribe(
 
     ()=> {
-      this.alertService.alert("SUCCESS","Equipe Deleted successfuly");
+      this.alertService.alert("SUCCESS","Team deleted successfuly");
       this.router.navigate(['/admin/equipes'])
     })
   }

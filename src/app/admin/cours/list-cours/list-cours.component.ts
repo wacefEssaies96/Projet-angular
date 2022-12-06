@@ -37,7 +37,7 @@ export class ListCoursComponent implements OnInit {
     let i=this.listCours.indexOf(c);
     this.crudsService.delete(this.AdvancedService.CoursControllerName,c.idCour).subscribe(
       ()=>{
-        this.alertService.alert("SUCCESS","Cour  Deleted successfuly");
+        this.alertService.alert("SUCCESS","Course deleted successfuly");
         this.listCours.splice(i,1)
       }
     )

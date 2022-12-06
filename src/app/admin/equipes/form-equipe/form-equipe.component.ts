@@ -52,7 +52,7 @@ export class FormEquipeComponent implements OnInit {
     if(this.action="Add"){
       this.crudsService.add(this.AdvancedService.EquipeControllerName,this.equipe).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","Equipe Added successfuly");
+          this.alertService.alert("SUCCESS","Team added successfuly");
           this.router.navigate(['/admin/equipes/ListeEquipes'])
         }
   
@@ -61,7 +61,7 @@ export class FormEquipeComponent implements OnInit {
     else if(this.action="Update"){
       this.crudsService.update(this.AdvancedService.EquipeControllerName,this.equipe).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","Equipe Updated successfuly");
+          this.alertService.alert("SUCCESS","Team updated successfuly");
           this.router.navigate(['/admin/equipes/ListeEquipes'])
         }
       )

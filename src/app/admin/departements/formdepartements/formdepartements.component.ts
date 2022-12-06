@@ -44,14 +44,14 @@ export class FormdepartementsComponent implements OnInit {
       //this.productService.list.push(this.product);
       this.ds.add(this.u.DepartementControllerName, this.departement).subscribe(
         () => {
-        this.alertService.alert("SUCCESS","Departement Added successfuly");
+        this.alertService.alert("SUCCESS","Departement added successfuly");
         this.router.navigate(["/admin/departements/list"]) }
       )
     }
     else if (this.action == "editer ") {
       this.ds.update(this.u.DepartementControllerName, this.departement).subscribe(
         () => {
-          this.alertService.alert("SUCCESS","Departement Updated successfuly");
+          this.alertService.alert("SUCCESS","Departement updated successfuly");
          // console.log('update : ' + this.departement)
           this.router.navigate(["/admin/departements/list"]) 
         }

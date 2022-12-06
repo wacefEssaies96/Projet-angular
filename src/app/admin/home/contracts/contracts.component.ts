@@ -18,7 +18,7 @@ export class ContractsComponent implements OnInit {
   ngOnInit(): void {
     this.labels = new Array();
     this.data = new Array();
-    this.as.getNbrStageByType().subscribe(
+    this.as.getNbrContratBySpecialite().subscribe(
       (data) => {
         for (let i = 0; i < data.length; i++) {
           this.labels.push(data[i][1])

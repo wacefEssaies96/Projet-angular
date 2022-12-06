@@ -50,14 +50,14 @@ export class FormCoursComponent implements OnInit {
     if(this.action == 'Add'){
       this.crudsService.add(this.AdvancedService.CoursControllerName,this.cours).subscribe(
         ()=>{
-          this.alertService.alert("SUCCESS","Cour Added successfuly");
+          this.alertService.alert("SUCCESS","Course added successfuly");
           this.router.navigate(['/admin/cours/list'])}
       );
     }
     else if(this.action == 'Update'){
       this.crudsService.update(this.AdvancedService.CoursControllerName,this.cours).subscribe(
         () => {
-          this.alertService.alert("SUCCESS","Cour Updated successfuly");
+          this.alertService.alert("SUCCESS","Course updated successfuly");
           this.router.navigate(['/admin/cours/list'])
         }
       )

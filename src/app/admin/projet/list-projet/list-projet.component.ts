@@ -28,7 +28,7 @@ export class ListProjetComponent implements OnInit {
     this.crudsService.delete(this.AdvancedService.ProjetControllerName,p.idprojet).subscribe(
 
     ()=> {
-      this.alertService.alert("SUCCESS","Projet Deleted successfuly");
+      this.alertService.alert("SUCCESS","Project deleted successfuly");
       this.router.navigate(['/admin/projets'])
     })
   }
