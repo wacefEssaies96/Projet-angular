@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ action }} Detail departements</h4>
+    <p class="card-description"></p>
+    <form  [formGroup]="form" (ngSubmit)="saveDetaildepartements()" class="forms-sample">
+
+
+      <div class="form-group">
+        <label>Number of classes</label>
+        <input [(ngModel)]="detaildepartement.nombreClasses" type="number" formControlName="nombreClasses" class="form-control">
+        <div class="alert alert-danger" *ngIf="form.controls['nombreClasses'].touched && form.controls['nombreClasses'].invalid">
+            <p *ngIf="form.controls['nombreClasses'].hasError('required')">
+              Number of classes is required
+            </p>
+            <p *ngIf="form.controls['nombreClasses'].hasError('min')">
+                Minimum Value is 10 !
+            </p>
+            <p *ngIf="form.controls['nombreClasses'].hasError('max')">
+                Maximum Value is 60 !
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+      <label>Number of floors</label>
+      <input [(ngModel)]="detaildepartement.nombreEtages" type="number" formControlName="nombreEtages" class="form-control">
+      <div class="alert alert-danger" *ngIf="form.controls['nombreEtages'].touched && form.controls['nombreEtages'].invalid">
+          <p *ngIf="form.controls['nombreEtages'].hasError('required')">
+            Number of floors is required
+          </p>
+          <p *ngIf="form.controls['nombreEtages'].hasError('min')">
+              Minimum Value is 2 !
+          </p>
+          <p *ngIf="form.controls['nombreEtages'].hasError('max')">
+              Maximum Value is 5 !
+          </p>
+      </div>
+  </div>
+      <button type="submit"
+        class="btn btn-primary me-2"
+        [disabled]="form.invalid"
+      >
+        {{ action }}
+      </button>
+    </form>
+  </div>
+</div>
