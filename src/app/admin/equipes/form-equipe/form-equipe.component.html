@@ -2,17 +2,17 @@
     <div class="card">
         <div class="card-body">
         <h4 class="card-title">
-            {{action}} Equipe
+            {{action}} Team
         </h4>
         
         <form [formGroup]="form" (ngSubmit)="SaveEquipe()" class="forms-sample">
             
             <div class="form-group">
-                <label>Nom Equipe</label>
+                <label>Name</label>
                 <input [(ngModel)]="equipe.nomEquipe" type="text" formControlName="nomEquipe" class="form-control">
                 <div class="alert alert-danger" *ngIf="form.controls['nomEquipe'].touched && form.controls['nomEquipe'].invalid">
                     <p *ngIf="form.controls['nomEquipe'].hasError('required')">
-                        Nom Equipe is required
+                        Name is required
                     </p>
                     <p *ngIf="form.controls['nomEquipe'].hasError('pattern')">
                         Error pattern
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 
-                <label>Niveau </label>
+                <label>Level</label>
                 <select [(ngModel)]="equipe.niveau" formControlName="niveau" class="form-control">
                     <option value="JUNIOR" selected>JUNIOR</option>
                     <option value="SENIOR">SENIOR</option>
@@ -29,7 +29,7 @@
                 </select>
                 <div class="alert alert-danger" *ngIf="form.controls['niveau'].touched && form.controls['niveau'].invalid">
                     <p *ngIf="form.controls['niveau'].hasError('required')">
-                        Niveau is required
+                        Level is required
                     </p>
                 </div>
             </div>

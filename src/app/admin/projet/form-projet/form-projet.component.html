@@ -1,8 +1,8 @@
  <div class="container">
- <h1>Formulaire projet</h1>
+ <h1>Project Form</h1>
  <form #f="ngForm" >
     <div class="form-group">
-        <Label>Nom du projet</Label>
+        <Label>Name</Label>
         <input name="nom" type="text" class="form-control" required [(ngModel)]="projet.nomprojet" #l="ngModel" minlength="6" maxlength="12" pattern="[A-Za-z\s]{6,12}">
     
     <div class="alert alert-danger" *ngIf="l.invalid && l.touched">
@@ -29,7 +29,7 @@
     </div>
 </div>
     <div class="form-group">
-        <Label>Date limite du projet </Label>
+        <Label>Time limit </Label>
         <input name="datelimiteduprojet" type="date" class="form-control" required [(ngModel)]="projet.datelimiteProjet" #dt="ngModel">
     </div>
     <div class="alert alert-danger" *ngIf="dt.invalid && dt.touched">
