@@ -13,6 +13,7 @@ export class AdvancedServicesService {
   public ContratControllerName = '/contrat';
   public CoursControllerName = '/cours';
   public DepartementControllerName = '/departement';
+  public DetailDepartementControllerName = '/detaildepartement';
   public EquipeControllerName = '/equipe';
   public EtudiantControllerName = '/etudiant';
   public ProjetControllerName = '/projet';
@@ -65,7 +66,7 @@ export class AdvancedServicesService {
   getNbrStageByType(){
     return this.httpclient.get<any>(this.url + '/stage/count-nbr-type');
   }
-  
+
   assignProjetToEquipe(idprojet: number, idequipe: number){
     return this.httpclient.get(this.url + this.ProjetControllerName+'/assignProToEquipe/' + idprojet +'/' + idequipe );
   }
