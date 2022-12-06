@@ -15,7 +15,8 @@ export class AssignDepartementToUniversityComponent implements OnInit {
   public idUniv : number
   public idDepartement: number
   public listDep: Departement[];
-  public test: boolean=false
+  public test: boolean=false;
+  public p:any;
 
   constructor(
     private alertService : AlertService,

@@ -6,6 +6,8 @@ import { CoursComponent } from './cours.component';
 import { FormCoursComponent } from './form-cours/form-cours.component';
 import { ListCoursComponent } from './list-cours/list-cours.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CoursRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ]
 })
 export class CoursModule { }

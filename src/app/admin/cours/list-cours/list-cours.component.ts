@@ -15,6 +15,8 @@ export class ListCoursComponent implements OnInit {
   public cours: Cours;
   public listCours: Cours[];
   public search: string;
+  public p:any;
+
   constructor(
     private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,

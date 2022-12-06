@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let c of listCour">
+                        <tr *ngFor="let c of listCour | paginate: {itemsPerPage: 3, currentPage: p}">
                             <td>
                                 {{c.idCour}}
                             </td>
@@ -57,3 +57,5 @@
         </div>
     </div>
 </div>
+<br><br>
+<pagination-controls (pageChange)="p = $event" class="float-right" style="justify-content:right;color: #52CDFF;"></pagination-controls>
