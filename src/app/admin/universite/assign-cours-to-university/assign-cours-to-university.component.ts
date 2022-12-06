@@ -15,7 +15,8 @@ export class AssignCoursToUniversityComponent implements OnInit {
   public idUniv : number
   public idCour: number
   public listCour: Cours[];
-  public test: boolean=false
+  public test: boolean=false;
+  public p:any;
 
   constructor(
     private alertService : AlertService,

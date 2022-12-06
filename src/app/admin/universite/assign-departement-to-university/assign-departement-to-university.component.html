@@ -10,12 +10,12 @@
         </symbol>
     </svg>
     <div *ngIf="test==true" class="alert alert-success alert-dismissible fade show" role="alert">
-        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="height: 20px; color: #34B1AA;"><use xlink:href="#check-circle-fill"/></svg>
+        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="height: 20px;"><use xlink:href="#check-circle-fill"/></svg>
         <strong>University assigned to departement with Success !</strong>
         <button (click)="removeSuccessAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <div *ngIf="test==false" class="alert alert-info alert-dismissible fade show" role="alert" style="color: #52CDFF;">
-        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 20px;color: #52CDFF;"><use xlink:href="#info-fill"/></svg>
+        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 20px"><use xlink:href="#info-fill"/></svg>
         <strong>Click on the "Assign" Button please</strong>
     </div>
     <div class="card-body">
@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let d of listDep">
+                        <tr *ngFor="let d of listDep | paginate: {itemsPerPage: 3, currentPage: p}">
                             <td>
                                 {{d.idDepartement}}
                             </td>
@@ -48,3 +48,5 @@
         </div>
     </div>
 </div>
+<br><br>
+<pagination-controls (pageChange)="p = $event" class="float-right" style="justify-content:right;color: #52CDFF;"></pagination-controls>
