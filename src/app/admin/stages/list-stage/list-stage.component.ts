@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Stage } from 'src/app/core/model/stage';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
@@ -20,20 +21,26 @@ export class ListStageComponent implements OnInit {
   tableSize: number = 5;
 
   
-
+  public test: boolean = true;
   public title: String;
-  public listStage: any[];
+  public listStage: any;
 
   constructor(
     private AdvancedService : AdvancedServicesService,
-    private crudsService : CrudsService
+    private crudsService : CrudsService,
+    private currentRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
 
     this.title=" Liste Stages";
-    this.fetchStages();
-    
+    let id = this.currentRoute.snapshot.params['id'];
+    if(id){
+      this.test = false;
+      this.getList(id);
+    }else{
+      this.fetchStages();
+    }
   }
   fetchStages(): void {
     this.crudsService.getAll(this.AdvancedService.StageControllerName).subscribe(
@@ -45,6 +52,13 @@ export class ListStageComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  getList(id: number){
+    this.AdvancedService.retrieveData('/stage/stages-of-student/', id).subscribe({
+      next: (data) => {
+        this.listStage = data;
+      }
+    });
   }
   onTableDataChange(event: any) {
     this.page = event;

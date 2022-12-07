@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Contrat } from '../model/contrat';
 import { Etudiant } from '../model/etudiant';
+import { Stage } from '../model/stage';
 import { Universite } from '../model/universite';
 
 @Injectable({
@@ -70,6 +71,12 @@ export class AdvancedServicesService {
   }
   assignProjetToEquipe(idprojet: number, idequipe: number) {
     return this.httpclient.get(this.url + this.ProjetControllerName + '/assignProToEquipe/' + idprojet + '/' + idequipe);
+  }
+  retrieveData(string: string, id: number) {
+    return this.httpclient.get(this.url + string + id);
+  }
+  affectStageToEtudiant(s: number, id: number) {
+    return this.httpclient.get(this.url + this.StageControllerName + '/affect-stage-etudiant/' + id + '/' + s);
   }
 
 }

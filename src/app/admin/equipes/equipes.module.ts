@@ -8,20 +8,22 @@ import { FormEquipeComponent } from './form-equipe/form-equipe.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
     EquipesComponent,
     ListequipesComponent,
-    FormEquipeComponent
+    FormEquipeComponent,
   ],
   imports: [
     CommonModule,
     EquipesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ]
 })
 export class EquipesModule { }

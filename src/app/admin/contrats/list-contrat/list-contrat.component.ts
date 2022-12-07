@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Contrat } from 'src/app/core/model/contrat';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { CrudsService } from 'src/app/core/services/cruds.service';
@@ -17,20 +18,36 @@ export class ListContratComponent implements OnInit {
   page: number = 1;
   count: number = 0;
   tableSize: number = 5;
+  public test: boolean = true;
 
   public title: String;
-  public listContrat: any[];
+  public listContrat: any;
 
   constructor(
     private AdvancedService : AdvancedServicesService,
-    private crudsService : CrudsService
+    private crudsService : CrudsService,
+    private currentRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.title="Contrats list";
-    this.fetchContrats();
-    
+    let id = this.currentRoute.snapshot.params['id'];
+    if(id){
+      this.test = false;
+      this.getList(id);
+    }else{
+      this.fetchContrats();
+    }
   }
+
+  getList(id: number){
+    this.AdvancedService.retrieveData('/contrat/contrats-of-student/', id).subscribe({
+      next: (data) => {
+        this.listContrat = data;
+      }
+    });
+  }
+  
   fetchContrats(): void {
     this.crudsService.getAll(this.AdvancedService.ContratControllerName).subscribe(
       (data:Contrat[]) => {

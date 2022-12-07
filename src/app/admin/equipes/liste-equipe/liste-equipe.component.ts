@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Equipe } from 'src/app/core/model/equipe';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { AlertService } from 'src/app/core/services/alert.service';
@@ -11,25 +11,47 @@ import { CrudsService } from 'src/app/core/services/cruds.service';
   styleUrls: ['./liste-equipe.component.css']
 })
 export class ListequipesComponent implements OnInit {
-  public list: Equipe [];
+  public list: any;
   public search: string;
-  
+  public test: boolean = true;
+
   constructor(
-    private alertService : AlertService,
-    private AdvancedService : AdvancedServicesService,
-    private crudsService : CrudsService,
-    private router:Router) { }
+    private alertService: AlertService,
+    private AdvancedService: AdvancedServicesService,
+    private crudsService: CrudsService,
+    private currentRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.crudsService.getAll(this.AdvancedService.EquipeControllerName).subscribe((data: Equipe[]) =>{this.list=data} )
-  }
-  delete(eq:Equipe){
-    this.crudsService.delete(this.AdvancedService.EquipeControllerName,eq.idEquipe).subscribe(
+    let id = this.currentRoute.snapshot.params['id'];
+    let idp = this.currentRoute.snapshot.params['idp'];
+    if (id) {
+      this.test = false;
+      this.getList(id, '/equipe/equipes-of-student/');
+    }
+    else if (idp) {
+      this.test = false;
+      this.getList(idp, '/equipe/equipes-of-projet/');
+    }
+    else {
+      this.crudsService.getAll(this.AdvancedService.EquipeControllerName).subscribe((data: Equipe[]) => { this.list = data })
+    }
 
-    ()=> {
-      this.alertService.alert("SUCCESS","Team deleted successfuly");
-      this.router.navigate(['/admin/equipes'])
-    })
+  }
+  getList(id: number, url: string) {
+    this.AdvancedService.retrieveData(url, id).subscribe({
+      next: (data) => {
+        this.list = data;
+      }
+    });
+  }
+  delete(eq: Equipe) {
+    this.crudsService.delete(this.AdvancedService.EquipeControllerName, eq.idEquipe).subscribe(
+
+      () => {
+        this.alertService.alert("SUCCESS", "Team deleted successfuly");
+        this.router.navigate(['/admin/equipes'])
+      })
   }
 
 }

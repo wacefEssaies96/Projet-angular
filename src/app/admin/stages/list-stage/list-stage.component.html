@@ -3,7 +3,7 @@
       
 <div class="row">
   <div class="col-md-3">
-    <button   [routerLink]="['/admin/stages/addStage']"  class="btn btn-sm btn-primary">
+    <button *ngIf="test" [routerLink]="['/admin/stages/addStage']"  class="btn btn-sm btn-primary">
       Add Stage
     </button>
   </div>
@@ -35,7 +35,7 @@
         <th>End Date</th>
         <th>Type</th>
         <th>Resume</th>
-        <th>Action</th>
+        <th *ngIf="test">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -52,10 +52,11 @@
         <td>{{stage.dateFinStage}}</td>
         <td [ngStyle]="{'color': stage.StageEte === 'IA'  ? 'green' : stage.StageImmersion === 'SECURITE' ? 'blue' : 'red'}" >{{stage.typeStage}}</td>
         <td>{{stage.resumeStage}}</td>
-        <td>
+        <td *ngIf="test">
           <button [routerLink]="['/admin/stages/details',stage.idStage]"  class="btn btn-sm btn-primary">
             Details
           </button>
+          <a [routerLink]="['/admin/stages/assignToEtudiant',stage.idStage]">Assign to student</a>
         </td>
       </tr>
     </tbody>

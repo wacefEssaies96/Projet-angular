@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AssignEtudiantComponent } from './assign-etudiant/assign-etudiant.component';
 import { DetailsStageComponent } from './details-stage/details-stage.component';
 import { FormStageComponent } from './form-stage/form-stage.component';
 import { ListStageComponent } from './list-stage/list-stage.component';
@@ -11,7 +12,8 @@ const routes: Routes = [{
     { path: 'details/:idS', component: DetailsStageComponent },
     { path: 'ListeStages', component: ListStageComponent },
     { path: 'addStage', component: FormStageComponent },
-    { path: 'updateStage/:idS', component: FormStageComponent }
+    { path: 'updateStage/:idS', component: FormStageComponent },
+    { path: 'assignToEtudiant/:ids', component:AssignEtudiantComponent }
   ]
 }
 ];

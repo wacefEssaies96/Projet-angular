@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchStage } from 'src/app/core/search/search-stage';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AssignEtudiantComponent } from './assign-etudiant/assign-etudiant.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ListStageComponent,
     FormStageComponent,
     DetailsStageComponent,
-    SearchStage
+    SearchStage,
+    AssignEtudiantComponent
   ],
   imports: [
     CommonModule,
