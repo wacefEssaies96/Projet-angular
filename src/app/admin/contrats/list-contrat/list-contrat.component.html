@@ -4,7 +4,7 @@
 <div class="card p-5">  
 <div class="row">
   <div class="col-md-3">
-    <button   [routerLink]="['/admin/contrats/addContrat']"  class="btn btn-sm btn-primary">
+    <button *ngIf="test" [routerLink]="['/admin/contrats/addContrat']"  class="btn btn-sm btn-primary">
       Add Contrat
     </button>
   </div>
@@ -46,7 +46,7 @@
         <th>Speciality</th>
         <th>Archive</th>
         <th>Amount  </th>
-        <th>Action</th>
+        <th *ngIf="test">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -63,7 +63,7 @@
         <td>{{contrat.specialite}}</td>
         <td>{{contrat.archive}}</td>
         <td>{{contrat.montantContrat}}</td>
-        <td>
+        <td *ngIf="test">
           <button   [routerLink]="['/admin/contrats/details',contrat.idContrat]"  class="btn btn-sm btn-primary">
             Details
           </button>

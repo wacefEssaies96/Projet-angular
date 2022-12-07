@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { AdvancedServicesService } from 'src/app/core/services/advanced-services.service';
 import { AlertService } from 'src/app/core/services/alert.service';
@@ -11,20 +12,40 @@ import { CrudsService } from 'src/app/core/services/cruds.service';
 })
 export class ListEtudiantComponent implements OnInit {
 
-  public etudiants: Etudiant[];
+  public etudiants: any;
   public search: string;
   page: number = 1;
   count: number = 0;
   tableSize: number = 5;
+  public test: boolean = true;
 
   constructor(
     private alertService : AlertService,
     private AdvancedService : AdvancedServicesService,
-    private crudsService : CrudsService
+    private crudsService : CrudsService,
+    private currentRoute: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
-    this.getAll();
+    let id = this.currentRoute.snapshot.params['id'];
+    let ide = this.currentRoute.snapshot.params['ide'];
+    if(id){
+      this.test = false;
+      this.getList(id, '/contrat/contrats-of-student/');
+    }
+    else if(ide){
+      this.test = false;
+      this.getList(ide, '/etudiant/etudiants-of-equipe/');
+    }else{
+      this.getAll();
+    }
+  }
+  getList(id: number, string: string){
+    this.AdvancedService.retrieveData(string, id).subscribe({
+      next: (data) => {
+        this.etudiants = data;
+      }
+    });
   }
   getAll(){
     this.crudsService.getAll(this.AdvancedService.EtudiantControllerName).subscribe({

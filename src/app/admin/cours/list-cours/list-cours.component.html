@@ -19,7 +19,7 @@
                   <th>Course Code</th>
                   <th>Course Title</th>
                   <th>Course Type</th>
-                  <th>Action</th>
+                  <th *ngIf="test">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -28,7 +28,7 @@
                   <td>{{cours.codeCour}}</td>
                   <td>{{cours.intituleCour}}</td>
                   <td>{{cours.typeCour}}</td>
-                  <td>
+                  <td *ngIf="test">
                       <button class="btn btn-sm btn-danger btn-rounded badge badge-danger" (click)="deleteCours(cours)">
                           Delete
                       </button>

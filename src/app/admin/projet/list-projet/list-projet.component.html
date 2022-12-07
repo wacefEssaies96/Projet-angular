@@ -14,7 +14,7 @@
                     <th>Time limit</th>
                     <th>Evolution</th>
                     <th>Subject</th>
-                    <th>Action</th>
+                    <th *ngIf="test">Action</th>
 
                     <th><input type="search" class="form-control" placeholder="Search Here" title="Search here"
                             [(ngModel)]="search"> </th>
@@ -33,7 +33,7 @@
 
 
 
-                    <td>
+                    <td *ngIf="test">
                         <a [routerLink]="['/admin/projets/update',p.idprojet]" class="btn btn-sm btn-warning">
                             update
                         </a>
@@ -41,6 +41,8 @@
                         <button class="btn btn-sm btn-danger" (click)="delete(p)">
                             delete
                         </button>
+                        <a [routerLink]="['/admin/projets/view-equipes',p.idprojet]"
+                            class="btn btn-sm btn-outline-info btn-fw btn-rounded badge badge-info">View Teams</a>
                     </td>
                 </tr>
             </tbody>
