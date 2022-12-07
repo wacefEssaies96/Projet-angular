@@ -5,7 +5,7 @@
 <div class="col-lg-4 grid-margin stretch-card" style="width: 30em; margin: auto;">
   <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">{{contrat.idContrat}}</h5>
+        <h5 class="card-title text-center"> Contract {{contrat.idContrat}}</h5>
         <p class="card-text fw-bold">
           Start Date :&nbsp;{{contrat.dateDebutContrat}}
           <br>
@@ -17,14 +17,15 @@
           <br>
           Amount     :&nbsp;{{contrat.montantContrat}}
         </p>
-        
-        <button   [routerLink]="['/admin/contrats/updateContrat',contrat.idContrat]"  class="btn btn-sm btn-warning">
-          Update
-        </button>
-        &nbsp;
-        <button  (click)="deleteContrat(contrat)" class="btn btn-sm btn-danger">
-          Delete
-        </button>
+        <div class="text-center">
+          <button   [routerLink]="['/admin/contrats/updateContrat',contrat.idContrat]"  class="btn btn-sm btn-warning">
+            Update
+          </button>
+          &nbsp;
+          <button  (click)="deleteContrat(contrat)" class="btn btn-sm btn-danger">
+            Delete
+          </button>
+        </div>
       </div>
     </div>
     <br><br>

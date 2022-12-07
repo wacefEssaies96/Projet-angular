@@ -1,4 +1,4 @@
-<button class="btn btn-primary" [routerLink]="['/admin/projets/add']">Ajouter</button>
+<button class="btn btn-primary" [routerLink]="['/admin/projets/add']">Add Project</button>
 <div class="row">
     <div style="float: right;">
 
@@ -41,6 +41,7 @@
                         <button class="btn btn-sm btn-danger" (click)="delete(p)">
                             delete
                         </button>
+                        &nbsp;
                         <a [routerLink]="['/admin/projets/view-equipes',p.idprojet]"
                             class="btn btn-sm btn-outline-info btn-fw btn-rounded badge badge-info">View Teams</a>
                     </td>

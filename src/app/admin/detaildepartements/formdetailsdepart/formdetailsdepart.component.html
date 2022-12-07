@@ -1,6 +1,6 @@
-<div class="card">
+<div class="col-lg-4 grid-margin card" style="width: 30em; margin: auto;">
   <div class="card-body">
-    <h4 class="card-title">{{ action }} Detail departements</h4>
+    <h4 class="card-title text-center">{{ action }} Detail departements</h4>
     <p class="card-description"></p>
     <form  [formGroup]="form" (ngSubmit)="saveDetaildepartements()" class="forms-sample">
 
@@ -35,12 +35,14 @@
           </p>
       </div>
   </div>
+    <div class="text-center">
       <button type="submit"
         class="btn btn-primary me-2"
         [disabled]="form.invalid"
       >
         {{ action }}
       </button>
+    </div>
     </form>
   </div>
 </div>

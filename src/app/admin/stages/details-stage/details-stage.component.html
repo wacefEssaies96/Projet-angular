@@ -1,27 +1,28 @@
 <h1>{{title}}</h1>
 
 <div class="row">
-  <div class="col-md-8 col-xl-4" >
+  <div class="col-lg-4 grid-margin stretch-card" style="width: 30em; margin: auto;">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">{{stage.idStage}}</h5>
-        <p class="card-text">
-          {{stage.dateDebutStage}}
+        <h5 class="card-title text-center">Stage {{stage.idStage}}</h5>
+        <p class="card-text fw-bold">
+          Start Date : {{stage.dateDebutStage}}
           <br>
-          {{stage.dateFinStage}}
+          End Date : {{stage.dateFinStage}}
           <br>
-          {{stage.typeStage}}
+          Type : {{stage.typeStage}}
           <br>
-          {{stage.resumeStage}}
+          Resume : {{stage.resumeStage}}
         </p>
-        
-        <button   [routerLink]="['/admin/stages/updateStage',stage.idStage]"  class="btn btn-sm btn-warning">
-          Update
-        </button>
-        &nbsp;
-        <button  (click)="deleteStage(stage)" class="btn btn-sm btn-danger">
-          Delete
-        </button>
+        <div class="text-center">
+          <button   [routerLink]="['/admin/stages/updateStage',stage.idStage]"  class="btn btn-sm btn-warning">
+            Update
+          </button>
+          &nbsp;
+          <button  (click)="deleteStage(stage)" class="btn btn-sm btn-danger">
+            Delete
+          </button>
+        </div>
       </div>
     </div>
     <br><br>

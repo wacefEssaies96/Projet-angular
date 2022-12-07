@@ -35,18 +35,18 @@ export class FormdetailsdepartComponent implements OnInit {
     let id = this.currentRoute.snapshot.params['id'];
     if (id != null) {
       //update
-      this.action = "editer ";
+      this.action = "Update";
       this.dds.getById(this.dd.DetailDepartementControllerName, id).subscribe(
         (object: Detaildepartements) => { this.detaildepartement = object }
       )
     } else {
-      this.action = "add";
+      this.action = "Add";
       this.detaildepartement = new Detaildepartements();
     }
 
   }
   saveDetaildepartements() {
-    if (this.action == 'add') {
+    if (this.action == 'Add') {
       //this.productService.list.push(this.product);
       this.dds.add(this.dd.DetailDepartementControllerName, this.detaildepartement).subscribe(
         () => {
@@ -54,7 +54,7 @@ export class FormdetailsdepartComponent implements OnInit {
         this.router.navigate(["/admin/detaildepartements/list"]) }
       )
     }
-    else if (this.action == "editer ") {
+    else if (this.action == "Update") {
       this.dds.update(this.dd.DetailDepartementControllerName, this.detaildepartement).subscribe(
         () => {
           this.alertService.alert("SUCCESS","Detail departements Updated successfuly");

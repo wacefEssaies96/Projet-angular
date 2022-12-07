@@ -1,7 +1,7 @@
-<div class="col-md-6 grid-margin stretch-card">
+<div class="col-lg-4 grid-margin stretch-card" style="width: 30em; margin: auto;">
     <div class="card">
         <div class="card-body">
-        <h4 class="card-title">
+        <h4 class="card-title text-center">
             {{action}} Team
         </h4>
         
@@ -33,13 +33,14 @@
                     </p>
                 </div>
             </div>
-            
-            <button type="submit" class="btn btn-sm btn-success  me-2" [disabled]="form.invalid">
-                {{action}}
-            </button>
-            <button *ngIf="action == 'Add'" type="reset" class="btn btn-sm btn-success  me-2" >
-                Cancel
-            </button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-sm btn-success  me-2" [disabled]="form.invalid">
+                    {{action}}
+                </button>
+                <button *ngIf="action == 'Add'" type="reset" class="btn btn-sm btn-success  me-2" >
+                    Cancel
+                </button>
+            </div>
         </form>
     </div>
 <br>

@@ -1,6 +1,6 @@
 <div class="card mx-auto" style="width: 50em;">
     <div class="card-body">
-        <h4 class="card-title">{{action}}</h4>
+        <h4 class="card-title text-center">{{action}}</h4>
         <p class="card-description">
             {{action}} a course
         </p>
@@ -45,8 +45,10 @@
                     </p>
                 </div>
             </div>
-            <button type="submit" [disabled]="form.invalid" class="btn btn-primary me-2">{{action}}</button>
-            <button class="btn btn-light">Cancel</button>
+            <div class="text-center">
+                <button type="submit" [disabled]="form.invalid" class="btn btn-primary me-2">{{action}}</button>
+                <button class="btn btn-light">Cancel</button>
+            </div>
         </form>
     </div>
 </div>

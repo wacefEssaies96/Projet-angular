@@ -1,6 +1,6 @@
 <div class="card mx-auto" style="width: 60em;">
     <div class="card-body">
-      <h2 class="card-title">{{action}} an University</h2>
+      <h2 class="card-title text-center">{{action}} an University</h2>
       <form class="forms-sample" #f="ngForm">
         <br><br>
         <div class="form-group row">
@@ -73,8 +73,10 @@
                 This field is required
             </div>
         </div>
-        <button type="submit" id="Robot" class="btn btn-sm btn-success me-2" (click)="saveUniversite()" [disabled]="f.invalid">{{action}}</button>
-        <button class="btn btn-sm btn-light me-2" (click)="cancel()">Cancel</button>
+        <div class="text-center">
+          <button type="submit" id="Robot" class="btn btn-sm btn-success me-2" (click)="saveUniversite()" [disabled]="f.invalid">{{action}}</button>
+          <button class="btn btn-sm btn-light me-2" (click)="cancel()">Cancel</button>
+        </div>
       </form>
     </div>
   </div>

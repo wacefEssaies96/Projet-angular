@@ -1,5 +1,5 @@
  <div class="container">
- <h1>Project Form</h1>
+ <h1 class="text-center">Project Form</h1>
  <form #f="ngForm" >
     <div class="form-group">
         <Label>Name</Label>
@@ -58,6 +58,9 @@
             This field is required
         </div>
     </div>
-    <button class="btn btn-success" [disabled]="f.invalid" type="submit" (click)="SaveProjet()">Save</button>
+    
+    <div class="text-center">
+        <button class="btn btn-success" [disabled]="f.invalid" type="submit" (click)="SaveProjet()">Save</button>
+    </div>
  </form>
 </div>

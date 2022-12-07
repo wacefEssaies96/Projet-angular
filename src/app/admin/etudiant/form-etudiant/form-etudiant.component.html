@@ -1,6 +1,6 @@
 <div class="card mx-auto" style="width: 50em;">
     <div class="card-body">
-        <h4 class="card-title">{{action}}</h4>
+        <h4 class="card-title text-center">{{action}}</h4>
         <form class="forms-sample" [formGroup]="form" (ngSubmit)="submit()">
             <div class="form-group">
                 <label for="lastname">Lastname</label>
@@ -100,7 +100,9 @@
                     </p>
                 </div>
             </div>
-            <button type="submit" [disabled]="form.invalid" class="btn btn-primary me-2">Confirm</button>
+            <div class="text-center">
+                <button  type="submit" [disabled]="form.invalid" class="btn btn-primary me-2" >Confirm</button>
+            </div>
         </form>
     </div>
 </div>

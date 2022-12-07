@@ -1,6 +1,8 @@
-<td>{{ departement.idDepartement}}</td>
-<td [ngClass]="{'text-success':true}" >{{departement.nomDepart}}</td>
-<td [ngStyle]="{'color':departement.nomDepart === 'informatique' ? 'green' : 'red' }">{{departement.nomDepart}}</td>
-<!--<td><button [routerLink]="['/detailequipe/add']">add</button></td>-->
-<td><button class="btn btn-warning" [routerLink]="['/admin/departements/edit',departement.idDepartement]">edit</button></td>
-<td><button class="btn btn-danger" (click)="notifyDelete()">remove</button></td>
+<tr>
+    <td>{{ departement.idDepartement}}</td>
+    <td [ngClass]="{'text-success':true}" >{{departement.nomDepart}}</td>
+    <td [ngStyle]="{'color':departement.nomDepart === 'informatique' ? 'green' : 'red' }">{{departement.nomDepart}}</td>
+    <!--<td><button [routerLink]="['/detailequipe/add']">add</button></td>-->
+    <td><button class="btn btn-warning" [routerLink]="['/admin/departements/edit',departement.idDepartement]">Update</button></td>
+    <td><button class="btn btn-danger" (click)="notifyDelete()">Remove</button></td>
+</tr>
