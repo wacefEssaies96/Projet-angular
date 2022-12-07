@@ -31,7 +31,7 @@ export class ListStageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.title=" Liste Stages";
+    this.title=" Stages list";
     this.fetchStages();
     
   }

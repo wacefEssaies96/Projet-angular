@@ -1,6 +1,7 @@
 <h1>{{title}}</h1>
 
-      
+    
+<div class="card p-5">  
 <div class="row">
   <div class="col-md-3">
     <button   [routerLink]="['/admin/contrats/addContrat']"  class="btn btn-sm btn-primary">
@@ -33,6 +34,7 @@
   </select>
     <input *ngIf="searchCategory.value=='montantContrat'" type="number" id="searchValue" [formControl]="searchValue" class="form-control"/>
   </div>
+</div>
 </div>
 
 <div class="table-responsive">
