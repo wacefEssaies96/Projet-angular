@@ -27,8 +27,19 @@ export class AffectContratToEtudiantComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.idc = this.route.snapshot.params['idc'];
-    this.contrat=this.crudsService.getById(this.AdvancedService.ContratControllerName,this.idc);
+    this.idc = this.route.snapshot.params['idC'];
+    this.crudsService.getById(this.AdvancedService.ContratControllerName,this.idc).subscribe({
+      next : (params: Contrat) => {
+        console.log(params)
+        this.contrat = params;
+      },
+      error: (error: Error)=>{
+        console.log(error);
+      },
+      complete: ()=>{
+        console.log('complete');
+      }
+    });
     this.crudsService.getAll(this.AdvancedService.EtudiantControllerName).subscribe({
       next : (params) => {
         this.etudiants = params;
